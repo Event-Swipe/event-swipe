@@ -1,11 +1,11 @@
-import Home from "@pages/Home";
+import Subscribe from "./components/Subscribe/Subscribe";
 
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Subscribe />
       <p>coucou</p>
     </div>
   );

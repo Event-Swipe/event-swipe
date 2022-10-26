@@ -1,0 +1,51 @@
+.form-backfround-layout {
+  display: flex;
+  background-color: orange;
+  align-items: center;
+}
+
+.form-backfround-layout img {
+  width: 10%;
+  margin: auto;
+}
+.form-backfround-layout div {
+  width: 100%;
+  height: 20vh;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.title-container {
+  background-color: gray;
+}
+.title-container h1 {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+input {
+  border: 2px solid black;
+  box-shadow: 3px 3px darkblue;
+  margin: 12px;
+  padding: 15px;
+  width: 50%;
+  font-size: large;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.subscribed-msg {
+  background-color: orangered;
+}
+.subscribed-msg p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
