@@ -1,42 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
   //
 
   return (
     <nav className="navbar">
+      <img
+        src="./frontend/src/components/Logo/LogoEventSwipe.jpg"
+        className="company-logo"
+        alt="company-logo"
+      />
       <ul>
-        <li>
-          <span>
-            <img
-              src="/frontend/src/components/Logo/company-logo-noBg.png"
-              className="company-logo"
-              alt="company-logo"
-            />
-          </span>
-        </li>
-        <li>
-          <span>
-            <Link to="/">Sport</Link>
-          </span>
-        </li>
-        <li>
-          <span>
-            <Link to="/">Concert</Link>
-          </span>
-        </li>
-        <li>
-          <span>
-            <Link to="/">theater</Link>
-          </span>
-        </li>
-        <li>
-          <span>
-            <Link to="/">Search</Link>
-          </span>
-        </li>
+        <NavLink to="/Sport" className="current">
+          <li>Sport</li>
+        </NavLink>
+        <NavLink to="/concert" className="current">
+          <li>Concert</li>
+        </NavLink>
+        <NavLink to="/theater" className="current">
+          <li>theater</li>
+        </NavLink>
+        <NavLink to="/login" className="current">
+          <li>LogIn</li>
+        </NavLink>
       </ul>
     </nav>
   );
