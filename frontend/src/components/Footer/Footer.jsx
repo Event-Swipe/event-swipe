@@ -7,7 +7,10 @@ function Footer() {
   return (
     <div className="footer-wrapper">
       <div className="logo-wrapper">
-        <img src="./company-logo-noBg.png" alt="company-logo" />
+        <img
+          src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
+          alt="company-logo"
+        />
       </div>
       <div className="social-media-wrapper">
         <SocialIcon url="https://linkedin.com/" />
