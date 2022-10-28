@@ -1,13 +1,17 @@
-import Home from "@pages/Home";
-
+import React from "react";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar/NavBar";
+import Sport from "./components/Sport";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-      <p>coucou</p>
-    </div>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/Sport" element={<Sport />} />
+      </Routes>
+    </>
   );
 }
 
