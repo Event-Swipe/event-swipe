@@ -20,6 +20,8 @@
     "husky": "^7.0.0"
   },
   "dependencies": {
-    "primereact": "^8.7.0"
+
+    "react-router-dom": "^6.4.2"
+
   }
 }
