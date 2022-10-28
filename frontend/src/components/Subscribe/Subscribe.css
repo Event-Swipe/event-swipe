@@ -1,6 +1,6 @@
 .form-backfround-layout {
   display: flex;
-  background-color: orange;
+  background-color: black;
   align-items: center;
 }
 
@@ -18,7 +18,13 @@
   align-items: center;
   flex-direction: row-reverse;
 }
-
+button {
+  display: block;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+}
 .button-wrapper {
   display: flex;
   align-items: center;
@@ -26,6 +32,7 @@
 
 .title-container {
   background-color: gray;
+  text-align: center;
 }
 .title-container h1 {
   margin-block-start: 0px;
@@ -43,9 +50,11 @@ input {
 }
 
 .subscribed-msg {
-  background-color: orangered;
+  background-color: white;
 }
 .subscribed-msg p {
   margin-block-start: 0px;
   margin-block-end: 0px;
+  color: black;
+  text-align: center;
 }

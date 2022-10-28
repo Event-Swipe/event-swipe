@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar";
 import Sport from "./components/Sport";
 import Footer from "./components/Footer/Footer";
 import Subscribe from "./components/Subscribe/Subscribe";
+import EventList from "./components/EventList/EventList";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/Sport" element={<Sport />} />
       </Routes>
+      <EventList />
       <Subscribe />
       <Footer />
     </>

@@ -47,7 +47,7 @@ function Subscribe() {
       </div>
       <div className="subscribed-msg">
         {isClicked && (
-          <p>We will send monthly newslatter to {subscribeEmail}</p>
+          <p>We will send monthly newsletter to {subscribeEmail}</p>
         )}
       </div>
       <div className="form-backfround-layout">
@@ -67,7 +67,7 @@ function Subscribe() {
           <Button
             onClick={subscribeHandler}
             className="p-button-rounded p-button-secondary"
-            label="Send me a newslatter!"
+            label="Send me a newsletter!"
           />
         </div>
       </div>

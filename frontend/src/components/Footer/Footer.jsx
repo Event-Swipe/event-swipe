@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Footer.css";
 import { SocialIcon } from "react-social-icons";
 
@@ -13,15 +13,23 @@ function Footer() {
         />
       </div>
       <div className="social-media-wrapper">
-        <SocialIcon url="https://linkedin.com/" />
-        <SocialIcon url="https://github.com/" />
-        <SocialIcon url="https://facebook.com/" />
+        <SocialIcon bgColor="#fff" url="https://linkedin.com/" />
+        <SocialIcon bgColor="#fff" url="https://github.com/" />
+        <SocialIcon bgColor="#fff" url="https://facebook.com/" />
       </div>
       <div className="links-wrapper">
-        <Link to="/">Home</Link>
-        <Link to="/music">Music</Link>
-        <Link to="/sports">Sports</Link>
-        <Link to="/theatre">Theatre</Link>
+        <NavLink className="footerLinks" to="/">
+          Home
+        </NavLink>
+        <NavLink className="footerLinks" to="/music">
+          Music
+        </NavLink>
+        <NavLink className="footerLinks" to="/sports">
+          Sports
+        </NavLink>
+        <NavLink className="footerLinks" to="/theatre">
+          Theatre
+        </NavLink>
       </div>
     </div>
   );
