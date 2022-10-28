@@ -1,0 +1,29 @@
+.footer-wrapper {
+  display: flex;
+  flex-direction: row;
+  background-color: orange;
+  height: 100px;
+  justify-content: space-around;
+  border: 2px solid black;
+}
+
+.logo-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+.logo-wrapper {
+  background-color: beige;
+}
+
+.social-media-wrapper {
+  width: 32%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.links-wrapper {
+  display: flex;
+  flex-direction: column;
+}
