@@ -1,18 +1,21 @@
-import React from "react";
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/jsx-no-comment-textnodes */
+import React, { useState } from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
+import { BiMenu } from "react-icons/bi";
 
 function NavBar() {
   //
-
+  const [showLinks, setShowLinks] = useState(false);
   return (
     <nav className="navbar">
       <img
-        src="./frontend/src/components/Logo/LogoEventSwipe.jpg"
+        src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
         className="company-logo"
         alt="company-logo"
       />
-      <ul>
+      <ul className="links" id={showLinks ? "hidden" : "none"}>
         <NavLink to="/Sport" className="current">
           <li>Sport</li>
         </NavLink>
@@ -26,6 +29,10 @@ function NavBar() {
           <li>LogIn</li>
         </NavLink>
       </ul>
+      // eslint-disable-next-line react/button-has-type
+      <button onClick={() => setShowLinks(!showLinks)}>
+        <BiMenu className="menu" />
+      </button>
     </nav>
   );
 }
