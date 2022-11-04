@@ -1,7 +1,5 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/no-extraneous-dependencies */
+
+
 import React from "react";
 import "./EventCard.css";
 
