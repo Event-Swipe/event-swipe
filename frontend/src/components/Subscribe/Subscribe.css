@@ -16,7 +16,10 @@
 .input-wrapper {
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  flex-direction: column;
+}
+.input-big-wrapper {
+  margin-top: 5%;
 }
 button {
   display: block;

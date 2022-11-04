@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import ScrollUpBtn from "./components/ScrollUpBtn/ScrollUpBtn";
 import NavBar from "./components/NavBar/NavBar";
 import Sport from "./components/Sport";
 import Footer from "./components/Footer/Footer";
@@ -18,7 +19,11 @@ function App() {
       <EventList />
       <Subscribe />
       <Footer />
-      <EventDetails />
+
+
+
+      <ScrollUpBtn />
+
     </>
   );
 }
