@@ -7,7 +7,7 @@ import Sport from "./components/Sport";
 import Footer from "./components/Footer/Footer";
 import Subscribe from "./components/Subscribe/Subscribe";
 import EventList from "./components/EventList/EventList";
-import EventDetails from "./components/EventDetails/EventDetails";
+import { EventsContextProvider } from "./contexts/EventsContext";
 
 function App() {
   return (
@@ -16,14 +16,13 @@ function App() {
       <Routes>
         <Route path="/Sport" element={<Sport />} />
       </Routes>
-      <EventList />
+      <EventsContextProvider>
+        <EventList />
+      </EventsContextProvider>
       <Subscribe />
       <Footer />
 
-
-
       <ScrollUpBtn />
-
     </>
   );
 }
