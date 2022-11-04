@@ -1,45 +1,58 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+/* eslint-disable import/no-unresolved */
+/* eslint-disable no-shadow */
+/* eslint-disable import/order */
+/* eslint-disable import/no-extraneous-dependencies */
+import React, { useContext } from "react";
 import EventCard from "../EventCard/EventCard";
-// import { Card } from "primereact/card";
+import EventsContext from "../../contexts/EventsContext";
 import "./EventList.css";
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { Autoplay, Navigation } from "swiper";
+
 function EventList() {
-  // Create a state to store the data
-  const [events, setEvents] = useState();
-
-  // Getting data from the API
-  const fetchEvents = () => {
-    axios
-      .get(
-        "https://api.seatgeek.com/2/events?per_page=50&page=3&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz"
-      )
-      .then((response) => setEvents(response.data.events));
-  };
-
-  // Loading the data
-  useEffect(() => fetchEvents, []);
-  // console.log({ ...events });
+  // using the context
+  const { dayEvents } = useContext(EventsContext);
 
   return (
-    <div>
+    <div className="listContainer">
       {/*  FILTERING EVENTS BEFORE CURRENT HOUR */}
-      <h1 className="listTitle">Daily Events</h1>
-      <div className="listContainer">
-        {events &&
-          events.map((event) => {
-            return (
-              new Date(event.datetime_utc).getHours() >
-                new Date().getHours() && <EventCard event={event} />
-            );
-          })}
-      </div>
-      {/* DISPLAYING ONLY EVENTS OF THE CURRENT WEEK */}
-      {/* <h2>FilterByWeek</h2> */}
 
-      {/* MAPPING ALL EVENTS */}
-      {/* <h1>EventList</h1>
-      {events ? events.map((event) => <EventCard event={event} />) : null} */}
+      <h2 className="ListTitle">Today's Events</h2>
+      <div>
+        {/* Displaying only the upcomming daily events */}
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={3}
+          loop
+          loopFillGroupWithBlank
+          autoplay={{
+            delay: 3500,
+            disableOnInteraction: false,
+          }}
+          navigation
+          modules={[Autoplay, Navigation]}
+          className="mySwiper"
+        >
+          {dayEvents &&
+            dayEvents.map((dayEvents) => (
+              <SwiperSlide>
+                {" "}
+                <EventCard dayEvents={dayEvents} />
+              </SwiperSlide>
+            ))}
+        </Swiper>
+        {/* Displaying only the upcomming week events */}
+      </div>
+      {/* <h2 className="ListTitle">This Week's Events</h2> */}
     </div>
   );
 }
