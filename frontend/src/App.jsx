@@ -7,6 +7,7 @@ import Sport from "./components/Sport";
 import Footer from "./components/Footer/Footer";
 import Subscribe from "./components/Subscribe/Subscribe";
 import EventList from "./components/EventList/EventList";
+import EventDetails from "./components/EventDetails/EventDetails";
 
 function App() {
   return (
@@ -18,7 +19,11 @@ function App() {
       <EventList />
       <Subscribe />
       <Footer />
+
+
+
       <ScrollUpBtn />
+
     </>
   );
 }
