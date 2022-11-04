@@ -1,9 +1,11 @@
 .pi {
   font-size: xx-large;
   cursor: pointer;
+  caret-color: transparent;
 }
 
 .btn-container {
+  cursor: pointer;
   position: sticky;
   bottom: 60px;
   margin: 20px;

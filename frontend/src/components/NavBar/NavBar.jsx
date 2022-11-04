@@ -30,7 +30,7 @@ function NavBar() {
         </NavLink>
       </ul>
       // eslint-disable-next-line react/button-has-type
-      <button onClick={() => setShowLinks(!showLinks)}>
+      <button className="burger-menu-btn" onClick={() => setShowLinks(!showLinks)}>
         <BiMenu className="menu" />
       </button>
     </nav>
