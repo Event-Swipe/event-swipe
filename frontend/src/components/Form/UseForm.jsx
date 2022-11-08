@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 
-function UseForm() {
+const UseForm = (validateInfo) => {
   const [values, setvalues] = useState({
     name: "",
     email: "",
@@ -9,6 +10,7 @@ function UseForm() {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmiting, setIsSubmiting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,9 +19,12 @@ function UseForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setErrors(validateInfo(values));
+    setIsSubmiting(true);
   };
 
-  return { handleChange, values, handleSubmit };
-}
+  return { handleChange, values, handleSubmit, errors };
+};
 
 export default UseForm;
