@@ -1,7 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-shadow */
-/* eslint-disable import/order */
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useContext } from "react";
 import EventCard from "../EventCard/EventCard";
 import EventsContext from "../../contexts/EventsContext";

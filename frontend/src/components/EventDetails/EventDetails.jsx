@@ -1,46 +1,70 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./EventDetails.css";
 import MapWrap from "./Map/MapWrap";
-// eslint-disable-next-line no-unused-vars
 import MicroTicket from "./MicroTicket/MicroTicket";
 
 function EventDetails() {
-  const [event, setEvent] = useState({
-    title: "Dummy-title",
-    ticketUrl: "http://www.google.com",
-    microTicketsTitles: [
-      { label: "price", value: 50, iconStyle: "pi pi-dollar" },
-      { label: "date", value: "11.02.2020", iconStyle: "pi pi-clock" },
-      { label: "location", value: "New York", iconStyle: "pi pi-home" },
-    ],
-    price: 50,
-    location: "New York",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png",
-  });
+  const [event, setEvent] = useState(null);
+  const [microTickets, setMicroTickets] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch(
+      `https://api.seatgeek.com/2/events/${id}?client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setEvent(data);
+        setMicroTickets([
+          {
+            label: "Price",
+            value: data.stats.median_price,
+            iconStyle: "pi pi-dollar",
+          },
+          {
+            label: "Date",
+            value: data.datetime_local,
+            iconStyle: "pi pi-clock",
+          },
+          { label: "Venue", value: data.venue.name, iconStyle: "pi pi-home" },
+        ]);
+      });
+  }, []);
+
   return (
     <div className="page-container">
-      <img className="event-img" alt="bla" src={event.image} />
-      <div className="right-side-page">
-        <h1 className="event-title">{event.title}</h1>
+      {event === null ? (
+        <div>Loading..</div>
+      ) : (
+        <>
+          <img
+            className="event-img"
+            alt="bla"
+            src={event.performers[0].image}
+          />
+          <div className="right-side-page">
+            <h1 className="event-title">{event.title}</h1>
 
-        <a href={event.ticketUrl}>
-          <button className="buy-tickets-btn">buy tickets</button>
-        </a>
-        <div className="right-side-bottom-container">
-          <div className="event-info-micro-ticket-container">
-            {event.microTicketsTitles.map((value) => {
-              return <MicroTicket data={value} />;
-            })}
+            <a href={event.url}>
+              <button className="buy-tickets-btn">buy tickets</button>
+            </a>
+            <div className="right-side-bottom-container">
+              <div className="event-info-micro-ticket-container">
+                {microTickets.map((value) => {
+                  return <MicroTicket data={value} />;
+                })}
+              </div>
+              <div className="map">
+                <MapWrap data={event} />
+              </div>
+            </div>
           </div>
-          <div className="map">
-            <MapWrap />
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 }

@@ -15,24 +15,26 @@ import EventList from "./components/EventList/EventList";
 import Register from "./components/Form/FormSignUp";
 
 import { EventsContextProvider } from "./contexts/EventsContext";
-
+import EventDetails from "./components/EventDetails/EventDetails";
 
 function App() {
   return (
     <>
       <NavBar />
-      <Form />
-      <Routes>
+      {/* <Form /> */}
+      {/* <Routes>
         <Route path="/Sport" element={<Sport />} />
-      </Routes>
+      </Routes> */}
 
       <Routes>
         <Route path="/components/Register/Register" element={<Register />} />
       </Routes>
-      <EventList />
 
       <EventsContextProvider>
-        <EventList />
+        <Routes>
+          <Route path="/events/:id" element={<EventDetails />} />
+          <Route path="/" element={<EventList />} />
+        </Routes>
       </EventsContextProvider>
 
       <Subscribe />
