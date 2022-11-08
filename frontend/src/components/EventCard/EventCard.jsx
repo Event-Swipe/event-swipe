@@ -1,6 +1,5 @@
-
-
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./EventCard.css";
 
 // Import Swiper React components
@@ -23,22 +22,22 @@ function EventCard({ dayEvents }) {
 
   return (
     <div key={dayEvents.id}>
-      {/* <h1>EventCard</h1> */}
-
-      <div className="eventCardContainer">
-        <img
-          src={
-            imgUrl ||
-            "https://files.slack.com/files-pri/T6SG2QGG2-F047D8LH95Y/company-logo-nobg.png"
-          }
-          alt=""
-        />
-        <h4>{title}</h4>
-        <h6>{subTitle.toUpperCase()}</h6>
-        <p>
-          {eventHour}:{eventMinutes}
-        </p>
-      </div>
+      <NavLink to={`/events/${dayEvents.id}`}>
+        <div className="eventCardContainer">
+          <img
+            src={
+              imgUrl ||
+              "https://files.slack.com/files-pri/T6SG2QGG2-F047D8LH95Y/company-logo-nobg.png"
+            }
+            alt=""
+          />
+          <h4>{title}</h4>
+          <h6>{subTitle.toUpperCase()}</h6>
+          <p>
+            {eventHour}:{eventMinutes}
+          </p>
+        </div>
+      </NavLink>
     </div>
   );
 }
