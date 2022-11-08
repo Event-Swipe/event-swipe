@@ -1,0 +1,63 @@
+.form-backfround-layout {
+  display: flex;
+  background-color: black;
+  align-items: center;
+}
+
+.form-backfround-layout img {
+  width: 10%;
+  margin: auto;
+}
+.form-backfround-layout div {
+  width: 100%;
+  height: 20vh;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.input-big-wrapper {
+  margin-top: 5%;
+}
+button {
+  display: block;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+}
+.button-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.title-container {
+  background-color: gray;
+  text-align: center;
+}
+.title-container h1 {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+
+input {
+  border: 2px solid black;
+  box-shadow: 3px 3px darkblue;
+  margin: 12px;
+  padding: 15px;
+  width: 50%;
+  font-size: large;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.subscribed-msg {
+  background-color: white;
+}
+.subscribed-msg p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  color: black;
+  text-align: center;
+}

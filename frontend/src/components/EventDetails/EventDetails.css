@@ -1,0 +1,52 @@
+.page-container {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+.event-img {
+  width: 40%;
+}
+.right-side-page {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  width: 100%;
+}
+
+.buy-tickets-btn {
+  width: 40%;
+  background-color: aqua;
+  margin: 10px;
+}
+.right-side-bottom-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.event-info-micro-ticket-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.micro-ticket-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.micro-ticket {
+  display: flex;
+  flex-direction: row;
+}
+
+.micro-ticket-img {
+  width: 50px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.map {
+  width: 100%;
+  height: 300px;
+  margin-left: 10%;
+}
