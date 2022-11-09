@@ -10,19 +10,21 @@ function NavBar() {
   const [showLinks, setShowLinks] = useState(false);
   return (
     <nav className="navbar">
-      <img
-        src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
-        className="company-logo"
-        alt="company-logo"
-      />
+      <NavLink to="/">
+        <img
+          src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
+          className="company-logo"
+          alt="company-logo"
+        />
+      </NavLink>
       <ul className="links" id={showLinks ? "hidden" : "none"}>
-        <NavLink to="/Sport" className="current">
+        <NavLink to="/events/sport" className="current">
           <li>Sport</li>
         </NavLink>
-        <NavLink to="/concert" className="current">
+        <NavLink to="/events/concerts" className="current">
           <li>Concert</li>
         </NavLink>
-        <NavLink to="/theater" className="current">
+        <NavLink to="events/theater" className="current">
           <li>theater</li>
         </NavLink>
         <NavLink to="/login" className="current">

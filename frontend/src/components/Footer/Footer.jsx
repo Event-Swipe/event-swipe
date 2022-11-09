@@ -7,10 +7,12 @@ function Footer() {
   return (
     <div className="footer-wrapper">
       <div className="logo-wrapper">
-        <img
-          src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
-          alt="company-logo"
-        />
+        <NavLink to="/">
+          <img
+            src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
+            alt="company-logo"
+          />
+        </NavLink>
       </div>
       <div className="social-media-wrapper">
         <SocialIcon bgColor="#fff" url="https://linkedin.com/" />
@@ -21,13 +23,13 @@ function Footer() {
         <NavLink className="footerLinks" to="/">
           Home
         </NavLink>
-        <NavLink className="footerLinks" to="/music">
+        <NavLink className="footerLinks" to="/events/concerts">
           Music
         </NavLink>
-        <NavLink className="footerLinks" to="/sports">
+        <NavLink className="footerLinks" to="/events/sport">
           Sports
         </NavLink>
-        <NavLink className="footerLinks" to="/theatre">
+        <NavLink className="footerLinks" to="/events/theater">
           Theatre
         </NavLink>
       </div>
