@@ -29,6 +29,12 @@ function App() {
         <Routes>
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/" element={<EventList />} />
+          <Route path="/events/sport" element={<EventList sportEvents />} />
+          <Route
+            path="/events/concerts"
+            element={<EventList concertEvents />}
+          />
+          <Route path="/events/theater" element={<EventList theaterEvents />} />
           <Route path="/login" element={<Form />} />
         </Routes>
       </EventsContextProvider>
