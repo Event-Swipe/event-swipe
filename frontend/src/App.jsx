@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-boolean-value */
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
@@ -28,13 +30,19 @@ function App() {
       <EventsContextProvider>
         <Routes>
           <Route path="/events/:id" element={<EventDetails />} />
-          <Route path="/" element={<EventList />} />
-          <Route path="/events/sport" element={<EventList sportEvents />} />
+          <Route path="/" element={<EventList dayEvents={true} />} />
+          <Route
+            path="/events/sport"
+            element={<EventList sportEvents={true} />}
+          />
           <Route
             path="/events/concerts"
-            element={<EventList concertEvents />}
+            element={<EventList concertEvents={true} />}
           />
-          <Route path="/events/theater" element={<EventList theaterEvents />} />
+          <Route
+            path="/events/theater"
+            element={<EventList theaterEvents={true} />}
+          />
           <Route path="/login" element={<Form />} />
         </Routes>
       </EventsContextProvider>

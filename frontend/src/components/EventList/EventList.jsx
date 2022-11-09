@@ -23,7 +23,6 @@ import { Autoplay, Navigation } from "swiper";
 
 function EventList(props) {
   let selectedEvents;
-
   if (props.sportEvents === true) {
     const { sportEvents } = useContext(EventsContext);
     selectedEvents = sportEvents;
@@ -33,6 +32,9 @@ function EventList(props) {
   } else if (props.theaterEvents === true) {
     const { theaterEvents } = useContext(EventsContext);
     selectedEvents = theaterEvents;
+  } else if (props.dayEvents === true) {
+    const { dayEvents } = useContext(EventsContext);
+    selectedEvents = dayEvents;
   }
 
   return (
@@ -63,9 +65,7 @@ function EventList(props) {
               </SwiperSlide>
             ))}
         </Swiper>
-       
       </div>
-    
     </div>
   );
 }
