@@ -49,7 +49,7 @@ function EventDetails() {
           <div className="right-side-page">
             <h1 className="event-title">{event.title}</h1>
 
-            <a href={event.url}>
+            <a href={event.performers[0].url}>
               <button className="buy-tickets-btn">buy tickets</button>
             </a>
             <div className="right-side-bottom-container">

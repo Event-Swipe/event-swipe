@@ -5,6 +5,7 @@
 }
 
 .btn-container {
+  z-index: 1;
   cursor: pointer;
   position: sticky;
   bottom: 60px;
