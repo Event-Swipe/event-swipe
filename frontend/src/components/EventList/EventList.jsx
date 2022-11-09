@@ -1,6 +1,10 @@
-/* eslint-disable no-shadow */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
+/* eslint-disable no-unused-vars */
+/* eslint-disable prettier/prettier */
+
 import React, { useContext } from "react";
 import EventCard from "../EventCard/EventCard";
 import EventsContext from "../../contexts/EventsContext";
@@ -17,9 +21,21 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Navigation } from "swiper";
 
-function EventList() {
-  // using the context
-  const { dayEvents } = useContext(EventsContext);
+function EventList(props) {
+  let selectedEvents;
+  if (props.sportEvents === true) {
+    const { sportEvents } = useContext(EventsContext);
+    selectedEvents = sportEvents;
+  } else if (props.concertEvents === true) {
+    const { concertEvents } = useContext(EventsContext);
+    selectedEvents = concertEvents;
+  } else if (props.theaterEvents === true) {
+    const { theaterEvents } = useContext(EventsContext);
+    selectedEvents = theaterEvents;
+  } else if (props.dayEvents === true) {
+    const { dayEvents } = useContext(EventsContext);
+    selectedEvents = dayEvents;
+  }
 
   return (
     <div className="listContainer">
@@ -41,17 +57,15 @@ function EventList() {
           modules={[Autoplay, Navigation]}
           className="mySwiper"
         >
-          {dayEvents &&
-            dayEvents.map((dayEvents) => (
+          {selectedEvents &&
+            selectedEvents.map((dayEvents) => (
               <SwiperSlide>
                 {" "}
                 <EventCard dayEvents={dayEvents} />
               </SwiperSlide>
             ))}
         </Swiper>
-        {/* Displaying only the upcomming week events */}
       </div>
-      {/* <h2 className="ListTitle">This Week's Events</h2> */}
     </div>
   );
 }
