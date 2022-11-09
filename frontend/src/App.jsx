@@ -25,8 +25,6 @@ function App() {
   return (
     <>
       <NavBar />
-      <Form />
-
       <EventsContextProvider>
         <Routes>
           <Route path="/events/:id" element={<EventDetails />} />
@@ -36,7 +34,6 @@ function App() {
       </EventsContextProvider>
       <Subscribe />
       <Footer />
-
       {offset > 1212 && <ScrollUpBtn />}
     </>
   );
