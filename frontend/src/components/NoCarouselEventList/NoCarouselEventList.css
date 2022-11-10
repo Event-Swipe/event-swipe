@@ -1,5 +1,6 @@
 .listContainer {
   margin: 0 50px;
+  margin-top: 50px;
 }
 
 .ListTitle {
@@ -7,6 +8,8 @@
 }
 
 .list-wrap {
+  background-color: lightgray;
+  margin: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

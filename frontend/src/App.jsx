@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import Subscribe from "./components/Subscribe/Subscribe";
 import EventList from "./components/EventList/EventList";
 import { EventsContextProvider } from "./contexts/EventsContext";
+import { CalendarContextProvider } from "./contexts/CalendarContext";
 import EventDetails from "./components/EventDetails/EventDetails";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
     <>
       <NavBar />
       <EventsContextProvider>
+        <CalendarContextProvider>
         <Routes>
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/" element={<EventList dayEvents={true} />} />
@@ -45,6 +47,7 @@ function App() {
           />
           <Route path="/login" element={<Form />} />
         </Routes>
+        </CalendarContextProvider>
       </EventsContextProvider>
       <Subscribe />
       <Footer />

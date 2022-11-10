@@ -5,9 +5,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import EventCard from "../EventCard/EventCard";
 import EventsContext from "../../contexts/EventsContext";
+import CalendarContext from "../../contexts/CalendarContext";
 import "./EventList.css";
 
 // Import Swiper React components
@@ -20,8 +21,16 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Navigation } from "swiper";
+import NoCarouselEventList from "../NoCarouselEventList/NoCarouselEventList";
 
 function EventList(props) {
+  const {dayEvents} = useContext(EventsContext)
+  const {isCalendarSelected} = useContext(CalendarContext)
+  const {calendarEvents} = useContext(CalendarContext)
+  console.log(isCalendarSelected)
+  console.log(calendarEvents)
+  
+
   let selectedEvents;
   if (props.sportEvents === true) {
     const { sportEvents } = useContext(EventsContext);
@@ -65,6 +74,12 @@ function EventList(props) {
               </SwiperSlide>
             ))}
         </Swiper>
+      </div>
+      <div className="list-wrap">
+        <NoCarouselEventList
+          calendarDate={() => setCalendarDateChoice()}
+          events={calendarEvents !== null? calendarEvents : selectedEvents}
+        />
       </div>
     </div>
   );
