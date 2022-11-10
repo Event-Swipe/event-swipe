@@ -19,16 +19,19 @@ function NavBar() {
       </NavLink>
       <ul className="links" id={showLinks ? "hidden" : "none"}>
         <NavLink to="/events/sport" className="current">
-          <li>Sport</li>
+          <li>Sports</li>
         </NavLink>
         <NavLink to="/events/concerts" className="current">
           <li>Concert</li>
         </NavLink>
         <NavLink to="events/theater" className="current">
-          <li>theater</li>
+          <li>Theater</li>
         </NavLink>
         <NavLink to="/login" className="current">
-          <li>LogIn</li>
+          <li>Log in</li>
+        </NavLink>
+        <NavLink to="/search" className="current">
+          <li>Search</li>
         </NavLink>
       </ul>
       // eslint-disable-next-line react/button-has-type

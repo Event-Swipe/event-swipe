@@ -1,0 +1,22 @@
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.searchForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.searchBar-input {
+  width: 45vw;
+}
+.searchBarButton {
+  box-shadow: 3px 3px darkblue;
+  border: 2px solid black;
+  border-radius: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: large;
+  color: #000000;
+  padding: 14px;
+}

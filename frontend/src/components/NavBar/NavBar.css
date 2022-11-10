@@ -39,10 +39,6 @@ ul {
   justify-content: center;
 }
 
-button {
-  display: none;
-}
-
 .menu {
   display: none;
 }
@@ -52,7 +48,7 @@ button {
 }
 
 @media screen and (max-width: 768px) {
-  button {
+  burger-menu-btn {
     display: flex;
     align-items: flex-end;
   }

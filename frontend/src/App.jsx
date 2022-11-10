@@ -11,6 +11,7 @@ import Subscribe from "./components/Subscribe/Subscribe";
 import EventList from "./components/EventList/EventList";
 import { EventsContextProvider } from "./contexts/EventsContext";
 import EventDetails from "./components/EventDetails/EventDetails";
+import SearchBar from "./components/SearchBar/SearchBar";
 
 function App() {
   const [offset, setOffset] = useState(null);
@@ -44,6 +45,7 @@ function App() {
             element={<EventList theaterEvents={true} />}
           />
           <Route path="/login" element={<Form />} />
+          <Route path="/search" element={<SearchBar />} />
         </Routes>
       </EventsContextProvider>
       <Subscribe />

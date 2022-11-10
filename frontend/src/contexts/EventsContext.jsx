@@ -9,10 +9,14 @@ export function EventsContextProvider({ children }) {
   // creating the states for the variables
   const [dayEvents, setDayEvents] = useState();
   const [weekEvents, setWeekEvents] = useState();
-  const [monthEvents, setMonthEvents] = useState();
   const [sportEvents, setSportEvents] = useState();
   const [concertEvents, setConcertEvents] = useState();
   const [theaterEvents, setTheaterEvents] = useState();
+
+  // creating the states for the search functionality
+  const [searchValue, setSearchValue] = useState("");
+  const [events, setEvents] = useState();
+
   // Function to fetch data from the API
   const fetchEvents = () => {
     // Creating the variable for the current date and turning it into a string for the query
@@ -44,14 +48,7 @@ export function EventsContextProvider({ children }) {
         // {...response.data.events}
         setWeekEvents(response.data.events);
       });
-    /*
-      //fetching monthly events
-    axios
-      .get(
-        `https://api.seatgeek.com/2/events?datetime_utc=2022-11-04&per_page=10&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
-      )
-      .then((response) => setMonthEvents(response.data.events));
-    */
+
     // fetching sports events
     axios
       .get(
@@ -71,8 +68,33 @@ export function EventsContextProvider({ children }) {
       )
       .then((response) => setTheaterEvents(response.data.events));
   };
-  // Loading the data
+  // Function to fecth the searched events
+  const fetchSearchedEvents = () => {
+    axios
+      .get(
+        `https://api.seatgeek.com/2/events?q=${searchValue}&per_page=10&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
+      )
+      .then((response) => setEvents(response.data.events));
+  };
+  //* for each value that has been inserted, save it on a state
+  const handleSearchChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  // when the user submits ...
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    // console.log(events);
+  };
+
+  // Loading the data on mounting
   useEffect(() => fetchEvents, []);
+
+  // when the state changes, update the component
+  useEffect(() => {
+    fetchSearchedEvents();
+  }, [searchValue]);
+
   return (
     <EventsContext.Provider
       value={{
@@ -80,14 +102,18 @@ export function EventsContextProvider({ children }) {
         setDayEvents,
         weekEvents,
         setWeekEvents,
-        monthEvents,
-        setMonthEvents,
         sportEvents,
         setSportEvents,
         concertEvents,
         setConcertEvents,
         theaterEvents,
         setTheaterEvents,
+        searchValue,
+        setSearchValue,
+        events,
+        setEvents,
+        handleSearchChange,
+        handleSearchSubmit,
       }}
     >
       {children}
