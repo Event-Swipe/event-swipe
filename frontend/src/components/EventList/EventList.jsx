@@ -20,6 +20,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Navigation } from "swiper";
+import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
 
 function EventList(props) {
   let selectedEvents;
@@ -46,6 +47,7 @@ function EventList(props) {
 
   return (
     <div>
+      {/* <EventCaroussel eventsArr={selectedEvents} /> */}
       <h2 className="ListTitle">{selectedTitle}</h2>
       {/* Displaying only the upcomming daily events */}
       {displayDaily ? (

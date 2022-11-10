@@ -7,8 +7,11 @@
   font-size: 2rem;
 }
 .listContainer {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px 0;
-  justify-items: center;
+  justify-items: center;*/
 }
