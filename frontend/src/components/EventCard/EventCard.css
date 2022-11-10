@@ -18,7 +18,11 @@ img {
   margin-bottom: 0.5em;
   width: fit-content;
 }
-.eventCardContainer {
-  max-width: 280px;
-  /*removing the max-width, the arrows dissapear  WHY ???*/
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+}
+.cardContainer:hover {
+  border: 1px solid black;
 }

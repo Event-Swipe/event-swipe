@@ -12,6 +12,7 @@ const connection = mysql.createPool({
 connection
   .getConnection()
   .then(() => {
+    // eslint-disable-next-line no-restricted-syntax
     console.log("Can reach database");
   })
   .catch((err) => {

@@ -51,21 +51,17 @@ function Subscribe() {
         )}
       </div>
       <div className="form-backfround-layout">
-        <div className="input-big-wrapper">
-          <div className="input-wrapper">
-            <input
-              onChange={(e) => {
-                onChangeHandler(e.target.value);
-              }}
-              type="text"
-              placeholder="Your Email"
-            />
-            {validationLine && (
-              <p style={{ color: "white" }}>
-                please enter a valid email address
-              </p>
-            )}
-          </div>
+        <div className="input-wrapper">
+          <input
+            onChange={(e) => {
+              onChangeHandler(e.target.value);
+            }}
+            type="text"
+            placeholder="Your Email"
+          />
+          {validationLine && (
+            <p style={{ color: "red" }}>please enter a valid email address</p>
+          )}
         </div>
         <div className="button-wrapper">
           <Button

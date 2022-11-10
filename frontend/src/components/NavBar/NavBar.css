@@ -43,14 +43,6 @@ button {
   display: none;
 }
 
-.menu {
-  display: none;
-}
-
-.burger-menu-btn {
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
   button {
     display: flex;
@@ -68,13 +60,6 @@ button {
     flex-direction: column;
     align-items: center;
     font-size: 25px;
-  }
-  .menu {
-    display: block;
-  }
-
-  .burger-menu-btn {
-    display: block;
   }
 
   #none {
