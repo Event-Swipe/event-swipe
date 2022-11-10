@@ -1,8 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable prettier/prettier */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 import { useMemo, useState } from "react";
-import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
+ import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import "./MapWrap.css";
 
 function MapWrap(props) {
