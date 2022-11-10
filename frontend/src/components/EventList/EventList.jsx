@@ -23,51 +23,66 @@ import { Autoplay, Navigation } from "swiper";
 
 function EventList(props) {
   let selectedEvents;
+  let selectedTitle;
+  let displayDaily;
   if (props.sportEvents === true) {
     const { sportEvents } = useContext(EventsContext);
     selectedEvents = sportEvents;
+    selectedTitle = "Sports";
   } else if (props.concertEvents === true) {
     const { concertEvents } = useContext(EventsContext);
     selectedEvents = concertEvents;
+    selectedTitle = "Concert";
   } else if (props.theaterEvents === true) {
     const { theaterEvents } = useContext(EventsContext);
     selectedEvents = theaterEvents;
+    selectedTitle = "Theater";
   } else if (props.dayEvents === true) {
     const { dayEvents } = useContext(EventsContext);
     selectedEvents = dayEvents;
+    selectedTitle = "Today's Events";
+    displayDaily = true;
   }
 
   return (
-    <div className="listContainer">
-      {/*  FILTERING EVENTS BEFORE CURRENT HOUR */}
-
-      <h2 className="ListTitle">Today's Events</h2>
-      <div>
-        {/* Displaying only the upcomming daily events */}
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={3}
-          loop
-          loopFillGroupWithBlank
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-          }}
-          navigation
-          modules={[Autoplay, Navigation]}
-          className="mySwiper"
-        >
+    <div>
+      <h2 className="ListTitle">{selectedTitle}</h2>
+      {/* Displaying only the upcomming daily events */}
+      {displayDaily ? (
+        <div className="listSwiper">
+          <Swiper
+            spaceBetween={30}
+            slidesPerView={3}
+            loop
+            loopFillGroupWithBlank
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+            }}
+            navigation
+            modules={[Autoplay, Navigation]}
+            className="mySwiper"
+          >
+            {selectedEvents &&
+              selectedEvents.map((dayEvents) => (
+                <SwiperSlide>
+                  {" "}
+                  <EventCard dayEvents={dayEvents} />
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        </div>
+      ) : (
+        <div className="listContainer">
           {selectedEvents &&
             selectedEvents.map((dayEvents) => (
-              <SwiperSlide>
-                {" "}
-                <EventCard dayEvents={dayEvents} />
-              </SwiperSlide>
+              <EventCard dayEvents={dayEvents} />
             ))}
-        </Swiper>
-      </div>
+        </div>
+      )}
     </div>
   );
+  // STILL MISSING WEEKLY EVENTS
 }
 
 export default EventList;
