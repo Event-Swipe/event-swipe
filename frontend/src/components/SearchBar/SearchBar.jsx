@@ -1,10 +1,14 @@
+/* eslint-disable react/jsx-boolean-value */
 import React, { useContext } from "react";
 import "./SearchBar.css";
 import EventsContext from "../../contexts/EventsContext";
+// import EventList from "../EventList/EventList";
 
 function SearchBar() {
   const { searchValue, handleSearchChange, handleSearchSubmit } =
     useContext(EventsContext);
+  /* const { searchString } = useParams(); */
+  /* add state to veify search boolean */
 
   return (
     <div className="searchBar">
@@ -24,13 +28,9 @@ function SearchBar() {
               onSubmit={handleSearchSubmit}
             />
           </div>
-          {/*  <div>
-            <button type="submit" className="searchBarButton">
-              Search
-            </button>
-          </div> */}
         </form>
       </div>
+      {/* isSearched &&  */}
     </div>
   );
 }

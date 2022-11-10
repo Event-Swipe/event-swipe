@@ -15,7 +15,7 @@ export function EventsContextProvider({ children }) {
 
   // creating the states for the search functionality
   const [searchValue, setSearchValue] = useState("");
-  const [events, setEvents] = useState();
+  const [searchedEvents, setSearchedEvents] = useState();
 
   // Function to fetch data from the API
   const fetchEvents = () => {
@@ -74,7 +74,7 @@ export function EventsContextProvider({ children }) {
       .get(
         `https://api.seatgeek.com/2/events?q=${searchValue}&per_page=10&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
       )
-      .then((response) => setEvents(response.data.events));
+      .then((response) => setSearchedEvents(response.data.events));
   };
   //* for each value that has been inserted, save it on a state
   const handleSearchChange = (event) => {
@@ -110,8 +110,8 @@ export function EventsContextProvider({ children }) {
         setTheaterEvents,
         searchValue,
         setSearchValue,
-        events,
-        setEvents,
+        searchedEvents,
+        setSearchedEvents,
         handleSearchChange,
         handleSearchSubmit,
       }}

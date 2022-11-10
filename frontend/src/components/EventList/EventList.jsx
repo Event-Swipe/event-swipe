@@ -6,6 +6,7 @@
 /* eslint-disable prettier/prettier */
 
 import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import EventCard from "../EventCard/EventCard";
 import EventsContext from "../../contexts/EventsContext";
 import "./EventList.css";
@@ -20,12 +21,17 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Navigation } from "swiper";
-import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
+// import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
 
 function EventList(props) {
   let selectedEvents;
   let selectedTitle;
   let displayDaily;
+  let displaySearch;
+
+  const { searchString } = useParams();
+  console.warn(searchString);
+
   if (props.sportEvents === true) {
     const { sportEvents } = useContext(EventsContext);
     selectedEvents = sportEvents;
@@ -43,6 +49,11 @@ function EventList(props) {
     selectedEvents = dayEvents;
     selectedTitle = "Today's Events";
     displayDaily = true;
+  } else if (props.searchedEvents === true) {
+    const { searchedEvents } = useContext(EventsContext);
+    selectedEvents = searchedEvents;
+    selectedTitle = "Searched Events";
+    displaySearch = true;
   }
 
   return (
@@ -50,6 +61,7 @@ function EventList(props) {
       {/* <EventCaroussel eventsArr={selectedEvents} /> */}
       <h2 className="ListTitle">{selectedTitle}</h2>
       {/* Displaying only the upcomming daily events */}
+      {/*  eslint-disable-next-line no-nested-ternary */}
       {displayDaily ? (
         <div className="listSwiper">
           <Swiper
@@ -73,6 +85,13 @@ function EventList(props) {
                 </SwiperSlide>
               ))}
           </Swiper>
+        </div>
+      ) : displaySearch ? (
+        <div className="searchDisplay">
+          {selectedEvents &&
+            selectedEvents.map((dayEvents) => (
+              <EventCard dayEvents={dayEvents} />
+            ))}
         </div>
       ) : (
         <div className="listContainer">
