@@ -1,11 +1,14 @@
+body {
+  font-family: Roobert, "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
 nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 80px;
   background: rgb(5, 5, 5);
-  padding: 20px 80px;
+  padding: 0 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  font-size: initial;
 }
 
 .company-logo {
@@ -19,10 +22,13 @@ li {
   padding: 0 20px;
   position: relative;
 }
-
+.LoginLink {
+  background: #2a3334;
+  border-radius: 50px;
+  padding: 10px 0;
+}
 .current {
   text-decoration: none;
-  font-size: 1.3rem;
   font-weight: 600;
   color: #fff;
   cursor: pointer;
@@ -37,6 +43,9 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  right: 0;
+  position: absolute;
+  margin-right: 20px;
 }
 
 .menu {

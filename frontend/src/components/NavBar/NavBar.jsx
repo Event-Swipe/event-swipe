@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
+import SearchBar from "../SearchBar/SearchBar";
 
 function NavBar() {
   //
@@ -17,6 +18,7 @@ function NavBar() {
           alt="company-logo"
         />
       </NavLink>
+      <SearchBar />
       <ul className="links" id={showLinks ? "hidden" : "none"}>
         <NavLink to="/events/sport" className="current">
           <li>Sports</li>
@@ -27,14 +29,13 @@ function NavBar() {
         <NavLink to="events/theater" className="current">
           <li>Theater</li>
         </NavLink>
-        <NavLink to="/login" className="current">
+        <NavLink to="/login" className="current LoginLink">
           <li>Log in</li>
         </NavLink>
-        <NavLink to="/search" className="current">
+        {/* <NavLink to="/search" className="current">
           <li>Search</li>
-        </NavLink>
+        </NavLink> */}
       </ul>
-      // eslint-disable-next-line react/button-has-type
       <button
         className="burger-menu-btn"
         onClick={() => setShowLinks(!showLinks)}

@@ -8,26 +8,27 @@ function SearchBar() {
 
   return (
     <div className="searchBar">
-      <div className="searchTitle">
+      {/* <div className="searchTitle">
         <h3>Search</h3>
-      </div>
+      </div> */}
       <div>
-        <form className="searchForm" onSubmit={handleSearchSubmit}>
+        <form className="searchForm" /* onSubmit={handleSearchSubmit} */>
           <div>
             <input
               className="searchBar-input"
               type="search"
               name="search"
-              placeholder="Search by event, venue, team or artist"
+              placeholder=" 🔍 Search by event, venue, team or artist"
               value={searchValue}
               onChange={handleSearchChange}
+              onSubmit={handleSearchSubmit}
             />
           </div>
-          <div>
+          {/*  <div>
             <button type="submit" className="searchBarButton">
               Search
             </button>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>
