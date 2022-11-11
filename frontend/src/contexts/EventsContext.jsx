@@ -42,7 +42,7 @@ export function EventsContextProvider({ children }) {
     */
     axios
       .get(
-        `https://api.seatgeek.com/2/events?datetime_utc.gte=${currentDateString}&datetime_utc.lte=${nextWeekString}&per_page=10&page=5&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
+        `https://api.seatgeek.com/2/events?datetime_utc.gte=${currentDateString}&datetime_utc.lte=${nextWeekString}&per_page=100&page=5&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
       )
       .then((response) => {
         // {...response.data.events}
@@ -52,19 +52,19 @@ export function EventsContextProvider({ children }) {
     // fetching sports events
     axios
       .get(
-        `https://api.seatgeek.com/2/events?taxonomies.name=sports&per_page=10&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
+        `https://api.seatgeek.com/2/events?taxonomies.name=sports&per_page=100&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
       )
       .then((response) => setSportEvents(response.data.events));
     // fetching concert events
     axios
       .get(
-        `https://api.seatgeek.com/2/events?taxonomies.name=concert&per_page=10&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
+        `https://api.seatgeek.com/2/events?taxonomies.name=concert&per_page=100&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
       )
       .then((response) => setConcertEvents(response.data.events));
     // fetching theater events
     axios
       .get(
-        `https://api.seatgeek.com/2/events?taxonomies.name=theater&per_page=10&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
+        `https://api.seatgeek.com/2/events?taxonomies.name=theater&per_page=100&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
       )
       .then((response) => setTheaterEvents(response.data.events));
   };
@@ -72,7 +72,7 @@ export function EventsContextProvider({ children }) {
   const fetchSearchedEvents = () => {
     axios
       .get(
-        `https://api.seatgeek.com/2/events?q=${searchValue}&per_page=10&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
+        `https://api.seatgeek.com/2/events?q=${searchValue}&per_page=100&page=1&client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
       )
       .then((response) => setSearchedEvents(response.data.events));
   };
