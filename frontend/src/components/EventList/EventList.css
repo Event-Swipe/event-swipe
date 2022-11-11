@@ -5,3 +5,9 @@
 .ListTitle {
   text-align: center;
 }
+
+.list-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
