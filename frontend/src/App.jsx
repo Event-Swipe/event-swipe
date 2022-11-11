@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Form from "./components/Form/Form";
 import ScrollUpBtn from "./components/ScrollUpBtn/ScrollUpBtn";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
@@ -12,7 +11,7 @@ import EventList from "./components/EventList/EventList";
 import { EventsContextProvider } from "./contexts/EventsContext";
 import { CalendarContextProvider } from "./contexts/CalendarContext";
 import EventDetails from "./components/EventDetails/EventDetails";
-// import SearchBar from "./components/SearchBar/SearchBar";
+import AddUser from "./components/Form/AddUser";
 
 function App() {
   const [offset, setOffset] = useState(null);
@@ -46,7 +45,7 @@ function App() {
               path="/events/theater"
               element={<EventList theaterEvents={true} />}
             />
-            <Route path="/login" element={<Form />} />
+            <Route path="/login" element={<AddUser />} />
           </Routes>
         </CalendarContextProvider>
       </EventsContextProvider>

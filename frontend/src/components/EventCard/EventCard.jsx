@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
@@ -12,6 +13,15 @@ function EventCard({ dayEvents }) {
   const eventHour = Math.floor(Math.random() * (22 - 16)) + 16;
   const eventMinutes = Math.floor(Math.random() * (59 - 30)) + 30;
 
+  //   const title = event.short_title;
+  //   const subTitle = event.venue.display_location;
+  //   const header = <img src={event.performers[0].image} alt="" />;
+  //   const footer = (
+  //     <p>
+  //       {new Date(event.datetime_utc).getHours()}H
+  //       {new Date(event.datetime_utc).getMinutes()}M
+  //     </p>
+  // );
   return (
     <div key={dayEvents.id}>
       <NavLink to={`/events/${dayEvents.id}`} className="cardLink">
