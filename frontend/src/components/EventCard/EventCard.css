@@ -20,5 +20,6 @@ img {
 }
 .eventCardContainer {
   max-width: 280px;
+  margin: 10px;
   /*removing the max-width, the arrows dissapear  WHY ???*/
 }

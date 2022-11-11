@@ -1,0 +1,7 @@
+.selected {
+  background-color: greenyellow;
+}
+
+.not-selected {
+  background-color: white;
+}
