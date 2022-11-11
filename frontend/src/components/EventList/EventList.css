@@ -1,9 +1,27 @@
-.listContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2em;
-  margin: 0 2em;
+.listSwiper {
+  margin: 0 50px;
 }
-.listTitle {
+.ListTitle {
   text-align: center;
+  font-size: 2rem;
+}
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px 0;
+  justify-items: center;*/
+}
+.searchDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

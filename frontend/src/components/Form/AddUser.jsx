@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Form.css";
 
 function AddUser() {
   const [addUser, setAddUser] = useState({
@@ -33,7 +34,7 @@ function AddUser() {
   const handleSubmit = (event, newUser) => {
     event.preventDefault();
     axios.post("http://localhost:5000/users", newUser);
-    navigate("/events/sport");
+    navigate("/");
   };
 
   //* use useEffect to fetch users on mounting

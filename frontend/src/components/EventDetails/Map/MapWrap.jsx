@@ -4,6 +4,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 import { useMemo, useState } from "react";
+// eslint-disable-next-line import/no-unresolved
 import { GoogleMap, useLoadScript, MarkerF } from "@react-google-maps/api";
 import "./MapWrap.css";
 

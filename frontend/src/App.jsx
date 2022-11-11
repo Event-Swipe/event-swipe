@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer";
 import Subscribe from "./components/Subscribe/Subscribe";
 import EventList from "./components/EventList/EventList";
 import { EventsContextProvider } from "./contexts/EventsContext";
+import { CalendarContextProvider } from "./contexts/CalendarContext";
 import EventDetails from "./components/EventDetails/EventDetails";
 import AddUser from "./components/Form/AddUser";
 
@@ -26,25 +27,27 @@ function App() {
 
   return (
     <>
-      <NavBar />
       <EventsContextProvider>
-        <Routes>
-          <Route path="/events/:id" element={<EventDetails />} />
-          <Route path="/" element={<EventList dayEvents={true} />} />
-          <Route
-            path="/events/sport"
-            element={<EventList sportEvents={true} />}
-          />
-          <Route
-            path="/events/concerts"
-            element={<EventList concertEvents={true} />}
-          />
-          <Route
-            path="/events/theater"
-            element={<EventList theaterEvents={true} />}
-          />
-          <Route path="/login" element={<AddUser />} />
-        </Routes>
+        <NavBar />
+        <CalendarContextProvider>
+          <Routes>
+            <Route path="/events/:id" element={<EventDetails />} />
+            <Route path="/" element={<EventList dayEvents={true} />} />
+            <Route
+              path="/events/sport"
+              element={<EventList sportEvents={true} />}
+            />
+            <Route
+              path="/events/concerts"
+              element={<EventList concertEvents={true} />}
+            />
+            <Route
+              path="/events/theater"
+              element={<EventList theaterEvents={true} />}
+            />
+            <Route path="/login" element={<AddUser />} />
+          </Routes>
+        </CalendarContextProvider>
       </EventsContextProvider>
       <Subscribe />
       <Footer />
