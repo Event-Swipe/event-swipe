@@ -20,3 +20,9 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.list-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

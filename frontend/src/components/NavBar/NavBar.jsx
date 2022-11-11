@@ -1,17 +1,23 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-no-comment-textnodes */
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
 import SearchBar from "../SearchBar/SearchBar";
+import EventsContext from "../../contexts/EventsContext";
 
 function NavBar() {
   //
   const [showLinks, setShowLinks] = useState(false);
+  const { setSearchValue } = useContext(EventsContext);
+  const clearSearch = () => {
+    setSearchValue("");
+  };
+
   return (
     <nav className="navbar">
-      <NavLink to="/">
+      <NavLink to="/" onClick={clearSearch}>
         <img
           src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
           className="company-logo"
@@ -20,16 +26,24 @@ function NavBar() {
       </NavLink>
       <SearchBar />
       <ul className="links" id={showLinks ? "hidden" : "none"}>
-        <NavLink to="/events/sport" className="current">
+        <NavLink onClick={clearSearch} to="/events/sport" className="current">
           <li>Sports</li>
         </NavLink>
-        <NavLink to="/events/concerts" className="current">
+        <NavLink
+          onClick={clearSearch}
+          to="/events/concerts"
+          className="current"
+        >
           <li>Concert</li>
         </NavLink>
-        <NavLink to="events/theater" className="current">
+        <NavLink onClick={clearSearch} to="events/theater" className="current">
           <li>Theater</li>
         </NavLink>
-        <NavLink to="/login" className="current LoginLink">
+        <NavLink
+          onClick={clearSearch}
+          to="/login"
+          className="current LoginLink"
+        >
           <li>Log in</li>
         </NavLink>
         {/* <NavLink to="/search" className="current">

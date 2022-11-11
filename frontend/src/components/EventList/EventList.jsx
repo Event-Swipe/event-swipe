@@ -1,13 +1,17 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-shadow */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
-import React, { useContext, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
+
+import React, { useContext } from "react";
 import EventCard from "../EventCard/EventCard";
 import EventsContext from "../../contexts/EventsContext";
+import CalendarContext from "../../contexts/CalendarContext";
 import "./EventList.css";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,6 +23,11 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper";
 // import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
 function EventList(props) {
+  const { isCalendarSelected } = useContext(CalendarContext);
+  const { calendarEvents } = useContext(CalendarContext);
+  console.log(isCalendarSelected);
+  console.log(calendarEvents);
+
   let selectedEvents;
   let selectedTitle;
   let displayDaily;
@@ -51,35 +60,38 @@ function EventList(props) {
   return (
     <div>
       {/* <EventCaroussel eventsArr={selectedEvents} /> */}
-      <h2 className="ListTitle">{selectedTitle}</h2>
       {/* Displaying only the upcomming daily events */}
       {/*  eslint-disable-next-line no-nested-ternary */}
       {searchValue?.length < 1 || searchedEvents?.length < 1 ? (
-        <div className="listSwiper">
-          <Swiper
-            spaceBetween={30}
-            slidesPerView={3}
-            loop
-            loopFillGroupWithBlank
-            autoplay={{
-              delay: 3500,
-              disableOnInteraction: false,
-            }}
-            navigation
-            modules={[Autoplay, Navigation]}
-            className="mySwiper"
-          >
-            {selectedEvents &&
-              selectedEvents.map((events) => (
-                <SwiperSlide>
-                  {" "}
-                  <EventCard dayEvents={events} />
-                </SwiperSlide>
-              ))}
-          </Swiper>
-        </div>
+        <>
+          <h2 className="ListTitle">{selectedTitle}</h2>
+          <div className="listSwiper">
+            <Swiper
+              spaceBetween={30}
+              slidesPerView={3}
+              loop
+              loopFillGroupWithBlank
+              autoplay={{
+                delay: 3500,
+                disableOnInteraction: false,
+              }}
+              navigation
+              modules={[Autoplay, Navigation]}
+              className="mySwiper"
+            >
+              {selectedEvents &&
+                selectedEvents.map((events) => (
+                  <SwiperSlide>
+                    {" "}
+                    <EventCard dayEvents={events} />
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          </div>
+        </>
       ) : searchValue?.length > 0 && searchedEvents ? (
         <div>
+          <h2 className="ListTitle">Searched Results</h2>
           <div className="searchDisplay">
             {searchedEvents?.map((events) => (
               <EventCard dayEvents={events} />
