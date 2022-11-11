@@ -24,7 +24,6 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Navigation } from "swiper";
-import NoCarouselEventList from "../NoCarouselEventList/NoCarouselEventList";
 
 function EventList(props) {
   const { dayEvents } = useContext(EventsContext);
@@ -77,12 +76,7 @@ function EventList(props) {
             ))}
         </Swiper>
       </div>
-      <div className="list-wrap">
-        <NoCarouselEventList
-          calendarDate={() => setCalendarDateChoice()}
-          events={calendarEvents !== null ? calendarEvents : selectedEvents}
-        />
-      </div>
+    
     </div>
   );
 }
