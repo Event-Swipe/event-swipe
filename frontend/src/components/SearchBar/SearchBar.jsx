@@ -16,7 +16,7 @@ function SearchBar() {
         <h3>Search</h3>
       </div> */}
       <div>
-        <form className="searchForm" /* onSubmit={handleSearchSubmit} */>
+        <form className="searchForm" onSubmit={handleSearchSubmit}>
           <div>
             <input
               className="searchBar-input"
@@ -25,12 +25,10 @@ function SearchBar() {
               placeholder=" 🔍 Search by event, venue, team or artist"
               value={searchValue}
               onChange={handleSearchChange}
-              onSubmit={handleSearchSubmit}
             />
           </div>
         </form>
       </div>
-      {/* isSearched &&  */}
     </div>
   );
 }

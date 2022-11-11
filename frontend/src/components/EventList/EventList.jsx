@@ -4,56 +4,48 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
-
-import React, { useContext } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import EventCard from "../EventCard/EventCard";
 import EventsContext from "../../contexts/EventsContext";
 import "./EventList.css";
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 // import required modules
 import { Autoplay, Navigation } from "swiper";
 // import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
-
 function EventList(props) {
   let selectedEvents;
   let selectedTitle;
   let displayDaily;
   let displaySearch;
 
-  const { searchString } = useParams();
-  console.warn(searchString);
-
+  const {
+    sportEvents,
+    concertEvents,
+    theaterEvents,
+    dayEvents,
+    searchedEvents,
+    searchValue,
+  } = useContext(EventsContext);
+  // console.log(searchValue);
   if (props.sportEvents === true) {
-    const { sportEvents } = useContext(EventsContext);
     selectedEvents = sportEvents;
     selectedTitle = "Sports";
   } else if (props.concertEvents === true) {
-    const { concertEvents } = useContext(EventsContext);
     selectedEvents = concertEvents;
     selectedTitle = "Concert";
   } else if (props.theaterEvents === true) {
-    const { theaterEvents } = useContext(EventsContext);
     selectedEvents = theaterEvents;
     selectedTitle = "Theater";
   } else if (props.dayEvents === true) {
-    const { dayEvents } = useContext(EventsContext);
     selectedEvents = dayEvents;
     selectedTitle = "Today's Events";
     displayDaily = true;
-  } else if (props.searchedEvents === true) {
-    const { searchedEvents } = useContext(EventsContext);
-    selectedEvents = searchedEvents;
-    selectedTitle = "Searched Events";
-    displaySearch = true;
   }
 
   return (
@@ -62,7 +54,7 @@ function EventList(props) {
       <h2 className="ListTitle">{selectedTitle}</h2>
       {/* Displaying only the upcomming daily events */}
       {/*  eslint-disable-next-line no-nested-ternary */}
-      {displayDaily ? (
+      {searchValue?.length < 1 || searchedEvents?.length < 1 ? (
         <div className="listSwiper">
           <Swiper
             spaceBetween={30}
@@ -78,32 +70,25 @@ function EventList(props) {
             className="mySwiper"
           >
             {selectedEvents &&
-              selectedEvents.map((dayEvents) => (
+              selectedEvents.map((events) => (
                 <SwiperSlide>
                   {" "}
-                  <EventCard dayEvents={dayEvents} />
+                  <EventCard dayEvents={events} />
                 </SwiperSlide>
               ))}
           </Swiper>
         </div>
-      ) : displaySearch ? (
-        <div className="searchDisplay">
-          {selectedEvents &&
-            selectedEvents.map((dayEvents) => (
-              <EventCard dayEvents={dayEvents} />
+      ) : searchValue?.length > 0 && searchedEvents ? (
+        <div>
+          <div className="searchDisplay">
+            {searchedEvents?.map((events) => (
+              <EventCard dayEvents={events} />
             ))}
+          </div>
         </div>
-      ) : (
-        <div className="listContainer">
-          {selectedEvents &&
-            selectedEvents.map((dayEvents) => (
-              <EventCard dayEvents={dayEvents} />
-            ))}
-        </div>
-      )}
+      ) : null}
     </div>
   );
   // STILL MISSING WEEKLY EVENTS
 }
-
 export default EventList;

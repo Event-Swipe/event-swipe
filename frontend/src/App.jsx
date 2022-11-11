@@ -45,10 +45,10 @@ function App() {
             element={<EventList theaterEvents={true} />}
           />
           <Route path="/login" element={<Form />} />
-          <Route
+          {/* <Route
             path="/search/:searchString"
             element={<EventList searchedEvents={true} />}
-          />
+          /> */}
         </Routes>
       </EventsContextProvider>
       <Subscribe />
