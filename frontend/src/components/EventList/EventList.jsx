@@ -21,7 +21,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Navigation } from "swiper";
-// import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
+import CalendarWrap from "../Calendar/CalendarWrap/CalendarWrap";
+
 function EventList(props) {
   const { isCalendarSelected } = useContext(CalendarContext);
   const { calendarEvents } = useContext(CalendarContext);
@@ -99,6 +100,23 @@ function EventList(props) {
           </div>
         </div>
       ) : null}
+      {searchedEvents && (
+        <div className="list-styling">
+          <div className="title-wrap">
+            <h1>More Events</h1>
+          </div>
+          <div className="calendar-wrap">
+            <CalendarWrap calendarDate={props.calendarDate} />
+
+            {calendarEvents &&
+              calendarEvents.map((events) => <EventCard dayEvents={events} />)}
+          </div>
+          <div className="list-items">
+            {selectedEvents &&
+              selectedEvents.map((events) => <EventCard dayEvents={events} />)}
+          </div>
+        </div>
+      )}
     </div>
   );
   // STILL MISSING WEEKLY EVENTS
