@@ -16,10 +16,20 @@ p {
 img {
   border-radius: 5px;
   margin-bottom: 0.5em;
-  width: fit-content;
+  /*  width: fit-content; */
 }
 .eventCardContainer {
   max-width: 280px;
-  margin: 10px;
+  padding: 20px;
   /*removing the max-width, the arrows dissapear  WHY ???*/
+}
+.cardLink {
+  text-decoration: none;
+  color: initial;
+  padding: 20px;
+}
+.eventCardContainer:hover {
+  background-color: rgb(221, 213, 213);
+  border-radius: 5px;
+  box-shadow: inset;
 }

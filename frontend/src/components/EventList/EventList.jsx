@@ -8,77 +8,99 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import EventCard from "../EventCard/EventCard";
 import EventsContext from "../../contexts/EventsContext";
 import CalendarContext from "../../contexts/CalendarContext";
 import "./EventList.css";
-
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 // import required modules
 import { Autoplay, Navigation } from "swiper";
-
+// import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
 function EventList(props) {
-  const { dayEvents } = useContext(EventsContext);
   const { isCalendarSelected } = useContext(CalendarContext);
   const { calendarEvents } = useContext(CalendarContext);
   console.log(isCalendarSelected);
   console.log(calendarEvents);
 
   let selectedEvents;
+  let selectedTitle;
+  let displayDaily;
+  let displaySearch;
+
+  const {
+    sportEvents,
+    concertEvents,
+    theaterEvents,
+    dayEvents,
+    searchedEvents,
+    searchValue,
+  } = useContext(EventsContext);
+  // console.log(searchValue);
   if (props.sportEvents === true) {
-    const { sportEvents } = useContext(EventsContext);
     selectedEvents = sportEvents;
+    selectedTitle = "Sports";
   } else if (props.concertEvents === true) {
-    const { concertEvents } = useContext(EventsContext);
     selectedEvents = concertEvents;
+    selectedTitle = "Concert";
   } else if (props.theaterEvents === true) {
-    const { theaterEvents } = useContext(EventsContext);
     selectedEvents = theaterEvents;
+    selectedTitle = "Theater";
   } else if (props.dayEvents === true) {
-    const { dayEvents } = useContext(EventsContext);
     selectedEvents = dayEvents;
+    selectedTitle = "Today's Events";
+    displayDaily = true;
   }
 
   return (
-    <div className="listContainer">
-      {/*  FILTERING EVENTS BEFORE CURRENT HOUR */}
-
-      <h2 className="ListTitle">Today's Events</h2>
-      <div>
-        {/* Displaying only the upcomming daily events */}
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={3}
-          loop
-          loopFillGroupWithBlank
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-          }}
-          navigation
-          modules={[Autoplay, Navigation]}
-          className="mySwiper"
-        >
-          {selectedEvents &&
-            selectedEvents.map((dayEvents) => (
-              <SwiperSlide>
-                {" "}
-                <EventCard dayEvents={dayEvents} />
-              </SwiperSlide>
+    <div>
+      {/* <EventCaroussel eventsArr={selectedEvents} /> */}
+      {/* Displaying only the upcomming daily events */}
+      {/*  eslint-disable-next-line no-nested-ternary */}
+      {searchValue?.length < 1 || searchedEvents?.length < 1 ? (
+        <>
+          <h2 className="ListTitle">{selectedTitle}</h2>
+          <div className="listSwiper">
+            <Swiper
+              spaceBetween={30}
+              slidesPerView={3}
+              loop
+              loopFillGroupWithBlank
+              autoplay={{
+                delay: 3500,
+                disableOnInteraction: false,
+              }}
+              navigation
+              modules={[Autoplay, Navigation]}
+              className="mySwiper"
+            >
+              {selectedEvents &&
+                selectedEvents.map((events) => (
+                  <SwiperSlide>
+                    {" "}
+                    <EventCard dayEvents={events} />
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          </div>
+        </>
+      ) : searchValue?.length > 0 && searchedEvents ? (
+        <div>
+          <h2 className="ListTitle">Searched Results</h2>
+          <div className="searchDisplay">
+            {searchedEvents?.map((events) => (
+              <EventCard dayEvents={events} />
             ))}
-        </Swiper>
-      </div>
-    
+          </div>
+        </div>
+      ) : null}
     </div>
   );
+  // STILL MISSING WEEKLY EVENTS
 }
-
 export default EventList;

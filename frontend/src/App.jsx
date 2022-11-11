@@ -12,6 +12,7 @@ import EventList from "./components/EventList/EventList";
 import { EventsContextProvider } from "./contexts/EventsContext";
 import { CalendarContextProvider } from "./contexts/CalendarContext";
 import EventDetails from "./components/EventDetails/EventDetails";
+// import SearchBar from "./components/SearchBar/SearchBar";
 
 function App() {
   const [offset, setOffset] = useState(null);
@@ -27,8 +28,8 @@ function App() {
 
   return (
     <>
-      <NavBar />
       <EventsContextProvider>
+        <NavBar />
         <CalendarContextProvider>
           <Routes>
             <Route path="/events/:id" element={<EventDetails />} />
