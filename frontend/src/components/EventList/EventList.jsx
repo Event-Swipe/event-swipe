@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-shadow */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/order */
@@ -24,12 +27,11 @@ import { Autoplay, Navigation } from "swiper";
 import NoCarouselEventList from "../NoCarouselEventList/NoCarouselEventList";
 
 function EventList(props) {
-  const {dayEvents} = useContext(EventsContext)
-  const {isCalendarSelected} = useContext(CalendarContext)
-  const {calendarEvents} = useContext(CalendarContext)
-  console.log(isCalendarSelected)
-  console.log(calendarEvents)
-  
+  const { dayEvents } = useContext(EventsContext);
+  const { isCalendarSelected } = useContext(CalendarContext);
+  const { calendarEvents } = useContext(CalendarContext);
+  console.log(isCalendarSelected);
+  console.log(calendarEvents);
 
   let selectedEvents;
   if (props.sportEvents === true) {
@@ -78,7 +80,7 @@ function EventList(props) {
       <div className="list-wrap">
         <NoCarouselEventList
           calendarDate={() => setCalendarDateChoice()}
-          events={calendarEvents !== null? calendarEvents : selectedEvents}
+          events={calendarEvents !== null ? calendarEvents : selectedEvents}
         />
       </div>
     </div>

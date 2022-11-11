@@ -10,7 +10,6 @@ export default CalendarContext;
 export function CalendarContextProvider({ children }) {
   const [calendarEvents, setCalendarEvents] = useState(null);
   const [isCalendarSelected, setIsCalendarSelected] = useState(false);
- 
 
   const fetchEvents = (input) => {
     setIsCalendarSelected(true);
@@ -20,8 +19,6 @@ export function CalendarContextProvider({ children }) {
       )
       .then((response) => setCalendarEvents(response.data.events));
   };
-
-
 
   return (
     <CalendarContext.Provider

@@ -30,23 +30,23 @@ function App() {
       <NavBar />
       <EventsContextProvider>
         <CalendarContextProvider>
-        <Routes>
-          <Route path="/events/:id" element={<EventDetails />} />
-          <Route path="/" element={<EventList dayEvents={true} />} />
-          <Route
-            path="/events/sport"
-            element={<EventList sportEvents={true} />}
-          />
-          <Route
-            path="/events/concerts"
-            element={<EventList concertEvents={true} />}
-          />
-          <Route
-            path="/events/theater"
-            element={<EventList theaterEvents={true} />}
-          />
-          <Route path="/login" element={<Form />} />
-        </Routes>
+          <Routes>
+            <Route path="/events/:id" element={<EventDetails />} />
+            <Route path="/" element={<EventList dayEvents={true} />} />
+            <Route
+              path="/events/sport"
+              element={<EventList sportEvents={true} />}
+            />
+            <Route
+              path="/events/concerts"
+              element={<EventList concertEvents={true} />}
+            />
+            <Route
+              path="/events/theater"
+              element={<EventList theaterEvents={true} />}
+            />
+            <Route path="/login" element={<Form />} />
+          </Routes>
         </CalendarContextProvider>
       </EventsContextProvider>
       <Subscribe />
