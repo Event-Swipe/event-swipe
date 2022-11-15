@@ -16,10 +16,14 @@ function SearchBar() {
         <h3>Search</h3>
       </div> */}
       <div>
-        <form className="searchForm" onSubmit={handleSearchSubmit}>
+        <form
+          className="searchForm d-flex bg-transparent"
+          role="search"
+          onSubmit={handleSearchSubmit}
+        >
           <div>
             <input
-              className="searchBar-input"
+              className="searchBar-input form-control me-2"
               type="search"
               name="search"
               placeholder=" 🔍 Search by event, venue, team or artist"

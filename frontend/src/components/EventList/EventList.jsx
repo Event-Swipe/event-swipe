@@ -31,6 +31,7 @@ function EventList(props) {
   let selectedEvents;
   let selectedTitle;
   let displayDaily;
+  let selectedImg;
   let displaySearch;
 
   const {
@@ -59,11 +60,17 @@ function EventList(props) {
 
   return (
     <div>
+      {/*  <img
+        src="https://images.pexels.com/photos/2747446/pexels-photo-2747446.jpeg"
+        alt=""
+        className="img-fluid"
+      /> */}
       {/* <EventCaroussel eventsArr={selectedEvents} /> */}
       {/* Displaying only the upcomming daily events */}
       {/*  eslint-disable-next-line no-nested-ternary */}
       {searchValue?.length < 1 || searchedEvents?.length < 1 ? (
         <>
+          <img src={selectedImg} alt="" />
           <h2 className="ListTitle">{selectedTitle}</h2>
           <div className="listSwiper">
             <Swiper

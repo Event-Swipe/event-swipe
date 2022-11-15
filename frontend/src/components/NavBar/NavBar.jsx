@@ -16,40 +16,54 @@ function NavBar() {
   };
 
   return (
-    <nav className="navbar">
-      <NavLink to="/" onClick={clearSearch}>
+    <nav className="navbar navbar-expand-sm d-flex justify-content-evenly">
+      <NavLink to="/" onClick={clearSearch} className="navbar-brand ">
         <img
           src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
           className="company-logo"
           alt="company-logo"
+          height="100px"
         />
       </NavLink>
       <SearchBar />
-      <ul className="links" id={showLinks ? "hidden" : "none"}>
-        <NavLink onClick={clearSearch} to="/events/sport" className="current">
-          <li>Sports</li>
-        </NavLink>
-        <NavLink
-          onClick={clearSearch}
-          to="/events/concerts"
-          className="current"
+      <div className="collapse navbar-collapse">
+        <ul
+          className="links navbar-nav me-auto mb-2 mb-lg-0"
+          id={showLinks ? "hidden" : "none"}
         >
-          <li>Concert</li>
-        </NavLink>
-        <NavLink onClick={clearSearch} to="events/theater" className="current">
-          <li>Theater</li>
-        </NavLink>
-        <NavLink
-          onClick={clearSearch}
-          to="/login"
-          className="current LoginLink"
-        >
-          <li>Log in</li>
-        </NavLink>
-        {/* <NavLink to="/search" className="current">
+          <NavLink
+            onClick={clearSearch}
+            to="/events/sport"
+            className="current nav-link"
+          >
+            <li className="nav-item">Sports</li>
+          </NavLink>
+          <NavLink
+            onClick={clearSearch}
+            to="/events/concerts"
+            className="current nav-link"
+          >
+            <li className="nav-item">Concert</li>
+          </NavLink>
+          <NavLink
+            onClick={clearSearch}
+            to="events/theater"
+            className="current nav-link"
+          >
+            <li className="nav-item">Theater</li>
+          </NavLink>
+          <NavLink
+            onClick={clearSearch}
+            to="/login"
+            className="current LoginLink nav-link"
+          >
+            <li>Log in</li>
+          </NavLink>
+          {/* <NavLink to="/search" className="current">
           <li>Search</li>
         </NavLink> */}
-      </ul>
+        </ul>
+      </div>
       <button
         className="burger-menu-btn"
         onClick={() => setShowLinks(!showLinks)}

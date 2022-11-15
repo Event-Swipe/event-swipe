@@ -41,23 +41,24 @@ function Subscribe() {
   }
 
   return (
-    <>
+    <div className=" subscribe-container d-flex flex-column  justify-content-center align-items-center p-3">
       <div className="title-container">
-        <h1>Subscribe Below</h1>
+        <h4>Subscribe to our newsletter below!</h4>
       </div>
       <div className="subscribed-msg">
         {isClicked && (
           <p>We will send monthly newsletter to {subscribeEmail}</p>
         )}
       </div>
-      <div className="form-backfround-layout">
-        <div className="input-wrapper">
+      <div className="form-background-layout d-flex flex-row align-items-center ">
+        <div className="input-wrapper m-2">
           <input
             onChange={(e) => {
               onChangeHandler(e.target.value);
             }}
             type="text"
             placeholder="Your Email"
+            className="form-control"
           />
           {validationLine && (
             <p style={{ color: "red" }}>please enter a valid email address</p>
@@ -66,13 +67,12 @@ function Subscribe() {
         <div className="button-wrapper">
           <Button
             onClick={subscribeHandler}
-            className="p-button-rounded p-button-secondary"
             label="Send me a newsletter!"
+            className="btn btn-light"
           />
         </div>
       </div>
-      <div />
-    </>
+    </div>
   );
 }
 
