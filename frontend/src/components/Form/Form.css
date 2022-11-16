@@ -20,6 +20,10 @@
   padding-bottom: 6px;
 }
 
+.checkmark {
+  width: 50%;
+}
+
 .form-input-btn {
   border: 1px solid black;
   background: black;

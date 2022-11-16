@@ -60,7 +60,7 @@ const createUser = (req, res) => {
         email,
         password,
       };
-      res.status(201).json(createdUser);
+      res.sendStatus(201)
     })
     .catch((err) => {
       console.error(err);
@@ -102,3 +102,5 @@ module.exports = {
   deleteUser,
   getLoginCredentials,
 };
+
+

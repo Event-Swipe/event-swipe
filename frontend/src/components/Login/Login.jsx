@@ -26,16 +26,21 @@ const login = () => {
 
   return (
     <div className="page-wrapper">
-      <div className="right-div"> place for picture</div>
+      <div className="right-div">
+        <img
+          src="https://i.pngimg.me/thumb/f/720/cc547231bc044e9c899c.jpg"
+          alt="login-cover"
+        />
+      </div>
       <div className={userNotFound ? "wrong-details" : "left-div"}>
         <div className="title-wrapper">
-          <h1>Welcome Back!</h1>
+          <h1 className="text">Welcome Back!</h1>
         </div>
         <div className="instructions-wrapper">
-          <strong>Please Enter Your Details</strong>
+          <strong className="text">Please Enter Your Details</strong>
         </div>
         <div className="field-wrapper">
-          <label htmlFor="email" className="form-label">
+          <label htmlFor="email" className="form-label text">
             Email Address
           </label>
           <input
@@ -46,7 +51,7 @@ const login = () => {
           />
         </div>
         <div className="field-wrapper">
-          <label htmlFor="email" className="form-label">
+          <label htmlFor="email" className="form-label text">
             Password
           </label>
           <input
@@ -57,14 +62,17 @@ const login = () => {
           />
         </div>
         {userNotFound === true && (
-          <h4 className="wrong-details-msg">Wrong login details</h4>
+          <h4 className="wrong-details-msg text">Wrong login details</h4>
         )}
         <div className="button-wrapper">
           <button onClick={() => submitHandler()}>Login Now!</button>
         </div>
         <div className="signup-link-wrapper">
-          <p>
-            Don't have an account?<a href="/signup">Sign Up!</a>
+          <p className="text">
+            Don't have an account?
+            <a href="/signup" className="text">
+              Sign Up!
+            </a>
           </p>
         </div>
       </div>

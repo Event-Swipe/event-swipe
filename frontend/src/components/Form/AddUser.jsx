@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Form.css";
 
 function AddUser() {
+  const [addedUser, setAddedUser] = useState(null);
   const [addUser, setAddUser] = useState({
     username: "",
     email: "",
@@ -19,28 +20,42 @@ function AddUser() {
 
   const navigate = useNavigate();
 
-  /* function UserList() {
-    //* create state to store the user
-    const [users, setUsers] = useState([]); */
-
-  //* create user handler for fetching user
-  // const fetchUsers = () => {
-  //   console.log(addUser);
-  //   axios
-  //     .post("http://localhost:5000/users", addUser)
-  //     .then((response) => console.log(response));
-  // };
-
   const handleSubmit = (event, newUser) => {
     event.preventDefault();
-    axios.post("http://localhost:5000/users", newUser);
-    navigate("/");
+    axios
+      .post("http://localhost:5000/users", newUser)
+      .then(() => {
+        sucessLogin();
+        setAddedUser(true);
+      })
+      .catch(() => {
+        // errorLogin()
+      });
   };
 
-  //* use useEffect to fetch users on mounting
+  const sucessLogin = () => {
+    document.getElementById("form-signup").reset();
+    setTimeout(() => {
+      setAddedUser(false);
+      navigate("/login");
+    }, 2200);
+  };
+  //   const errorLogin = () => {
+  // document.getElementById('form-signup').reset()
+  // setTimeout(() => {
+  //   setAddedUser(null)
+  //   navigate('/login')
+  // }, 2200)
+  //   }
 
   return (
     <div className="form-content-right">
+      {addedUser && (
+        <img
+          className="checkmark"
+          src="https://media2.giphy.com/media/YlSR3n9yZrxfgVzagm/giphy.gif?cid=ecf05e47y3sxt91qum85ae9iqkx9zf9fk3netpi88xuk7gtl&rid=giphy.gif&ct=s"
+        />
+      )}
       <h1>Create you account</h1>
       <form
         className="form"
@@ -86,6 +101,7 @@ function AddUser() {
             onChange={(e) => handleChange(e)}
           />
         </div>
+        {/* {addedUser === false && <h4>You are already a member mate!</h4>} */}
         <button type="submit" className="form-input-btn">
           Sign Up
         </button>

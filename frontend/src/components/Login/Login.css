@@ -1,6 +1,7 @@
 .page-wrapper {
   display: flex;
   flex-direction: row-reverse;
+  background-image: url("https://images.squarespace-cdn.com/content/v1/5d48368496bc88000118bcb1/1661977659516-9T3FSY80BWSFYZ112F7D/unsplash-image-cgkrTC-4Jrc.jpg");
 }
 
 .right-div {
@@ -8,26 +9,35 @@
   background-color: antiquewhite;
   height: 500px;
 }
+
+.right-div img {
+  height: 100%;
+  width: 100%;
+}
 .left-div {
   height: 500px;
-
+  margin-left: 30px;
   width: 50%;
   display: flex;
   flex-direction: column;
-  background-color: aqua;
+  background-color: black;
 }
 .wrong-details {
   transition: 2s;
   background-color: red;
+  height: 500px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
 }
 
 .left-div * {
   margin-left: 30px;
 }
-/* .title-wrapper {
+.wrong-details * {
+  margin-left: 30px;
 }
-.instructions-wrapper {
-} */
 
 .field-wrapper {
   margin: 20px;
@@ -41,7 +51,7 @@
 } */
 .signup-link-wrapper a {
   font-size: x-large;
-  color: green;
+  color: white;
   cursor: pointer;
   padding: 5px;
   border: 1px solid transparent;
@@ -49,11 +59,15 @@
 }
 
 .signup-link-wrapper a:hover {
-  background-color: white;
+  background-color: black;
   transition: 1s;
 }
 
 .wrong-details-msg {
   font-size: larger;
   color: white;
+}
+
+.text {
+  color: #f4f3f2;
 }
