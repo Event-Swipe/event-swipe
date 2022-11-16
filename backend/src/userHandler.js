@@ -18,15 +18,17 @@ const getAllUsers = (req, res) => {
 const getLoginCredentials = (req, res) => {
   const { email, password } = req.params;
 
-	connection
-		.query(`SELECT * FROM users where email = '${email}' and password = '${password}' `)
-		.then(([result]) => {
-			res.send(result);
-		})
-		.catch((err) => {
-			console.error(err + "Problem");
-			res.status(500).send('Error adding the user');
-		});
+  connection
+    .query(
+      `SELECT * FROM users where email = '${email}' and password = '${password}' `
+    )
+    .then(([result]) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.error(err + "Problem");
+      res.status(500).send("Error adding the user");
+    });
 };
 
 const getUserById = (req, res) => {
@@ -98,5 +100,5 @@ module.exports = {
   createUser,
   editUser,
   deleteUser,
-  getLoginCredentials
+  getLoginCredentials,
 };

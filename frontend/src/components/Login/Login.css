@@ -16,6 +16,10 @@
   flex-direction: column;
   background-color: aqua;
 }
+.wrong-details {
+  transition: 2s;
+  background-color: red;
+}
 
 .left-div * {
   margin-left: 30px;
@@ -47,4 +51,9 @@
 .signup-link-wrapper a:hover {
   background-color: white;
   transition: 1s;
+}
+
+.wrong-details-msg {
+  font-size: larger;
+  color: white;
 }
