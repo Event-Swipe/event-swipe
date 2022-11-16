@@ -10,6 +10,7 @@
 
 import React, { useContext } from "react";
 import EventCard from "../EventCard/EventCard";
+import Header from "../Header/Header";
 import EventsContext from "../../contexts/EventsContext";
 import CalendarContext from "../../contexts/CalendarContext";
 import "./EventList.css";
@@ -21,6 +22,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
 import { Autoplay } from "swiper";
+
 // import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
 function EventList(props) {
   const { isCalendarSelected } = useContext(CalendarContext);
@@ -46,20 +48,29 @@ function EventList(props) {
   if (props.sportEvents === true) {
     selectedEvents = sportEvents;
     selectedTitle = "Sports";
+    selectedImg =
+      "https://images.pexels.com/photos/264279/pexels-photo-264279.jpeg?cs=srgb&dl=pexels-pixabay-264279.jpg&fm=jpg&_gl=1*v3xrho*_ga*NDQ5MzY5OTQyLjE2NjMyMzc5NjY.*_ga_8JE65Q40S6*MTY2ODYxNjI4NS4xNi4xLjE2Njg2MTY5ODkuMC4wLjA.https://images.pexels.com/photos/264279/pexels-photo-264279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
   } else if (props.concertEvents === true) {
     selectedEvents = concertEvents;
     selectedTitle = "Concert";
+    selectedImg =
+      "https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
   } else if (props.theaterEvents === true) {
     selectedEvents = theaterEvents;
     selectedTitle = "Theater";
+    selectedImg =
+      "https://images.pexels.com/photos/63328/wells-theatre-norfolk-virginian-seats-63328.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
   } else if (props.dayEvents === true) {
     selectedEvents = dayEvents;
     selectedTitle = "Today's Events";
     displayDaily = true;
+    selectedImg =
+      "https://images.pexels.com/photos/2747446/pexels-photo-2747446.jpeg";
   }
 
   return (
     <div>
+      <Header title={selectedTitle} image={selectedImg} />
       {/*  <img
         src="https://images.pexels.com/photos/2747446/pexels-photo-2747446.jpeg"
         alt=""
@@ -70,8 +81,9 @@ function EventList(props) {
       {/*  eslint-disable-next-line no-nested-ternary */}
       {searchValue?.length < 1 || searchedEvents?.length < 1 ? (
         <>
-          <img src={selectedImg} alt="" />
-          <h2 className="ListTitle">{selectedTitle}</h2>
+          {selectedTitle === "Today's Events" ? (
+            <h2 className="ListTitle mt-4">{selectedTitle}</h2>
+          ) : null}
           <div className="listSwiper">
             <Swiper
               centeredSlides
@@ -86,15 +98,19 @@ function EventList(props) {
                   slidesPerView: 3,
                   spaceBetween: 20,
                 },
+                1025: {
+                  slidesPerView: 4,
+                  spaceBetween: 40,
+                },
               }}
               // spaceBetween={30}
               // slidesPerView={3}
-              /* loop
+              loop
               autoplay={{
                 delay: 3500,
                 disableOnInteraction: false,
               }}
-              modules={[Autoplay]} */
+              modules={[Autoplay]}
               className="mySwiper"
             >
               {selectedEvents &&
@@ -109,7 +125,7 @@ function EventList(props) {
         </>
       ) : searchValue?.length > 0 && searchedEvents ? (
         <div>
-          <h2 className="ListTitle">Searched Results</h2>
+          {/* <h2 className="ListTitle">Searched Results</h2> */}
           <div className="searchDisplay">
             {searchedEvents?.map((events) => (
               <EventCard dayEvents={events} />

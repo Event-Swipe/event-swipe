@@ -1,0 +1,24 @@
+.header-title-container {
+  /* background-image: url("https://images.pexels.com/photos/2747446/pexels-photo-2747446.jpeg"); */
+  background-size: contain;
+  background-position: center center;
+  background-size: cover;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.85;
+}
+.header-title {
+  background: rgb(0 0 0 / 95%);
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 2%;
+}
+@media screen and (min-width: 1024px) {
+  .header-title {
+    font-size: 3rem;
+    line-height: 1.7;
+  }
+}
