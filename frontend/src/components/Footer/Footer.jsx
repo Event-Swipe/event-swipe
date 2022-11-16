@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Footer.css";
 import { SocialIcon } from "react-social-icons";
+import "./Footer.css";
 
 function Footer() {
   return (
@@ -15,9 +15,17 @@ function Footer() {
         </NavLink>
       </div>
       <div className="social-media-wrapper">
-        <SocialIcon bgColor="#fff" url="https://linkedin.com/" />
-        <SocialIcon bgColor="#fff" url="https://github.com/" />
-        <SocialIcon bgColor="#fff" url="https://facebook.com/" />
+        <SocialIcon
+          style={{ height: 30, width: 30 }}
+          bgColor="#fff"
+          url="https://linkedin.com/"
+        />
+        <SocialIcon className="icon" bgColor="#fff" url="https://github.com/" />
+        <SocialIcon
+          className="icon"
+          bgColor="#fff"
+          url="https://facebook.com/"
+        />
       </div>
       <div className="links-wrapper">
         <NavLink className="footerLinks" to="/">

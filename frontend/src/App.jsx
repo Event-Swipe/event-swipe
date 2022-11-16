@@ -31,6 +31,7 @@ function App() {
   return (
     <>
       <EventsContextProvider>
+
         <UserContextProvider>
           <NavBar />
           <CalendarContextProvider>
@@ -55,6 +56,7 @@ function App() {
             </Routes>
           </CalendarContextProvider>
         </UserContextProvider>
+
       </EventsContextProvider>
       <Subscribe />
       <Footer />

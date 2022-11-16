@@ -42,6 +42,7 @@ function NavBar() {
         <NavLink onClick={clearSearch} to="events/theater" className="current">
           <li>Theater</li>
         </NavLink>
+
         {userDetails === null ? (
           <NavLink
             onClick={clearSearch}
@@ -55,16 +56,19 @@ function NavBar() {
             <i className="pi pi-user" />
           </NavLink>
         )}
+
         {/* <NavLink to="/search" className="current">
           <li>Search</li>
         </NavLink> */}
       </ul>
-      <button
-        className="burger-menu-btn"
-        onClick={() => setShowLinks(!showLinks)}
-      >
-        <BiMenu className="menu" />
-      </button>
+      <div className="button-div">
+        <button
+          className="burger-menu-btn"
+          onClick={() => setShowLinks(!showLinks)}
+        >
+          <BiMenu className="menu" />
+        </button>
+      </div>
     </nav>
   );
 }
