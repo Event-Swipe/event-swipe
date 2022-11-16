@@ -45,7 +45,7 @@ function App() {
               path="/events/theater"
               element={<EventList theaterEvents={true} />}
             />
-            <Route path="/login" element={<AddUser />} />
+            <Route path="/AddUser" element={<AddUser />} />
           </Routes>
         </CalendarContextProvider>
       </EventsContextProvider>
