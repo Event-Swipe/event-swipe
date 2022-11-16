@@ -63,9 +63,8 @@ input {
   background-color: black;
   color: white;
 }
-h4,
-.title-container {
-  text-align: center !important;
+.title-container h4 {
+  text-align: center;
 }
 /* M E D I A    Q U E R I E S*/
 

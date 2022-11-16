@@ -1,5 +1,5 @@
 .listSwiper {
-  margin: 0 50px;
+  margin: 2rem 0;
 }
 .ListTitle {
   text-align: center;
@@ -24,4 +24,19 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+.swiper-container {
+  /* width: 480px; */
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .listSwiper {
+    margin: 1rem 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .listSwiper {
+    margin: 1rem 0;
+  }
 }

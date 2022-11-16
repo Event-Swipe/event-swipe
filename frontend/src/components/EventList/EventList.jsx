@@ -20,7 +20,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
-import { Autoplay, Navigation } from "swiper";
+import { Autoplay } from "swiper";
 // import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
 function EventList(props) {
   const { isCalendarSelected } = useContext(CalendarContext);
@@ -74,16 +74,27 @@ function EventList(props) {
           <h2 className="ListTitle">{selectedTitle}</h2>
           <div className="listSwiper">
             <Swiper
-              spaceBetween={30}
-              slidesPerView={3}
-              loop
-              loopFillGroupWithBlank
+              centeredSlides
+              breakpoints={{
+                // when window width is >= 320px
+                320: {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+                },
+                // when window width is >= 768px
+                768: {
+                  slidesPerView: 3,
+                  spaceBetween: 20,
+                },
+              }}
+              // spaceBetween={30}
+              // slidesPerView={3}
+              /* loop
               autoplay={{
                 delay: 3500,
                 disableOnInteraction: false,
               }}
-              navigation
-              modules={[Autoplay, Navigation]}
+              modules={[Autoplay]} */
               className="mySwiper"
             >
               {selectedEvents &&

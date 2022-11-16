@@ -16,7 +16,7 @@ function EventCard({ dayEvents }) {
   return (
     <div key={dayEvents.id}>
       <NavLink to={`/events/${dayEvents.id}`} className="cardLink">
-        <div className="eventCardContainer card  w-75 col-sm">
+        <div className="eventCardContainer card">
           <img
             src={
               imgUrl ||
@@ -26,10 +26,8 @@ function EventCard({ dayEvents }) {
             className="card-img-top img-fluid"
           />
           <div className="card-body">
-            <h4 className="card-title">{title}</h4>
-            <h6 className="card-subtitle text-muted">
-              {subTitle.toUpperCase()}
-            </h6>
+            <h5 className="card-title">{title}</h5>
+            <p className="card-subtitle text-muted">{subTitle.toUpperCase()}</p>
             <p className="card-text">
               {eventHour}:{eventMinutes}
             </p>
