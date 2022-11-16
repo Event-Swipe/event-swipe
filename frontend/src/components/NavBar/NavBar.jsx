@@ -46,12 +46,14 @@ function NavBar() {
           <li>Search</li>
         </NavLink> */}
       </ul>
-      <button
-        className="burger-menu-btn"
-        onClick={() => setShowLinks(!showLinks)}
-      >
-        <BiMenu className="menu" />
-      </button>
+      <div className="button-div">
+        <button
+          className="burger-menu-btn"
+          onClick={() => setShowLinks(!showLinks)}
+        >
+          <BiMenu className="menu" />
+        </button>
+      </div>
     </nav>
   );
 }

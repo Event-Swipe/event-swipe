@@ -65,21 +65,31 @@ ul {
 }
 
 .currentLoginLink {
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
   color: #fff;
   cursor: pointer;
 }
 
+.currentLoginLink:hover {
+  background-color: #2a3334;
+}
+
 @media screen and (max-width: 768px) {
-  .menu {
+
+  .button-div {
+  position: absolute;
+  right: 6px;
+  }
+
+menu {
     display: flex;
-    align-items: flex-end;
   }
 
   .burger-menu-btn {
     display: flex;
-    align-items: flex-end;
   }
 
   #hidden {
@@ -89,11 +99,13 @@ ul {
     height: 230px;
     max-height: 230px;
     width: 100%;
+    margin:0;
     background-color: rgb(5, 5, 5);
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 25px;
+    z-index: 100;
   }
 
   .links {

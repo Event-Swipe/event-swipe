@@ -21,3 +21,20 @@
   border-radius: 1.25rem;
   color: #fff;
 }
+@media screen and (max-width: 768px) {
+  .searchBar-input {
+    position: absolute;
+    top:75px;
+    left:100px;
+    width: 150px;
+    background: #2a3334;
+    border: initial;
+    box-shadow: initial;
+    font-size: initial;
+    margin: 12px;
+    padding: 10px;
+    font-family: initial;
+    border-radius: 1.25rem;
+    color: #fff;
+  }
+}
