@@ -39,11 +39,7 @@ function NavBar() {
         <NavLink onClick={clearSearch} to="events/theater" className="current">
           <li>Theater</li>
         </NavLink>
-        <NavLink
-          onClick={clearSearch}
-          to="/login"
-          className="current LoginLink"
-        >
+        <NavLink onClick={clearSearch} to="/login" className="currentLoginLink">
           <li>Log in</li>
         </NavLink>
         {/* <NavLink to="/search" className="current">
