@@ -11,6 +11,10 @@ nav {
   font-size: initial;
 }
 
+.pi-user {
+  color: white;
+}
+
 .company-logo {
   display: flex;
   align-items: flex-start;
