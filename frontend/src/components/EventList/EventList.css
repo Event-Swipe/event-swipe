@@ -16,15 +16,25 @@
 }
 .list-styling {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   background-color: lightgray;
   flex-direction: column;
 }
+
 .cal-view {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.cal-cards-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
 .title-wrap {
   text-align: center;
 }
