@@ -9,8 +9,8 @@ export function UserContextProvider({ children }) {
   const [userDetails, setUserDetails] = useState(null);
   const [userNotFound, setUserNotFound] = useState(false);
 
-  const LoginFunction = (email, password) => {
-    fetch(`http://localhost:5000/login/${email}/${password}`)
+  const LoginFunction = async (email, password) => {
+    await fetch(`http://localhost:5000/login/${email}/${password}`)
       .then((response) => response.json())
       .then((data) => {
         setUserDetails(data);
@@ -32,7 +32,7 @@ export function UserContextProvider({ children }) {
         userDetails,
         setUserDetails,
         userNotFound,
-        // cachedUserDetails,
+        setUserNotFound,
       }}
     >
       {children}

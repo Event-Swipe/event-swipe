@@ -10,22 +10,24 @@ import "./Login.css";
 const login = () => {
   const [userObj, setUserObj] = useState(null);
   const navigate = useNavigate();
-  const { LoginFunction, userNotFound } = useContext(UserContext);
+  const { LoginFunction, userNotFound, setUserNotFound, userDetails } =
+    useContext(UserContext);
 
   const submitHandler = async () => {
     await LoginFunction(userObj.email, userObj.password);
-    navigate("/dashboard");
   };
-
+  if (userDetails !== null) {
+    navigate("/dashboard");
+  }
   const changeHandle = (event) => {
+    setUserNotFound(false);
     setUserObj({ ...userObj, [event.target.name]: event.target.value });
   };
 
-  console.log(`user from input${userObj}`);
   return (
     <div className="page-wrapper">
       <div className="right-div"> place for picture</div>
-      <div className="left-div">
+      <div className={userNotFound ? "wrong-details" : "left-div"}>
         <div className="title-wrapper">
           <h1>Welcome Back!</h1>
         </div>
@@ -54,7 +56,9 @@ const login = () => {
             onChange={(e) => changeHandle(e)}
           />
         </div>
-        {userNotFound === true && <p>Wrong login details</p>}
+        {userNotFound === true && (
+          <h4 className="wrong-details-msg">Wrong login details</h4>
+        )}
         <div className="button-wrapper">
           <button onClick={() => submitHandler()}>Login Now!</button>
         </div>
