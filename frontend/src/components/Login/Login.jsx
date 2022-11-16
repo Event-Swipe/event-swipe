@@ -1,24 +1,27 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-restricted-syntax */
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import UserContext from "../../contexts/UserContext";
 import "./Login.css";
 
 // Make a request for a user with a given ID
 
 const login = () => {
   const [userObj, setUserObj] = useState(null);
+  const navigate = useNavigate();
+  const { LoginFunction, userNotFound } = useContext(UserContext);
 
-  const submitHandler = () => {
-    // fetch(`http://localhost:3000/login/${userObj.email}/${userObj.password}`)
-    fetch(`http://localhost:5000/`)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+  const submitHandler = async () => {
+    await LoginFunction(userObj.email, userObj.password);
+    navigate("/dashboard");
   };
 
   const changeHandle = (event) => {
     setUserObj({ ...userObj, [event.target.name]: event.target.value });
   };
 
+  console.log(`user from input${userObj}`);
   return (
     <div className="page-wrapper">
       <div className="right-div"> place for picture</div>
@@ -51,6 +54,7 @@ const login = () => {
             onChange={(e) => changeHandle(e)}
           />
         </div>
+        {userNotFound === true && <p>Wrong login details</p>}
         <div className="button-wrapper">
           <button onClick={() => submitHandler()}>Login Now!</button>
         </div>

@@ -1,0 +1,40 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding-right: 10%;
+}
+
+.sidemenu {
+  width: 20%;
+  background-color: yellow;
+  height: 500px;
+}
+
+.sidemenu li {
+  list-style: none;
+  padding: 0 20px;
+  position: relative;
+  margin: 20px;
+  border-bottom: 1px dashed;
+}
+.sidemenu li:hover {
+  background-color: white;
+  transition: 2s;
+}
+
+.right-side {
+  width: 80%;
+}
+
+.right-side-top {
+  height: 20%;
+  background-color: blue;
+}
+
+.right-side-bottom {
+  background-color: white;
+  width: 100%;
+}
+.right-side-bottom img {
+  width: 75%;
+}
