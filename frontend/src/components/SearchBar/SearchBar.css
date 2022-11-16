@@ -25,8 +25,8 @@
   .searchBar-input {
     position: absolute;
     top:75px;
-    left:100px;
-    width: 150px;
+    left:calc((100%/2) - 100px);
+    width: 200px;
     background: #2a3334;
     border: initial;
     box-shadow: initial;
