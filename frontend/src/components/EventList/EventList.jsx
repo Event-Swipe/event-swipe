@@ -1,13 +1,9 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-shadow */
-/* eslint-disable no-restricted-syntax */
 /* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
-
 import React, { useContext } from "react";
 import EventCard from "../EventCard/EventCard";
 import EventsContext from "../../contexts/EventsContext";
@@ -106,8 +102,18 @@ function EventList(props) {
             <h1>More Events</h1>
           </div>
           <div className="calendar-wrap">
-            <CalendarWrap calendarDate={props.calendarDate} />
+            <div className="col">
+              <CalendarWrap calendarDate={props.calendarDate} />
+            </div>
 
+            <button className="filtering-btn">
+              <i className="pi pi-sort-amount-down " />
+            </button>
+            <button className="filtering-btn">
+              <i className="pi pi-filter" />
+            </button>
+          </div>
+          <div className="cal-cards-wrap">
             {calendarEvents &&
               calendarEvents.map((events) => <EventCard dayEvents={events} />)}
           </div>
@@ -119,6 +125,5 @@ function EventList(props) {
       )}
     </div>
   );
-  // STILL MISSING WEEKLY EVENTS
 }
 export default EventList;
