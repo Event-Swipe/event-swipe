@@ -1,3 +1,6 @@
+body {
+  font-family: Roobert, "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
 nav {
   display: flex;
   align-items: center;
@@ -5,10 +8,6 @@ nav {
   background: rgb(5, 5, 5);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
   font-size: initial;
-}
-
-.pi-user {
-  color: white;
 }
 
 .company-logo {
@@ -111,4 +110,6 @@ ul {
   .links {
     display: none;
   }
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
 }
