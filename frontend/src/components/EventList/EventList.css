@@ -1,22 +1,21 @@
 .listSwiper {
-  margin: 0 50px;
+  margin: 2rem 1rem;
 }
 .ListTitle {
   text-align: center;
-  font-size: 2rem;
 }
-.listContainer {
+/* .listContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* display: grid;
+  // display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px 0;
-  justify-items: center;*/
-}
+  justify-items: center;//
+}*/
 .list-styling {
   display: flex;
-  /* flex-wrap: wrap; */
+  /* flex-wrap: wrap;*/
   background-color: lightgray;
   flex-direction: column;
 }
@@ -77,4 +76,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .listSwiper {
+    margin: 1rem 2rem;
+  }
 }

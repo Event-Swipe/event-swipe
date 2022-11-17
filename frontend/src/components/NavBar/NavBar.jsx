@@ -19,48 +19,55 @@ function NavBar() {
   };
 
   return (
-    <nav className="navbar">
-      <NavLink to="/" onClick={clearSearch}>
+    <nav className="navbar navbar-expand-sm d-flex justify-content-evenly">
+      <NavLink to="/" onClick={clearSearch} className="navbar-brand ">
         <img
           src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
           className="company-logo"
           alt="company-logo"
+          height="100px"
         />
       </NavLink>
       <SearchBar />
-      <ul className="links" id={showLinks ? "hidden" : "none"}>
-        <NavLink onClick={clearSearch} to="/events/sport" className="current">
-          <li>Sports</li>
-        </NavLink>
-        <NavLink
-          onClick={clearSearch}
-          to="/events/concerts"
-          className="current"
-        >
-          <li>Concert</li>
-        </NavLink>
-        <NavLink onClick={clearSearch} to="events/theater" className="current">
-          <li>Theater</li>
-        </NavLink>
-
-        {userDetails === null ? (
+      <div className="collapse navbar-collapse">
+        <ul className="links" id={showLinks ? "hidden" : "none"}>
+          <NavLink onClick={clearSearch} to="/events/sport" className="current">
+            <li>Sports</li>
+          </NavLink>
           <NavLink
             onClick={clearSearch}
-            to="/login"
-            className="current LoginLink"
+            to="/events/concerts"
+            className="current"
           >
-            <li>Log in</li>
+            <li>Concert</li>
           </NavLink>
-        ) : (
-          <NavLink to="dashboard">
-            <i className="pi pi-user" />
+          <NavLink
+            onClick={clearSearch}
+            to="events/theater"
+            className="current"
+          >
+            <li>Theater</li>
           </NavLink>
-        )}
 
-        {/* <NavLink to="/search" className="current">
+          {userDetails === null ? (
+            <NavLink
+              onClick={clearSearch}
+              to="/login"
+              className="current LoginLink"
+            >
+              <li>Log in</li>
+            </NavLink>
+          ) : (
+            <NavLink to="dashboard">
+              <i className="pi pi-user" />
+            </NavLink>
+          )}
+
+          {/* <NavLink to="/search" className="current">
           <li>Search</li>
         </NavLink> */}
-      </ul>
+        </ul>
+      </div>
       <div className="button-div">
         <button
           className="burger-menu-btn"

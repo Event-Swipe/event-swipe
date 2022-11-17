@@ -1,4 +1,11 @@
 .footer-wrapper {
+  background-color: black;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/*
   display: flex;
   flex-direction: row;
   background-color: black;
@@ -33,4 +40,18 @@
 }
 .footerLinks:visited {
   color: white;
+}
+ */
+/* M E D I A    Q U E R I E S*/
+
+@media screen and (max-width: 768px) {
+  .footer-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
+  .links-wrapper {
+    padding: 10px;
+  }
 }

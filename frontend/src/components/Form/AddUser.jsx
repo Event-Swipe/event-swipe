@@ -27,6 +27,7 @@ function AddUser() {
     axios
       .post("http://localhost:5000/users", newUser)
       .then(() => {
+        // eslint-disable-next-line no-use-before-define
         sucessLogin();
         setAddedUser(true);
       })
@@ -55,6 +56,7 @@ function AddUser() {
       {addedUser && (
         <img
           className="checkmark"
+          alt=""
           src="https://media2.giphy.com/media/YlSR3n9yZrxfgVzagm/giphy.gif?cid=ecf05e47y3sxt91qum85ae9iqkx9zf9fk3netpi88xuk7gtl&rid=giphy.gif&ct=s"
         />
       )}

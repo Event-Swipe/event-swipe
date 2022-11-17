@@ -1,4 +1,4 @@
-.form-backfround-layout {
+/* .form-backfround-layout {
   display: flex;
   background-color: black;
   align-items: center;
@@ -57,4 +57,20 @@ input {
   margin-block-end: 0px;
   color: black;
   text-align: center;
+}
+ */
+.subscribe-container {
+  background-color: black;
+  color: white;
+}
+.title-container h4 {
+  text-align: center;
+}
+/* M E D I A    Q U E R I E S*/
+
+@media screen and (max-width: 767px) {
+  .form-background-layout {
+    display: flex !important;
+    flex-direction: column !important;
+  }
 }
