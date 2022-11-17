@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./Footer.css";
 import { SocialIcon } from "react-social-icons";
+import "./Footer.css";
 
 function Footer() {
   return (

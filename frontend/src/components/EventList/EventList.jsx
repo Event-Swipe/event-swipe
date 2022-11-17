@@ -1,13 +1,10 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-shadow */
-/* eslint-disable no-restricted-syntax */
+/* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable import/order */
 /* eslint-disable import/no-unresolved */
-/* eslint-disable no-unused-vars */
-/* eslint-disable prettier/prettier */
-
 import React, { useContext } from "react";
 import EventCard from "../EventCard/EventCard";
 import Header from "../Header/Header";
@@ -21,9 +18,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
-import { Autoplay } from "swiper";
+import { Autoplay, Navigation } from "swiper";
+import CalendarWrap from "../Calendar/CalendarWrap/CalendarWrap";
 
-// import EventCaroussel from "@components/EventCaroussel/EventCaroussel";
 function EventList(props) {
   const { isCalendarSelected } = useContext(CalendarContext);
   const { calendarEvents } = useContext(CalendarContext);
@@ -133,8 +130,33 @@ function EventList(props) {
           </div>
         </div>
       ) : null}
+      {searchedEvents && (
+        <div className="list-styling">
+          <div className="title-wrap">
+            <h1>More Events</h1>
+          </div>
+          <div className="calendar-wrap">
+            <div className="col">
+              <CalendarWrap calendarDate={props.calendarDate} />
+            </div>
+            <button className="filtering-btn">
+              <i className="pi pi-sort-amount-down " />
+            </button>
+            <button className="filtering-btn">
+              <i className="pi pi-filter" />
+            </button>
+          </div>
+          <div className="cal-cards-wrap">
+            {calendarEvents &&
+              calendarEvents.map((events) => <EventCard dayEvents={events} />)}
+          </div>
+          <div className="list-items">
+            {selectedEvents &&
+              selectedEvents.map((events) => <EventCard dayEvents={events} />)}
+          </div>
+        </div>
+      )}
     </div>
   );
-  // STILL MISSING WEEKLY EVENTS
 }
 export default EventList;

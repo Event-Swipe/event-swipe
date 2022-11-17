@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 
 function Header(props) {
+  // eslint-disable-next-line react/prop-types
   const { title, image } = props;
 
   return (

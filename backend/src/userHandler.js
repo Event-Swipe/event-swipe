@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable prefer-template */
+/* eslint-disable prettier/prettier */
 const connection = require("./db");
 
 const getAllUsers = (req, res) => {
@@ -9,6 +12,22 @@ const getAllUsers = (req, res) => {
     .catch((error) => {
       console.error(error);
       res.status(500).send("Error retrieving products from db.");
+    });
+};
+
+const getLoginCredentials = (req, res) => {
+  const { email, password } = req.params;
+
+  connection
+    .query(
+      `SELECT * FROM users where email = '${email}' and password = '${password}' `
+    )
+    .then(([result]) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.error(err + "Problem");
+      res.status(500).send("Error adding the user");
     });
 };
 
@@ -41,7 +60,7 @@ const createUser = (req, res) => {
         email,
         password,
       };
-      res.status(201).json(createdUser);
+      res.sendStatus(201)
     })
     .catch((err) => {
       console.error(err);
@@ -81,4 +100,7 @@ module.exports = {
   createUser,
   editUser,
   deleteUser,
+  getLoginCredentials,
 };
+
+

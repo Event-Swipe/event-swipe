@@ -22,3 +22,35 @@
   color: #fff;
 }
  */
+@media screen and (max-width: 767px) {
+  .searchBar-input {
+    position: absolute;
+    top: 75px;
+    left: calc((100% / 2) - 100px);
+    width: 180px;
+    background: #2a3334;
+    border: initial;
+    box-shadow: initial;
+    font-size: initial;
+    margin: 12px;
+    padding: 10px;
+    font-family: initial;
+    border-radius: 1.25rem;
+    color: #fff;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .searchBar-input {
+    width: 280px;
+    background: #2a3334;
+    border: initial;
+    box-shadow: initial;
+    font-size: initial;
+    margin: 12px;
+    padding: 10px;
+    font-family: initial;
+    border-radius: 1.25rem;
+    color: #fff;
+  }
+}

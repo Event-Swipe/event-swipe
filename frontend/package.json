@@ -21,6 +21,7 @@
     "react-draggable": "^4.4.5",
     "react-google-maps": "^9.4.5",
     "react-icons": "^4.6.0",
+    "react-pro-sidebar": "^1.0.0-alpha.7",
     "react-router-dom": "^6.4.2",
     "react-social-icons": "^5.15.0",
     "swiper": "^8.4.4",

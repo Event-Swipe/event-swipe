@@ -52,29 +52,8 @@ function EventCaroussel(props) {
 
   return (
     <div>
-      <div className="listSwiper">
-        <Swiper
-          spaceBetween={30}
-          slidesPerView={3}
-          loop
-          loopFillGroupWithBlank
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-          }}
-          navigation
-          modules={[Autoplay, Navigation]}
-          className="mySwiper"
-        >
-          {selectedEvents &&
-            selectedEvents.map((events) => (
-              <SwiperSlide>
-                {" "}
-                <EventCard dayEvents={events} />
-              </SwiperSlide>
-            ))}
-        </Swiper>
-      </div>
+      {selectedEvents &&
+        selectedEvents.map((events) => <EventCard dayEvents={events} />)}
     </div>
   );
 }
