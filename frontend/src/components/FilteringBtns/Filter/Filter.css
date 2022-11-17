@@ -1,13 +1,4 @@
-.selected {
-  display: block;
-  padding: 12px;
-  border-radius: 5px;
-  background-color: greenyellow;
-  border: none;
-  margin: 10px;
-}
-
-.not-selected {
+.filtering-btn {
   display: block;
   padding: 12px;
   border-radius: 5px;
@@ -15,8 +6,11 @@
   border: none;
   margin: 10px;
 }
-
-.col-con {
-  display: flex;
-  flex-direction: column;
+.filtering-btn-selected {
+  display: block;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: greenyellow;
+  border: none;
+  margin: 10px;
 }

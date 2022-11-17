@@ -13,7 +13,7 @@ function CalendarWrap(props) {
   };
 
   return (
-    <>
+    <div className="col-con">
       <button
         className={isClicked ? "selected" : "not-selected"}
         onClick={() => {
@@ -23,7 +23,7 @@ function CalendarWrap(props) {
         <i className="pi pi-calendar" />
       </button>
       {isClicked && <Calendar calendarDate={props.calendarDate} />}
-    </>
+    </div>
   );
 }
 
