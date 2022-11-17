@@ -22,7 +22,12 @@ function Dashboard() {
           Log out
         </button>
         <div className="right-side-top">
-          <h3 className="text"> {userDetails.username}</h3>
+          <h3 className="text">
+            {" "}
+            {userDetails.username === null
+              ? userDetails.email
+              : userDetails.username}
+          </h3>
           <h1 className="text">Good To have you Back!</h1>
         </div>
         <div className="right-side-bottom" />

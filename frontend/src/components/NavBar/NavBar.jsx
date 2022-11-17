@@ -1,18 +1,24 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useState, useContext } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./NavBar.css";
-import { NavLink } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
 import SearchBar from "../SearchBar/SearchBar";
 import EventsContext from "../../contexts/EventsContext";
+import UserContext from "../../contexts/UserContext";
 
 function NavBar() {
-  //
+  const navigate = useNavigate();
   const [showLinks, setShowLinks] = useState(false);
   const { setSearchValue } = useContext(EventsContext);
+  const { userDetails } = useContext(UserContext);
+
   const clearSearch = () => {
     setSearchValue("");
+    setShowLinks(false);
   };
 
   return (
@@ -39,12 +45,17 @@ function NavBar() {
         <NavLink onClick={clearSearch} to="events/theater" className="current">
           <li>Theater</li>
         </NavLink>
-        <NavLink onClick={clearSearch} to="/login" className="currentLoginLink">
-          <li>Log in</li>
-        </NavLink>
-        {/* <NavLink to="/search" className="current">
-          <li>Search</li>
-        </NavLink> */}
+        {userDetails !== null ? (
+          <i onClick={() => navigate("/dashboard")} className="pi pi-user" />
+        ) : (
+          <NavLink
+            onClick={clearSearch}
+            to="/login"
+            className="currentLoginLink"
+          >
+            <li>Log in</li>
+          </NavLink>
+        )}
       </ul>
       <div className="button-div">
         <button
