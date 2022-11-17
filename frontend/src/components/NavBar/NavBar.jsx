@@ -19,7 +19,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="navbar navbar-expand-sm d-flex justify-content-evenly">
+    <nav>
       <NavLink to="/" onClick={clearSearch} className="navbar-brand ">
         <img
           src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
@@ -29,7 +29,7 @@ function NavBar() {
         />
       </NavLink>
       <SearchBar />
-      <div className="collapse navbar-collapse">
+      <div>
         <ul className="links" id={showLinks ? "hidden" : "none"}>
           <NavLink onClick={clearSearch} to="/events/sport" className="current">
             <li>Sports</li>
