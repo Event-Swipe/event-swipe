@@ -1,0 +1,12 @@
+.page-wrapper-dashboard {
+  display: flex;
+  padding-right: 10%;
+  background-image: url("https://c1.wallpaperflare.com/preview/27/966/475/band-blur-concert-dark.jpg");
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: 38%;
+}

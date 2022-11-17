@@ -15,6 +15,9 @@ import { UserContextProvider } from "./contexts/UserContext";
 import EventDetails from "./components/EventDetails/EventDetails";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Favourites from "./components/Dashboard/Favourites/Favourites";
+import Settings from "./components/Dashboard/Settings/Settings";
+import EventsExchange from "./components/Dashboard/EventsExchange/EventsExchange";
 
 function App() {
   const [offset, setOffset] = useState(null);
@@ -51,6 +54,12 @@ function App() {
               />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard/favourites" element={<Favourites />} />
+              <Route path="/dashboard/user-settings" element={<Settings />} />
+              <Route
+                path="/dashboard/events-exchange"
+                element={<EventsExchange />}
+              />
               <Route path="/signup" element={<AddUser />} />
             </Routes>
           </CalendarContextProvider>
