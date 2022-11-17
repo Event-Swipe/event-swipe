@@ -1,4 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-use-before-define */
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -52,6 +53,7 @@ function AddUser() {
     <div className="form-content-right">
       {addedUser && (
         <img
+          alt="f"
           className="checkmark"
           src="https://media2.giphy.com/media/YlSR3n9yZrxfgVzagm/giphy.gif?cid=ecf05e47y3sxt91qum85ae9iqkx9zf9fk3netpi88xuk7gtl&rid=giphy.gif&ct=s"
         />

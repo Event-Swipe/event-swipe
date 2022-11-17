@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 /* eslint-disable prefer-template */
 /* eslint-disable prettier/prettier */
@@ -53,7 +54,6 @@ const createUser = (req, res) => {
       password,
     ])
     .then(([result]) => {
-      // console.log(result)
       const createdUser = {
         id: result.insertId,
         username,
@@ -61,6 +61,7 @@ const createUser = (req, res) => {
         password,
       };
       res.sendStatus(201)
+      res.send({createUser, result})
     })
     .catch((err) => {
       console.error(err);
@@ -102,6 +103,3 @@ module.exports = {
   deleteUser,
   getLoginCredentials,
 };
-
-
-

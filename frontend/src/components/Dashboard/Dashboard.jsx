@@ -8,7 +8,6 @@ function Dashboard() {
   const [sideMenuIsOpen, setSideMenuIsOpen] = useState(false);
   const { userDetails } = useContext(UserContext);
 
-  console.log(sideMenuIsOpen);
   return (
     <div className="page-wrapper-dashboard">
       <div
