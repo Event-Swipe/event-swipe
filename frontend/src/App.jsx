@@ -15,6 +15,7 @@ import { UserContextProvider } from "./contexts/UserContext";
 import EventDetails from "./components/EventDetails/EventDetails";
 import Login from "./components/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Favourites from "./components/Dashboard/Favourites/Favourites";
 
 function App() {
   const [offset, setOffset] = useState(null);
@@ -31,7 +32,6 @@ function App() {
   return (
     <>
       <EventsContextProvider>
-
         <UserContextProvider>
           <NavBar />
           <CalendarContextProvider>
@@ -52,11 +52,11 @@ function App() {
               />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard/favourites" element={<Favourites />} />
               <Route path="/signup" element={<AddUser />} />
             </Routes>
           </CalendarContextProvider>
         </UserContextProvider>
-
       </EventsContextProvider>
       <Subscribe />
       <Footer />
