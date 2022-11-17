@@ -19,7 +19,7 @@
 .sidemenu:hover {
   transition: 1s;
   opacity: 100%;
-  width: 20%;
+  /* width: 20%; */
   background-color: black;
   height: 500px;
 }
@@ -60,4 +60,13 @@
 
 .text {
   color: white;
+}
+
+@media screen and (max-width: 767px) {
+  .sidemenu {
+    width: 15%;
+  }
+  .sidemenu:hover {
+    width: 70%;
+  }
 }
