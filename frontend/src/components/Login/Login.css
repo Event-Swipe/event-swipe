@@ -6,7 +6,7 @@
 
 .right-div {
   width: 50%;
-  background-color: antiquewhite;
+  background-color: rgb(33, 32, 30);
   height: 500px;
 }
 
@@ -70,4 +70,27 @@
 
 .text {
   color: #f4f3f2;
+}
+
+@media screen and (max-width: 767px) {
+  .left-div {
+    padding: 5%;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    height: 500px;
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  .left-div * {
+    margin-left: 0px;
+  }
+
+  .right-div img {
+    display: none;
+  }
+  .right-div {
+    width: 50%;
+    height: 100%;
+  }
 }

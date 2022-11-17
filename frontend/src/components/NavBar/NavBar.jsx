@@ -28,7 +28,9 @@ function NavBar() {
           height="100px"
         />
       </NavLink>
-      <SearchBar />
+      <div className="search-bar-wrapper">
+        <SearchBar />
+      </div>
       <div className="collapse navbar-collapse">
         <ul className="links" id={showLinks ? "hidden" : "none"}>
           <NavLink onClick={clearSearch} to="/events/sport" className="current">

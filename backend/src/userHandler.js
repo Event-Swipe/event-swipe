@@ -62,7 +62,7 @@ const createUser = (req, res) => {
         email,
         password,
       };
-      res.sendStatus(201)
+      res.sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -104,5 +104,3 @@ module.exports = {
   deleteUser,
   getLoginCredentials,
 };
-
-

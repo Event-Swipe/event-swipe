@@ -6,10 +6,6 @@ import Sidemenu from "../Sidemenu/Sidemenu";
 function Dashboard() {
   const { userDetails } = useContext(UserContext);
 
-
-  // eslint-disable-next-line no-restricted-syntax
-  console.log(sideMenuIsOpen);
-
   return (
     <div className="page-wrapper-dashboard">
       <Sidemenu />
