@@ -20,12 +20,9 @@
 .card-title {
   text-overflow: ellipsis;
   width: 150px;
-  
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
-
   .eventCardContainer {
     margin: 5px;
   }
- 
 }
