@@ -13,6 +13,7 @@ router.get("/favourites/:id", FavouritesHandler.getFavEvents);
 router.get("/:id", userHandler.getUserById);
 router.put("/:id", userHandler.createUser);
 router.post("/users", userHandler.createUser);
+router.post("/favourites", FavouritesHandler.postFavEvent);
 router.delete("/:id", userHandler.deleteUser);
 
 module.exports = router;

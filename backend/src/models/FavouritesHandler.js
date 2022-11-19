@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable prettier/prettier */
 /* eslint-disable prefer-template */
 /* eslint-disable prettier/prettier */
@@ -14,6 +15,7 @@ const getFavEvents = (req, res) => {
     )
     .then(([result]) => {
       res.send(result[0]);
+      console.log(result[0]);
     })
     .catch((err) => {
       console.error(err + "Problem");
@@ -21,6 +23,25 @@ const getFavEvents = (req, res) => {
     });
 };
 
+const postFavEvent = (req, res) => {
+  const { userId, event } = req.body;
+
+  connection
+    .query("INSERT INTO favourites (userId, oneEvent) VALUES (?,?)", [
+      userId,
+      event,
+    ])
+    .then(([result]) => {
+      res.send(result);
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   getFavEvents,
+  postFavEvent,
 };
