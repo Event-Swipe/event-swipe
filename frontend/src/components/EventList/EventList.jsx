@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -20,12 +21,12 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Navigation } from "swiper";
 import CalendarWrap from "../Calendar/CalendarWrap/CalendarWrap";
+import Filter from "../FilteringBtns/Sort/Sort";
+import Sort from "../FilteringBtns/Filter/Filter";
 
 function EventList(props) {
   const { isCalendarSelected } = useContext(CalendarContext);
   const { calendarEvents } = useContext(CalendarContext);
-  console.log(isCalendarSelected);
-  console.log(calendarEvents);
 
   let selectedEvents;
   let selectedTitle;
@@ -68,14 +69,6 @@ function EventList(props) {
   return (
     <div>
       <Header title={selectedTitle} image={selectedImg} />
-      {/*  <img
-        src="https://images.pexels.com/photos/2747446/pexels-photo-2747446.jpeg"
-        alt=""
-        className="img-fluid"
-      /> */}
-      {/* <EventCaroussel eventsArr={selectedEvents} /> */}
-      {/* Displaying only the upcomming daily events */}
-      {/*  eslint-disable-next-line no-nested-ternary */}
       {searchValue?.length < 1 || searchedEvents?.length < 1 ? (
         <>
           {selectedTitle === "Today's Events" ? (
@@ -133,8 +126,9 @@ function EventList(props) {
       {searchedEvents && (
         <div className="list-styling">
           <div className="title-wrap">
-            <h1>More Events</h1>
+            <h1 style={{ color: "black" }}>More Events</h1>
           </div>
+
           <div className="calendar-wrap">
             <div className="col">
               <CalendarWrap calendarDate={props.calendarDate} />
@@ -145,6 +139,7 @@ function EventList(props) {
             <button className="filtering-btn">
               <i className="pi pi-filter" />
             </button> */}
+
           </div>
           <div className="cal-cards-wrap">
             {calendarEvents &&

@@ -1,7 +1,22 @@
 .selected {
+  display: block;
+  padding: 12px;
+  border-radius: 5px;
   background-color: greenyellow;
+  border: none;
+  margin: 10px;
 }
 
 .not-selected {
+  display: block;
+  padding: 12px;
+  border-radius: 5px;
   background-color: white;
+  border: none;
+  margin: 10px;
+}
+
+.col-con {
+  display: flex;
+  flex-direction: column;
 }

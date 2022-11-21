@@ -64,7 +64,7 @@ function Subscribe() {
             <p style={{ color: "red" }}>please enter a valid email address</p>
           )}
         </div>
-        <div className="button-wrapper">
+        <div>
           <Button
             onClick={subscribeHandler}
             label="Send me a newsletter!"
