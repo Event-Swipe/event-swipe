@@ -56,12 +56,8 @@ const login = () => {
             Password
           </label>
           <input
-
             type="password"
-
             className="form-control"
-            
-
             name="password"
             placeholder="Enter your password"
             onChange={(e) => changeHandle(e)}

@@ -36,11 +36,14 @@ function EventCard({ dayEvents, isRemovable }) {
   );
 
   useEffect(() => {
-    setDbObject({
-      userId: userDetails.id,
-      event: JSON.stringify(dayEvents),
-      eventId: dayEvents.id,
-    });
+    {
+      userDetails &&
+        setDbObject({
+          userId: userDetails.id,
+          event: JSON.stringify(dayEvents),
+          eventId: dayEvents.id,
+        });
+    }
   }, [isSelected]);
 
   const selectHandler = () => {
