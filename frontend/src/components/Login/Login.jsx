@@ -32,7 +32,7 @@ const login = () => {
           alt="login-cover"
         />
       </div>
-      <div className={userNotFound ? "wrong-details" : "left-div"}>
+      <div className={userNotFound ? "wrong-details left-div" : "left-div"}>
         <div className="title-wrapper">
           <h1 className="text">Welcome Back!</h1>
         </div>

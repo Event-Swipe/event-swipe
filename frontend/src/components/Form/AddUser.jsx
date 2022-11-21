@@ -56,7 +56,6 @@ function AddUser() {
       <div className="signUp-sideBar p-4">
         <h2 className="signUp-sidebar-title">Start your journey with us</h2>
         <p>Discover events near you</p>
-        <p>list some benefits of creating account</p>
       </div>
       <div className="form-content-right form-container p-4">
         {addedUser && (

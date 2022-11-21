@@ -47,6 +47,7 @@
   flex-wrap: wrap;
   justify-content: center;
   background-color: lightgray;
+  padding-bottom: 3em;
 }
 
 .filtering-btn {
@@ -58,8 +59,8 @@
   margin: 10px;
 }
 
-.list-styling h1 {
-  margin: 10px;
+.list-styling h2 {
+  margin: 1rem 0;
 }
 .searchDisplay {
   display: flex;

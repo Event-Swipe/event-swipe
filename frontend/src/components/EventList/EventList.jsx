@@ -126,7 +126,7 @@ function EventList(props) {
       {searchedEvents && (
         <div className="list-styling">
           <div className="title-wrap">
-            <h1 style={{ color: "black" }}>More Events</h1>
+            <h2 style={{ color: "black" }}>More Events</h2>
           </div>
           <div className="filter-btns-wrap">
             <CalendarWrap calendarDate={props.calendarDate} />

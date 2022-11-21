@@ -1,4 +1,4 @@
-.right-side {
+/* .right-side {
   width: 80%;
   text-align: center;
 }
@@ -12,11 +12,30 @@
   width: 100%;
 }
 
-.text {
+.user-greeting {
   color: white;
 }
 
 .logout-btn {
   position: absolute;
   right: 0;
+}
+ */
+.page-wrapper-dashboard {
+  display: flex;
+  flex-direction: row;
+  background-image: url("https://c1.wallpaperflare.com/preview/27/966/475/band-blur-concert-dark.jpg");
+  background-position: center center;
+  background-size: cover;
+}
+.user-greeting {
+  color: white;
+  text-align: center;
+}
+.right-side {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
 }
