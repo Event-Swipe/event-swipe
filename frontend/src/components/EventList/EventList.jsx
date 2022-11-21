@@ -130,8 +130,8 @@ function EventList(props) {
           </div>
           <div className="filter-btns-wrap">
             <CalendarWrap calendarDate={props.calendarDate} />
-            <Filter />
-            <Sort />
+            {/* <Filter />
+            <Sort /> */}
           </div>
           <div className="cal-cards-wrap">
             {calendarEvents &&
