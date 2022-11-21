@@ -27,14 +27,13 @@ const postFavEvent = (req, res) => {
   const { userId, event, eventId } = req.body;
 
   connection
-    .query("INSERT INTO favourites (userId, oneEvent, eventId) VALUES (?,?,?)", [
-      userId,
-      event,
-      eventId
-    ])
+    .query(
+      "INSERT INTO favourites (userId, oneEvent, eventId) VALUES (?,?,?)",
+      [userId, event, eventId]
+    )
     .then(([result]) => {
-      const eventObj = [result, result.insertId]
-      res.status(201).send(eventObj)
+      const eventObj = [result, result.insertId];
+      res.status(201).send(eventObj);
     })
     .catch((err) => {
       console.error(err);
@@ -46,17 +45,14 @@ module.exports = {
   getFavEvents,
   postFavEvent,
 };
-
 
 const deleteFavEvent = (req, res) => {
   const { id } = req.params;
 
   connection
-    .query(`DELETE FROM favourites Where eventId = '${id}'`, [
-      id
-    ])
+    .query(`DELETE FROM favourites Where eventId = '${id}'`, [id])
     .then(([result]) => {
-      res.status(201).send(result)
+      res.status(201).send(result);
     })
     .catch((err) => {
       console.error(err);
@@ -64,9 +60,8 @@ const deleteFavEvent = (req, res) => {
     });
 };
 
-
 module.exports = {
   getFavEvents,
   postFavEvent,
-  deleteFavEvent
+  deleteFavEvent,
 };

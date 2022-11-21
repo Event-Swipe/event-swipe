@@ -7,7 +7,20 @@ function EventsExchange() {
   return (
     <div className="page-wrapper-dashboard">
       <Sidemenu />
-      <h4 className="text center">Events Exchange Feature soon to come...</h4>
+      <div>
+        <br />
+        <h2 className="text ">Events Sent</h2>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h2 className="text ">Events Recived</h2>
+      </div>
     </div>
   );
 }

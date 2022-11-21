@@ -19,6 +19,7 @@ import UserContext from "../../contexts/UserContext";
 
 function EventCard({ dayEvents, isRemovable }) {
   const [isSelected, setIsSelected] = useState(false);
+  const [isShared, setIsShared] = useState(false);
   const [dbObject, setDbObject] = useState(null);
   const [dbObjectID, setDbObjectID] = useState(null);
   const { userDetails } = useContext(UserContext);
@@ -70,6 +71,17 @@ function EventCard({ dayEvents, isRemovable }) {
     }
   };
 
+  const shareHandler = () => {
+    setIsShared((prevState) => !prevState);
+  };
+
+  const sendToFriend = (e) => {
+    if (e.key === "Enter") {
+      alert("Sent Succesfully!");
+      setIsShared(false);
+    }
+  };
+
   return (
     <div key={dayEvents.id}>
       {isRemovable && (
@@ -100,10 +112,20 @@ function EventCard({ dayEvents, isRemovable }) {
       </NavLink>
       <div>
         {!isRemovable && (
-          <i
-            onClick={() => selectHandler()}
-            className={isSelected ? "pi pi-heart-fill" : "pi pi-heart"}
-          />
+          <>
+            <i
+              onClick={() => selectHandler()}
+              className={isSelected ? "pi pi-heart-fill" : "pi pi-heart"}
+            />
+            <i className="pi pi-share-alt" onClick={() => shareHandler()} />
+            {isShared && (
+              <input
+                type="text"
+                placeholder="Friends Email"
+                onKeyDown={(e) => sendToFriend(e)}
+              />
+            )}
+          </>
         )}
       </div>
     </div>
