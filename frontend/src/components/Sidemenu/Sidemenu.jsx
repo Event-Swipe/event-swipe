@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 function Sidemenu() {
   const [sideMenuIsOpen, setSideMenuIsOpen] = useState(false);
 
-  console.log(sideMenuIsOpen);
   return (
     <div
       onMouseEnter={() => setSideMenuIsOpen(true)}

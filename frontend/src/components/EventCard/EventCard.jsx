@@ -1,12 +1,28 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/no-duplicates */
+/* eslint-disable no-alert */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./EventCard.css";
+import axios from "axios";
+import { useEffect } from "react";
+import UserContext from "../../contexts/UserContext";
 
-function EventCard({ dayEvents }) {
+function EventCard({ dayEvents, isRemovable }) {
+  const [isSelected, setIsSelected] = useState(false);
+  const [dbObject, setDbObject] = useState(null);
+  const [dbObjectID, setDbObjectID] = useState(null);
+  const { userDetails } = useContext(UserContext);
+
   const title = dayEvents.short_title;
   const subTitle = dayEvents.venue.display_location;
   const imgUrl = dayEvents.performers[0].image;
@@ -19,8 +35,46 @@ function EventCard({ dayEvents }) {
     []
   );
 
+  useEffect(() => {
+    setDbObject({
+      userId: userDetails.id,
+      event: JSON.stringify(dayEvents),
+      eventId: dayEvents.id,
+    });
+  }, [isSelected]);
+
+  const selectHandler = () => {
+    setIsSelected(true);
+    axios
+      .post(`http://localhost:5000/favourites`, dbObject)
+      .then((res) => {
+        setDbObjectID(res.data[1]);
+      })
+      .catch(() => {
+        // errorLogin()
+      });
+  };
+
+  const removeHandler = () => {
+    const response = confirm("Remove this event from favourties?");
+    response;
+
+    {
+      response &&
+        axios
+          .delete(`http://localhost:5000/favourites/${dayEvents.id}`)
+          .then(() => {})
+          .catch(() => {
+            // errorLogin()
+          });
+    }
+  };
+
   return (
     <div key={dayEvents.id}>
+      {isRemovable && (
+        <i className="pi pi-times" onClick={() => removeHandler()} />
+      )}
       <NavLink to={`/events/${dayEvents.id}`} className="cardLink">
         <div className="eventCardContainer card">
           <img
@@ -32,14 +86,26 @@ function EventCard({ dayEvents }) {
             className="card-img-top img-fluid"
           />
           <div className="card-body">
-            <h5 className="card-title">{title}</h5>
-            <p className="card-subtitle text-muted">{subTitle.toUpperCase()}</p>
-            <p className="card-text">
-              {eventHour}:{eventMinutes}
-            </p>
+            <div>
+              <h5 className="card-title">{title}</h5>
+              <p className="card-subtitle text-muted">
+                {subTitle.toUpperCase()}
+              </p>
+              <p className="card-text">
+                {eventHour}:{eventMinutes}
+              </p>
+            </div>
           </div>
         </div>
       </NavLink>
+      <div>
+        {!isRemovable && (
+          <i
+            onClick={() => selectHandler()}
+            className={isSelected ? "pi pi-heart-fill" : "pi pi-heart"}
+          />
+        )}
+      </div>
     </div>
   );
 }

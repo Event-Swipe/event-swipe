@@ -10,3 +10,14 @@
   transform: translate(-50%, 0);
   top: 38%;
 }
+
+.pi-times {
+  color: white;
+}
+
+.fav-cards-con {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+}
