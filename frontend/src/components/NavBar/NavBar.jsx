@@ -1,73 +1,62 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { useState, useContext } from "react";
-import "primeicons/primeicons.css";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./NavBar.css";
-import { NavLink } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
 import SearchBar from "../SearchBar/SearchBar";
 import EventsContext from "../../contexts/EventsContext";
 import UserContext from "../../contexts/UserContext";
 
 function NavBar() {
-  //
-  const { userDetails } = useContext(UserContext);
+  const navigate = useNavigate();
   const [showLinks, setShowLinks] = useState(false);
   const { setSearchValue } = useContext(EventsContext);
+  const { userDetails } = useContext(UserContext);
+
   const clearSearch = () => {
     setSearchValue("");
+    setShowLinks(false);
   };
 
   return (
-    <nav className="navbar navbar-expand-sm d-flex justify-content-evenly">
-      <NavLink to="/" onClick={clearSearch} className="navbar-brand ">
+    <nav className="navbar">
+      <NavLink to="/" onClick={clearSearch}>
         <img
           src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
           className="company-logo"
           alt="company-logo"
-          height="100px"
         />
       </NavLink>
       <SearchBar />
-      <div className="collapse navbar-collapse">
-        <ul className="links" id={showLinks ? "hidden" : "none"}>
-          <NavLink onClick={clearSearch} to="/events/sport" className="current">
-            <li>Sports</li>
-          </NavLink>
+      <ul className="links" id={showLinks ? "hidden" : "none"}>
+        <NavLink onClick={clearSearch} to="/events/sport" className="current">
+          <li>Sports</li>
+        </NavLink>
+        <NavLink
+          onClick={clearSearch}
+          to="/events/concerts"
+          className="current"
+        >
+          <li>Concert</li>
+        </NavLink>
+        <NavLink onClick={clearSearch} to="events/theater" className="current">
+          <li>Theater</li>
+        </NavLink>
+        {userDetails !== null ? (
+          <i onClick={() => navigate("/dashboard")} className="pi pi-user" />
+        ) : (
           <NavLink
             onClick={clearSearch}
-            to="/events/concerts"
-            className="current"
+            to="/login"
+            className="currentLoginLink"
           >
-            <li>Concert</li>
+            <li>Log in</li>
           </NavLink>
-          <NavLink
-            onClick={clearSearch}
-            to="events/theater"
-            className="current"
-          >
-            <li>Theater</li>
-          </NavLink>
-
-          {userDetails === null ? (
-            <NavLink
-              onClick={clearSearch}
-              to="/login"
-              className="current LoginLink"
-            >
-              <li>Log in</li>
-            </NavLink>
-          ) : (
-            <NavLink to="dashboard">
-              <i className="pi pi-user" />
-            </NavLink>
-          )}
-
-          {/* <NavLink to="/search" className="current">
-          <li>Search</li>
-        </NavLink> */}
-        </ul>
-      </div>
+        )}
+      </ul>
       <div className="button-div">
         <button
           className="burger-menu-btn"

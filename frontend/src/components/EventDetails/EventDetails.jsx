@@ -11,7 +11,6 @@ function EventDetails() {
   const [event, setEvent] = useState(null);
   const [microTickets, setMicroTickets] = useState(null);
   const { id } = useParams();
-
   useEffect(() => {
     fetch(
       `https://api.seatgeek.com/2/events/${id}?client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`

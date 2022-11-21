@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import "./EventCard.css";
 
@@ -10,8 +10,14 @@ function EventCard({ dayEvents }) {
   const title = dayEvents.short_title;
   const subTitle = dayEvents.venue.display_location;
   const imgUrl = dayEvents.performers[0].image;
-  const eventHour = Math.floor(Math.random() * (22 - 16)) + 16;
-  const eventMinutes = Math.floor(Math.random() * (59 - 30)) + 30;
+  const eventHour = useMemo(
+    () => Math.floor(Math.random() * (22 - 16)) + 16,
+    []
+  );
+  const eventMinutes = useMemo(
+    () => Math.floor(Math.random() * (59 - 30)) + 30,
+    []
+  );
 
   return (
     <div key={dayEvents.id}>

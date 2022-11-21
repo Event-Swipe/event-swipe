@@ -37,7 +37,7 @@
 .title-wrap {
   text-align: center;
 }
-.calendar-wrap {
+.filter-btns-wrap {
   display: flex;
   justify-content: center;
 }
@@ -47,11 +47,6 @@
   flex-wrap: wrap;
   justify-content: center;
   background-color: lightgray;
-}
-
-.col {
-  display: flex;
-  flex-direction: column;
 }
 
 .filtering-btn {

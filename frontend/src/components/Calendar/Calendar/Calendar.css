@@ -1,10 +1,10 @@
 .react-datepicker__close-icon {
-  position: relative;
+  right: -151px;
+  position: absolute;
 }
 
 .react-datepicker__input-container {
-  background-color: aquamarine;
-  position: relative;
+  /* background-color: black; */
   display: inline-block;
-  width: 100%;
+  width: 20%;
 }

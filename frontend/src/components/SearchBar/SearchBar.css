@@ -1,14 +1,14 @@
-/* .searchBar {
+.searchBar {
   display: flex;
   align-items: center;
 }
-
+/*
 .searchForm {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
+*/
 .searchBar-input {
   width: 310px;
   background: #2a3334;
@@ -21,9 +21,9 @@
   border-radius: 1.25rem;
   color: #fff;
 }
- */
 @media screen and (max-width: 767px) {
   .searchBar-input {
+    z-index: 100;
     position: absolute;
     top: 75px;
     left: calc((100% / 2) - 100px);

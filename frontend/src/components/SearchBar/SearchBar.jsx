@@ -12,9 +12,6 @@ function SearchBar() {
 
   return (
     <div className="searchBar">
-      {/* <div className="searchTitle">
-        <h3>Search</h3>
-      </div> */}
       <div>
         <form
           className="searchForm d-flex bg-transparent"
