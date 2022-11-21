@@ -18,6 +18,7 @@
   white-space: nowrap;
 }
 .card-title {
+  display: flex;
   text-overflow: ellipsis;
   width: 150px;
 }
