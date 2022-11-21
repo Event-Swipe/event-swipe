@@ -139,12 +139,12 @@ function EventList(props) {
             <div className="col">
               <CalendarWrap calendarDate={props.calendarDate} />
             </div>
-            <button className="filtering-btn">
+            {/* <button className="filtering-btn">
               <i className="pi pi-sort-amount-down " />
             </button>
             <button className="filtering-btn">
               <i className="pi pi-filter" />
-            </button>
+            </button> */}
           </div>
           <div className="cal-cards-wrap">
             {calendarEvents &&
