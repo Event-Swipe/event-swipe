@@ -9,7 +9,7 @@ const getFavEvents = (req, res) => {
 
   connection
     .query(
-      `SELECT users.id, favourites.oneevent
+      `SELECT users.id, favourites.oneevent, favourites.id
       FROM users
       INNER JOIN favourites ON users.id=favourites.userId where users.id = '${id}'`
     )
@@ -24,12 +24,13 @@ const getFavEvents = (req, res) => {
 };
 
 const postFavEvent = (req, res) => {
-  const { userId, event } = req.body;
+  const { userId, event, eventId } = req.body;
 
   connection
-    .query("INSERT INTO favourites (userId, oneEvent) VALUES (?,?)", [
+    .query("INSERT INTO favourites (userId, oneEvent, eventId) VALUES (?,?,?)", [
       userId,
       event,
+      eventId
     ])
     .then(([result]) => {
       const eventObj = [result, result.insertId]
@@ -49,10 +50,9 @@ module.exports = {
 
 const deleteFavEvent = (req, res) => {
   const { id } = req.params;
-  console.log(req.params)
 
   connection
-    .query(`DELETE FROM favourites Where id = '${id}'`, [
+    .query(`DELETE FROM favourites Where eventId = '${id}'`, [
       id
     ])
     .then(([result]) => {

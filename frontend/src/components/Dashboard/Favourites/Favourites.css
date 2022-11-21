@@ -14,3 +14,10 @@
 .pi-times {
   color: white;
 }
+
+.fav-cards-con {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+}

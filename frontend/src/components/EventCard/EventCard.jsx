@@ -1,3 +1,6 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable no-alert */
@@ -36,6 +39,7 @@ function EventCard({ dayEvents, isRemovable }) {
     setDbObject({
       userId: userDetails.id,
       event: JSON.stringify(dayEvents),
+      eventId: dayEvents.id,
     });
   }, [isSelected]);
 
@@ -45,29 +49,31 @@ function EventCard({ dayEvents, isRemovable }) {
       .post(`http://localhost:5000/favourites`, dbObject)
       .then((res) => {
         setDbObjectID(res.data[1]);
-        alert("added succesfully");
-      })
-      .catch(() => {
-        // errorLogin()
-      });
-  };
-  const removeHandler = (input) => {
-    setIsSelected(true);
-    console.log(input);
-    axios
-      .delete(`http://localhost:5000/favourites/${input}`, { id: input })
-      .then(() => {
-        alert("deleted succesfully");
       })
       .catch(() => {
         // errorLogin()
       });
   };
 
+  const removeHandler = () => {
+    const response = confirm("Remove this event from favourties?");
+    response;
+
+    {
+      response &&
+        axios
+          .delete(`http://localhost:5000/favourites/${dayEvents.id}`)
+          .then(() => {})
+          .catch(() => {
+            // errorLogin()
+          });
+    }
+  };
+
   return (
     <div key={dayEvents.id}>
       {isRemovable && (
-        <i className="pi pi-times" onClick={() => removeHandler(dbObjectID)} />
+        <i className="pi pi-times" onClick={() => removeHandler()} />
       )}
       <NavLink to={`/events/${dayEvents.id}`} className="cardLink">
         <div className="eventCardContainer card">
@@ -93,10 +99,12 @@ function EventCard({ dayEvents, isRemovable }) {
         </div>
       </NavLink>
       <div>
-        <i
-          onClick={() => selectHandler()}
-          className={isSelected ? "pi pi-heart-fill" : "pi pi-heart"}
-        />
+        {!isRemovable && (
+          <i
+            onClick={() => selectHandler()}
+            className={isSelected ? "pi pi-heart-fill" : "pi pi-heart"}
+          />
+        )}
       </div>
     </div>
   );

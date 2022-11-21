@@ -16,7 +16,6 @@ function Favourites() {
     fetch(`http://localhost:5000/favourites/${userDetails.id}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         const arr = [];
         const processData = data.map((event) => {
           const parsedEvent = JSON.parse(event.oneevent);
@@ -38,10 +37,12 @@ function Favourites() {
     <div className="page-wrapper-dashboard">
       <Sidemenu />
       <h4 className="text center">Favourites Feature soon to come...</h4>
-      {favEvents !== null &&
-        favEvents.map((event) => {
-          return <EventCard dayEvents={event.event} isRemovable />;
-        })}
+      <div className="fav-cards-con">
+        {favEvents !== null &&
+          favEvents.map((event) => {
+            return <EventCard dayEvents={event.event} isRemovable />;
+          })}
+      </div>
     </div>
   );
 }
