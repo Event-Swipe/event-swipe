@@ -60,7 +60,7 @@ input {
 }
  */
 .subscribe-container {
-  background-color: black;
+  background-color: #212529;
   color: white;
 }
 .title-container h4 {
@@ -72,5 +72,14 @@ input {
   .form-background-layout {
     display: flex !important;
     flex-direction: column !important;
+  }
+  .input-wrapper,
+  .subscribe-button {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 767px) {
+  .subscribe-error-message {
+    position: absolute;
   }
 }
