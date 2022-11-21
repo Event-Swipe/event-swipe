@@ -47,15 +47,20 @@ function EventCard({ dayEvents, isRemovable }) {
   }, [isSelected]);
 
   const selectHandler = () => {
-    setIsSelected(true);
-    axios
-      .post(`http://localhost:5000/favourites`, dbObject)
-      .then((res) => {
-        setDbObjectID(res.data[1]);
-      })
-      .catch(() => {
-        // errorLogin()
-      });
+    {
+      userDetails !== null && setIsSelected(true);
+      axios
+        .post(`http://localhost:5000/favourites`, dbObject)
+        .then((res) => {
+          setDbObjectID(res.data[1]);
+        })
+        .catch(() => {
+          // errorLogin()
+        });
+    }
+    {
+      !userDetails && alert("Only signed users can use this feature");
+    }
   };
 
   const removeHandler = () => {
