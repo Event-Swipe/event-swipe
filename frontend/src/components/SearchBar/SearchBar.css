@@ -1,3 +1,4 @@
+/*
 .searchBar {
   display: flex;
   align-items: center;
@@ -8,7 +9,7 @@
   align-items: center;
   justify-content: center;
 }
-*/
+
 .searchBar-input {
   width: 310px;
   background: #2a3334;
@@ -21,7 +22,7 @@
   border-radius: 1.25rem;
   color: #fff;
 }
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .searchBar-input {
     z-index: 100;
     position: absolute;
@@ -38,7 +39,7 @@
     border-radius: 1.25rem;
     color: #fff;
   }
-}
+} 
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .searchBar-input {
@@ -54,3 +55,4 @@
     color: #fff;
   }
 }
+*/
