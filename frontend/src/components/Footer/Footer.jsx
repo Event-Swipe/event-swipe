@@ -21,13 +21,17 @@ function Footer() {
       <div className="social-media-wrapper d-flex justify-content-center align-items-center">
         <SocialIcon
           bgColor="#fff"
-          url="https://linkedin.com/"
+          url="https://www.linkedin.com/in/oren-tal-a4007716a/"
           className="m-1"
         />
-        <SocialIcon bgColor="#fff" url="https://github.com/" className="m-1" />
         <SocialIcon
           bgColor="#fff"
-          url="https://facebook.com/"
+          url="https://github.com/Event-Swipe/"
+          className="m-1"
+        />
+        <SocialIcon
+          bgColor="#fff"
+          url="https://www.facebook.com/Google/"
           className="m-1"
         />
       </div>

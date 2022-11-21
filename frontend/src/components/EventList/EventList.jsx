@@ -128,10 +128,18 @@ function EventList(props) {
           <div className="title-wrap">
             <h1 style={{ color: "black" }}>More Events</h1>
           </div>
-          <div className="filter-btns-wrap">
-            <CalendarWrap calendarDate={props.calendarDate} />
-            <Filter />
-            <Sort />
+
+          <div className="calendar-wrap">
+            <div className="col">
+              <CalendarWrap calendarDate={props.calendarDate} />
+            </div>
+            {/* <button className="filtering-btn">
+              <i className="pi pi-sort-amount-down " />
+            </button>
+            <button className="filtering-btn">
+              <i className="pi pi-filter" />
+            </button> */}
+
           </div>
           <div className="cal-cards-wrap">
             {calendarEvents &&
