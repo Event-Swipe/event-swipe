@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable import/no-duplicates */
+/* eslint-disable no-alert */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-undef */
@@ -8,10 +11,13 @@ import React, { useMemo, useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./EventCard.css";
 import axios from "axios";
+import { useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
 
-function EventCard({ dayEvents }) {
+function EventCard({ dayEvents, isRemovable }) {
   const [isSelected, setIsSelected] = useState(false);
+  const [dbObject, setDbObject] = useState(null);
+  const [dbObjectID, setDbObjectID] = useState(null);
   const { userDetails } = useContext(UserContext);
 
   const title = dayEvents.short_title;
@@ -26,14 +32,32 @@ function EventCard({ dayEvents }) {
     []
   );
 
+  useEffect(() => {
+    setDbObject({
+      userId: userDetails.id,
+      event: JSON.stringify(dayEvents),
+    });
+  }, [isSelected]);
+
   const selectHandler = () => {
     setIsSelected(true);
     axios
       .post(`http://localhost:5000/favourites`, dbObject)
+      .then((res) => {
+        setDbObjectID(res.data[1]);
+        alert("added succesfully");
+      })
+      .catch(() => {
+        // errorLogin()
+      });
+  };
+  const removeHandler = (input) => {
+    setIsSelected(true);
+    console.log(input);
+    axios
+      .delete(`http://localhost:5000/favourites/${input}`, { id: input })
       .then(() => {
-        // eslint-disable-next-line no-use-before-define
-        sucessLogin();
-        setAddedUser(true);
+        alert("deleted succesfully");
       })
       .catch(() => {
         // errorLogin()
@@ -42,6 +66,9 @@ function EventCard({ dayEvents }) {
 
   return (
     <div key={dayEvents.id}>
+      {isRemovable && (
+        <i className="pi pi-times" onClick={() => removeHandler(dbObjectID)} />
+      )}
       <NavLink to={`/events/${dayEvents.id}`} className="cardLink">
         <div className="eventCardContainer card">
           <img

@@ -14,8 +14,8 @@ const getFavEvents = (req, res) => {
       INNER JOIN favourites ON users.id=favourites.userId where users.id = '${id}'`
     )
     .then(([result]) => {
-      res.send(result[0]);
-      console.log(result[0]);
+      res.send(result);
+      console.log(result);
     })
     .catch((err) => {
       console.error(err + "Problem");
@@ -32,8 +32,8 @@ const postFavEvent = (req, res) => {
       event,
     ])
     .then(([result]) => {
-      res.send(result);
-      res.sendStatus(201);
+      const eventObj = [result, result.insertId]
+      res.status(201).send(eventObj)
     })
     .catch((err) => {
       console.error(err);
@@ -44,4 +44,29 @@ const postFavEvent = (req, res) => {
 module.exports = {
   getFavEvents,
   postFavEvent,
+};
+
+
+const deleteFavEvent = (req, res) => {
+  const { id } = req.params;
+  console.log(req.params)
+
+  connection
+    .query(`DELETE FROM favourites Where id = '${id}'`, [
+      id
+    ])
+    .then(([result]) => {
+      res.status(201).send(result)
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+
+module.exports = {
+  getFavEvents,
+  postFavEvent,
+  deleteFavEvent
 };
