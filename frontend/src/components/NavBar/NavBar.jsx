@@ -45,40 +45,42 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <SearchBar />
           <ul
-            className="nav-list navbar-nav ms-auto me-2 mb-2 mb-md-0"
+            className="nav-list navbar-nav ms-auto me-2 mb-2 mb-md-0 align-items-center"
             id={showLinks ? "hidden" : "none"}
           >
             <NavLink
               onClick={clearSearch}
               to="/events/sport"
-              className="current nav-link active"
+              className="current nav-link fs-5 active"
             >
               <li className="nav-item">Sports</li>
             </NavLink>
             <NavLink
               onClick={clearSearch}
               to="/events/concerts"
-              className="current nav-link active"
+              className="current nav-link fs-5 active"
             >
               <li className="nav-item">Concert</li>
             </NavLink>
             <NavLink
               onClick={clearSearch}
               to="events/theater"
-              className="current nav-link active"
+              className="current nav-link fs-5 active"
             >
               <li className="nav-item">Theater</li>
             </NavLink>
             {userDetails !== null ? (
-              <i
-                onClick={() => navigate("/dashboard")}
-                className="pi pi-user"
-              />
+              <div className="login-icon">
+                <i
+                  onClick={() => navigate("/dashboard")}
+                  className="pi pi-user"
+                />
+              </div>
             ) : (
               <NavLink
                 onClick={clearSearch}
                 to="/login"
-                className="currentLoginLink nav-link active"
+                className="currentLoginLink nav-link  fs-5 active"
               >
                 <li className="nav-item">Log in</li>
               </NavLink>

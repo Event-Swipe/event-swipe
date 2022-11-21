@@ -120,3 +120,13 @@ ul {
 .company-logo {
   height: 80px;
 }
+.login-icon {
+  color: white;
+  margin: 10px;
+  border: 1px solid white;
+  border-radius: 50%;
+  padding: 7px 10px;
+}
+.pi {
+  font-size: large;
+}

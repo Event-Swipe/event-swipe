@@ -48,14 +48,6 @@
    color: white;
   } */
 
-.form-input-login a {
-  font-size: x-large;
-  padding: 4px;
-  border: 1px solid white;
-  border-radius: 5px;
-  background-color: beige;
-}
-
 /* h1 {
   color: white;
   font-size: calc(1.375rem + 1.5vw);
@@ -90,6 +82,7 @@
   padding-bottom: 40px;
   width: 40vw;
 }
+
 .form-inputs {
   display: flex;
   flex-direction: column;
@@ -106,5 +99,13 @@
   .form-inputs,
   .form-input-btn {
     width: 100%;
+  }
+  .form-container h3 {
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .form-container {
+    max-width: 60%;
   }
 }

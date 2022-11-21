@@ -5,6 +5,7 @@
   font-size: 16px;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
 }
 .pi-filter {
   color: black;
@@ -57,4 +58,7 @@
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: yellowgreen;
+}
+.col-con {
+  flex-direction: row;
 }

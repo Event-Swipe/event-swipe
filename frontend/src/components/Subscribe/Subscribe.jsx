@@ -41,7 +41,7 @@ function Subscribe() {
   }
 
   return (
-    <div className=" subscribe-container d-flex flex-column  justify-content-center align-items-center p-3">
+    <div className=" subscribe-container d-flex flex-column  justify-content-center align-items-center p-4">
       <div className="title-container">
         <h4>Subscribe to our newsletter below!</h4>
       </div>
@@ -61,14 +61,16 @@ function Subscribe() {
             className="form-control"
           />
           {validationLine && (
-            <p style={{ color: "red" }}>please enter a valid email address</p>
+            <p className="subscribe-error-message" style={{ color: "red" }}>
+              Please enter a valid email address
+            </p>
           )}
         </div>
-        <div>
+        <div className="subscribe-button">
           <Button
             onClick={subscribeHandler}
             label="Send me a newsletter!"
-            className="btn btn-light"
+            className="btn btn-light subscribe-button"
           />
         </div>
       </div>
