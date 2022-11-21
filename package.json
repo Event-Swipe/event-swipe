@@ -17,16 +17,15 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.0.0",
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
-
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-
+    "@react-google-maps/api": "^2.16.1",
     "react-router-dom": "^6.4.2",
     "swiper": "^8.4.4"
-
   }
 }

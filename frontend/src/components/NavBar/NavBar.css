@@ -1,11 +1,19 @@
+body {
+  font-family: Roobert, "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
 nav {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-between;
   height: 80px;
   background: rgb(5, 5, 5);
-  padding: 20px 80px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  font-size: initial;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .company-logo {
@@ -20,42 +28,75 @@ li {
   position: relative;
 }
 
-.current {
+menu {
+  display: none;
+}
+.burger-menu-btn {
+  display: none;
+}
+
+.links {
+  display: flex;
   text-decoration: none;
-  font-size: 1.3rem;
   font-weight: 600;
   color: #fff;
   cursor: pointer;
 }
 
-#bar {
+.LoginLink {
+  background: #2a3334;
+  border-radius: 50px;
+  padding: 10px 0;
+}
+
+.current {
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*#bar {
   display: none;
   color: #fff;
-}
+}*/
 
 ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  right: 0;
+  position: absolute;
+  margin-right: 20px;
 }
 
-button {
-  display: none;
+.currentLoginLink {
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
 }
 
-.menu {
-  display: none;
+.currentLoginLink:hover {
+  background-color: #2a3334;
 }
 
-.burger-menu-btn {
-  display: none;
-}
-
-@media screen and (max-width: 768px) {
-  button {
-    display: flex;
-    align-items: flex-end;
+@media screen and (max-width: 767px) {
+  .button-div {
+    position: absolute;
+    right: 6px;
   }
+
+  menu {
+    display: flex;
+  }
+
+  .burger-menu-btn {
+    display: flex;
+  }
+
   #hidden {
     position: absolute;
     right: 0px;
@@ -63,21 +104,18 @@ button {
     height: 230px;
     max-height: 230px;
     width: 100%;
+    margin: 0;
     background-color: rgb(5, 5, 5);
     display: flex;
     flex-direction: column;
     align-items: center;
     font-size: 25px;
-  }
-  .menu {
-    display: block;
+    z-index: 100;
   }
 
-  .burger-menu-btn {
-    display: block;
-  }
-
-  #none {
+  .links {
     display: none;
   }
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
 }

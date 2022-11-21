@@ -1,0 +1,22 @@
+.right-side {
+  width: 80%;
+  text-align: center;
+}
+
+.right-side-top {
+  height: 20%;
+}
+
+.right-side-bottom {
+  background-color: white;
+  width: 100%;
+}
+
+.text {
+  color: white;
+}
+
+.logout-btn {
+  position: absolute;
+  right: 0;
+}

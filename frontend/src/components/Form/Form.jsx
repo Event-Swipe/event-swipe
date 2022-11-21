@@ -1,10 +1,10 @@
 import React from "react";
-import FormSignUp from "./FormSignUp";
+import AddUser from "./AddUser";
 
 function Form() {
   return (
     <div>
-      <FormSignUp />
+      <AddUser />
     </div>
   );
 }

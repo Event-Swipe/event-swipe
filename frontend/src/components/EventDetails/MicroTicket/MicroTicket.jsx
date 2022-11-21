@@ -10,8 +10,8 @@ function MicroTicket({ data }) {
     <div className="micro-ticket">
       <i className={data.iconStyle} />
       <div className="micro-ticket-titles">
-        <p>{data.label}</p>
-        <p>{data.value}</p>
+        {/* <p className="micro-ticket-label">{data.label}</p> */}
+        <p className="micro-ticket-value">{data.value}</p>
       </div>
     </div>
   );

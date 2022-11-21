@@ -11,7 +11,6 @@ function EventDetails() {
   const [event, setEvent] = useState(null);
   const [microTickets, setMicroTickets] = useState(null);
   const { id } = useParams();
-
   useEffect(() => {
     fetch(
       `https://api.seatgeek.com/2/events/${id}?client_id=Mjk4MjkxNzJ8MTY2NjI1NjIzNi41ODYyMTUz`
@@ -27,7 +26,7 @@ function EventDetails() {
           },
           {
             label: "Date",
-            value: data.datetime_local,
+            value: data.datetime_local.substring(0, 10),
             iconStyle: "pi pi-clock",
           },
           { label: "Venue", value: data.venue.name, iconStyle: "pi pi-home" },
@@ -42,15 +41,17 @@ function EventDetails() {
       ) : (
         <>
           <img
-            className="event-img"
+            className="event-img img-fluid"
             alt="bla"
             src={event.performers[0].image}
           />
           <div className="right-side-page">
-            <h1 className="event-title">{event.title}</h1>
+            <h4 className="event-title m-3">{event.title}</h4>
 
-            <a href={event.performers[0].url}>
-              <button className="buy-tickets-btn">buy tickets</button>
+            <a className="buy-tickets-link" href={event.performers[0].url}>
+              <button className="buy-tickets-btn btn btn-dark btn-lg m-2 mb-4">
+                Buy Tickets
+              </button>
             </a>
             <div className="right-side-bottom-container">
               <div className="event-info-micro-ticket-container">
