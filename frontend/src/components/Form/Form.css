@@ -56,6 +56,10 @@
   background-color: beige;
 }
 
+.wrong {
+  color: red;
+}
+
 h1 {
   color: white;
   font-size: calc(1.375rem + 1.5vw);

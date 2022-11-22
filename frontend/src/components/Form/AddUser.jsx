@@ -8,11 +8,14 @@ import "./Form.css";
 
 function AddUser() {
   const [addedUser, setAddedUser] = useState(null);
+  const [passwordNotMatch, setPasswordNotMatch] = useState(null);
   const [addUser, setAddUser] = useState({
     username: "",
     email: "",
     password: "",
   });
+  const [firstPassword, setFirstPassword] = useState("");
+  const [secondPassword, setSecondPassword] = useState("");
 
   const handleChange = (event) => {
     const newName = event.target.name;
@@ -23,17 +26,22 @@ function AddUser() {
   const navigate = useNavigate();
 
   const handleSubmit = (event, newUser) => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:5000/users", newUser)
-      .then(() => {
-        // eslint-disable-next-line no-use-before-define
-        sucessLogin();
-        setAddedUser(true);
-      })
-      .catch(() => {
-        // errorLogin()
-      });
+    if (firstPassword === secondPassword) {
+      event.preventDefault();
+      axios
+        .post("http://localhost:5000/users", newUser)
+        .then(() => {
+          // eslint-disable-next-line no-use-before-define
+          sucessLogin();
+          setAddedUser(true);
+        })
+        .catch(() => {
+          // errorLogin()
+        });
+    } else {
+      event.preventDefault();
+      setPasswordNotMatch(true);
+    }
   };
 
   const sucessLogin = () => {
@@ -103,15 +111,31 @@ function AddUser() {
               Password
             </label>
             <input
+              value={firstPassword}
               id="password"
               type="password"
               name="password"
               className="form-input form-control"
               placeholder="Enter your Password"
-              onChange={(e) => handleChange(e)}
+              onChange={(event) => setFirstPassword(event.target.value)}
             />
           </div>
-          {/* {addedUser === false && <h4>You are already a member mate!</h4>} */}
+          <div className="form-inputs mb-5">
+            <label htmlFor="password2" className="form-label">
+              Confirm Password
+            </label>
+            <input
+              value={secondPassword}
+              id="password"
+              type="password"
+              name="password2"
+              className="form-input form-control"
+              placeholder="Repeat your Password"
+              onChange={(e) => setSecondPassword(e.target.value)}
+            />
+          </div>
+
+          {passwordNotMatch && <p className="wrong">Passwords Do not Match</p>}
           <div>
             <button
               type="submit"
