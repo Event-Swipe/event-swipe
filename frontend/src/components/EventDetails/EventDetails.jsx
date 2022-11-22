@@ -48,7 +48,12 @@ function EventDetails() {
           <div className="right-side-page">
             <h4 className="event-title m-3">{event.title}</h4>
 
-            <a className="buy-tickets-link" href={event.performers[0].url}>
+            <a
+              className="buy-tickets-link"
+              href={event.performers[0].url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button className="buy-tickets-btn btn btn-dark btn-lg m-2 mb-4">
                 Buy Tickets
               </button>
