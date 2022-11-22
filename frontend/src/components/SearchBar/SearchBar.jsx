@@ -18,16 +18,14 @@ function SearchBar() {
           role="search"
           onSubmit={handleSearchSubmit}
         >
-          <div>
-            <input
-              className="searchBar-input form-control me-2"
-              type="search"
-              name="search"
-              placeholder=" 🔍 Search by event, venue, team or artist"
-              value={searchValue}
-              onChange={handleSearchChange}
-            />
-          </div>
+          <input
+            className="searchBar-input form-control bg-transparent me-2"
+            type="search"
+            name="search"
+            placeholder="Search"
+            value={searchValue}
+            onChange={handleSearchChange}
+          />
         </form>
       </div>
     </div>
