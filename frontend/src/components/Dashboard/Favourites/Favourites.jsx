@@ -32,7 +32,7 @@ function Favourites() {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, []);
+  }, [favEvents]);
 
   return (
     <div className="page-wrapper-dashboard">
