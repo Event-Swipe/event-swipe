@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/jsx-no-comment-textnodes */
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import "./NavBar.css";
 // import { BiMenu } from "react-icons/bi";
@@ -16,9 +14,14 @@ function NavBar() {
   const { setSearchValue } = useContext(EventsContext);
   const { userDetails } = useContext(UserContext);
 
+  const navButton = useRef(null);
+  const linksContainerRef = useRef(null);
+
   const clearSearch = () => {
     setSearchValue("");
     setShowLinks(false);
+    navButton.current.classList.add("collapsed");
+    linksContainerRef.current.classList.remove("show");
   };
 
   return (
@@ -32,6 +35,8 @@ function NavBar() {
           />
         </NavLink>
         <button
+          /*           onClick={() => setShowLinks(false)}
+           */ ref={navButton}
           className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -42,7 +47,11 @@ function NavBar() {
         >
           <span className="navbar-toggler-icon" />
         </button>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
+        <div
+          className="collapse navbar-collapse"
+          id="navbarCollapse"
+          ref={linksContainerRef}
+        >
           <SearchBar />
           <ul
             className="nav-list navbar-nav ms-auto me-2 mb-2 mb-md-0 align-items-center"
