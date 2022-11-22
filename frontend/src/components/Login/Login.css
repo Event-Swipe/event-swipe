@@ -6,7 +6,7 @@
   background-size: contain;
   background-position: center center;
   background-size: cover;
-  height: 70vh;
+  height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,6 +43,7 @@
   transition: 2s;
   background-color: rgb(233 0 0 / 76%);
   border-radius: 5px;
+  padding-top: 1em;
 }
 
 /* .left-div * {
