@@ -23,12 +23,19 @@ function Footer() {
           bgColor="#fff"
           url="https://linkedin.com/"
           className="m-1"
+          target="_blank"
         />
-        <SocialIcon bgColor="#fff" url="https://github.com/" className="m-1" />
+        <SocialIcon
+          bgColor="#fff"
+          url="https://github.com/"
+          className="m-1"
+          target="_blank"
+        />
         <SocialIcon
           bgColor="#fff"
           url="https://facebook.com/"
           className="m-1"
+          target="_blank"
         />
       </div>
       <div className="links-wrapper d-flex align-items-center justify-content-evenly">

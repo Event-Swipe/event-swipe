@@ -48,6 +48,7 @@
    color: white;
   } */
 
+
 .form-input-login a {
   font-size: x-large;
   padding: 4px;
@@ -55,10 +56,11 @@
   border-radius: 5px;
   background-color: beige;
 }
-
+ */
 .wrong {
   color: red;
 }
+
 
 /* h1 {
 
