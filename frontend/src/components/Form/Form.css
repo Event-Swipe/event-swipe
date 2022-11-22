@@ -46,9 +46,22 @@
 .form-input-login {
   padding: 20px;
    color: white;
-  } */
+  }
+
+.form-input-login a {
+  font-size: x-large;
+  padding: 4px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: beige;
+}
+ */
+.wrong {
+  color: red;
+}
 
 /* h1 {
+
   color: white;
   font-size: calc(1.375rem + 1.5vw);
   text-align: start;
