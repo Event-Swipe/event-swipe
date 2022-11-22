@@ -8,7 +8,6 @@ import "./Form.css";
 
 function AddUser() {
   const [addedUser, setAddedUser] = useState(null);
-  const [passwordNotMatch, setPasswordNotMatch] = useState(null);
   const [addUser, setAddUser] = useState({
     username: "",
     email: "",
@@ -16,6 +15,7 @@ function AddUser() {
   });
   const [firstPassword, setFirstPassword] = useState("");
   const [secondPassword, setSecondPassword] = useState("");
+  const [passwordNotMatch, setPasswordNotMatch] = useState(null);
 
   const handleChange = (event) => {
     const newName = event.target.name;
@@ -116,7 +116,10 @@ function AddUser() {
               name="password"
               className="form-input form-control"
               placeholder="Enter your Password"
-              onChange={(event) => setFirstPassword(event.target.value)}
+              onChange={(event) => {
+                setFirstPassword(event.target.value);
+                handleChange(event);
+              }}
             />
           </div>
           <div className="form-inputs mb-5">
