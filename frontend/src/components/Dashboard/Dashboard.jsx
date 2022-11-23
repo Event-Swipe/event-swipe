@@ -38,12 +38,6 @@ function Dashboard() {
           </button>
         </div>
         <div className="right-side-top">
-          {/* <h3 className="text">
-            {" "}
-            {userDetails.username === null
-              ? userDetails.email
-              : userDetails.username}
-          </h3> */}
           <h1 className="user-greeting">
             Good to have you back{" "}
             <span>

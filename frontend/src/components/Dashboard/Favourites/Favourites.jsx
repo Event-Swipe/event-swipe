@@ -1,3 +1,5 @@
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
@@ -9,30 +11,14 @@ import UserContext from "../../../contexts/UserContext";
 import EventCard from "../../EventCard/EventCard";
 
 function Favourites() {
-  const [favEvents, setFavEvents] = useState(null);
+  const { userDetails, favEvents, FetchFavEvents } = useContext(UserContext);
 
-  const { userDetails } = useContext(UserContext);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/favourites/${userDetails.id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const arr = [];
-        const processData = data.map((event) => {
-          const parsedEvent = JSON.parse(event.oneevent);
-          const parsedObj = {
-            id: event.id,
-            event: parsedEvent,
-          };
-          arr.push(parsedObj);
-        });
-
-        setFavEvents(arr);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, []);
+  {
+    userDetails !== null &&
+      useEffect(() => {
+        FetchFavEvents(userDetails.id);
+      }, []);
+  }
 
   return (
     <div className="page-wrapper-dashboard">
