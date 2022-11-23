@@ -32,12 +32,11 @@ function Favourites() {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, [favEvents]);
+  }, []);
 
   return (
     <div className="page-wrapper-dashboard">
       <Sidemenu />
-      <h4 className="text center">Favourites Feature soon to come...</h4>
       <div className="fav-cards-con">
         {favEvents !== null &&
           favEvents.map((event) => {
