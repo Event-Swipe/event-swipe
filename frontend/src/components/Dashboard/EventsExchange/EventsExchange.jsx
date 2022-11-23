@@ -29,11 +29,15 @@ function EventsExchange() {
           sharedEvents.map((event) => {
             return (
               <div className="card-wrap">
+                {event.isApproved === 1 && (
+                  <h6 className="text-approved">I Wanna Go!</h6>
+                )}
                 <EventCard
                   dayEvents={event.event}
                   isRemovable
                   removeX={false}
                   token
+                  sender={event.sentFrom}
                 />
                 <h5 className="text">Suggested By {event.sentFrom}</h5>
               </div>

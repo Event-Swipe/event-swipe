@@ -59,6 +59,7 @@ export function UserContextProvider({ children }) {
           const parsedObj = {
             event: parsedEvent,
             sentFrom: event.senderEmail,
+            isApproved: event.receiverApproved,
           };
           arr.push(parsedObj);
         });
@@ -119,6 +120,23 @@ export function UserContextProvider({ children }) {
       FetchSharedEvents(userDetails.email);
     }
   };
+  const approveEventHandler = async (email, eventId, senderEmail) => {
+    const response = confirm("Confirm?");
+    response;
+
+    {
+      response &&
+        (await axios
+          .put(`http://localhost:5000/share/${email}/${eventId}/${senderEmail}`)
+          .then(() => {
+            console.log("OK");
+          })
+          .catch(() => {
+            // errorLogin()
+          }));
+      FetchSharedEvents(userDetails.email);
+    }
+  };
 
   return (
     <UserContext.Provider
@@ -137,6 +155,7 @@ export function UserContextProvider({ children }) {
         sharedEvents,
         setSharedEvents,
         deleteEventHandler,
+        approveEventHandler,
       }}
     >
       {children}

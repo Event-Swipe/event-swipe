@@ -19,7 +19,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
 
-function EventCard({ dayEvents, isRemovable, removeX, token }) {
+function EventCard({ dayEvents, isRemovable, removeX, token, sender }) {
   const [isSelected, setIsSelected] = useState(false);
   const [isShared, setIsShared] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -31,6 +31,7 @@ function EventCard({ dayEvents, isRemovable, removeX, token }) {
     PostFavEvent,
     PostSharedEvent,
     deleteEventHandler,
+    approveEventHandler,
   } = useContext(UserContext);
 
   const title = dayEvents.short_title;
@@ -111,7 +112,9 @@ function EventCard({ dayEvents, isRemovable, removeX, token }) {
           />
           <i
             className="pi pi-check-square"
-            onClick={() => approveEventHandler()}
+            onClick={() =>
+              approveEventHandler(userDetails.email, dayEvents.id, sender)
+            }
           />
         </div>
       )}

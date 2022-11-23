@@ -19,10 +19,21 @@
   color: red;
   transition: 1s;
 }
+
 .action-btns i:last-child:hover {
   font-size: 4rem;
   color: lightgreen;
   transition: 1s;
+}
+
+.text-approved {
+  position: absolute;
+  z-index: 100;
+  background-color: lightgreen;
+  padding: 6px;
+  border-radius: 6px;
+  margin: 12px;
+  color: black;
 }
 
 .eventCardContainer:hover {
