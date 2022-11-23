@@ -19,7 +19,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
 
-function EventCard({ dayEvents, isRemovable, removeX}) {
+function EventCard({ dayEvents, isRemovable, removeX, token }) {
   const [isSelected, setIsSelected] = useState(false);
   const [isShared, setIsShared] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -87,7 +87,9 @@ function EventCard({ dayEvents, isRemovable, removeX}) {
   return (
     <div
       key={dayEvents.id}
-      onMouseOver={() => setIsHovered(true)}
+      onMouseOver={() =>
+        token === true ? setIsHovered(true) : setIsHovered(false)
+      }
       onMouseLeave={() => setIsHovered(false)}
     >
       {removeX && (
@@ -98,7 +100,6 @@ function EventCard({ dayEvents, isRemovable, removeX}) {
       )}
       {isHovered && (
         <div className="action-btns">
-          <i className="pi pi-eye" />
           <i className="pi pi-trash" />
           <i className="pi pi-check-square" />
         </div>

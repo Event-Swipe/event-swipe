@@ -33,6 +33,7 @@ function EventsExchange() {
                   dayEvents={event.event}
                   isRemovable
                   removeX={false}
+                  token
                 />
                 <h5 className="text">Suggested By {event.sentFrom}</h5>
               </div>

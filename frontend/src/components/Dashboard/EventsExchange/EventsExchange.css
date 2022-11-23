@@ -22,7 +22,7 @@ h2 {
   margin: 5px;
 }
 .card-wrap:hover {
-  opacity: 50%;
+  opacity: 70%;
 }
 
 .text {
@@ -31,10 +31,15 @@ h2 {
   font-size: small;
 }
 
-/* .action-btns {
-  position: relative;
-} */
+.action-btns {
+  position: absolute;
+  margin: 50px;
+  z-index: 100;
+}
 
-.pi {
+.pi-trash {
+  color: white;
+}
+.pi-check-square {
   color: white;
 }

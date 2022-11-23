@@ -7,6 +7,19 @@
   margin: 5px;
 }
 
+.action-btns {
+  z-index: 100;
+}
+.action-btns i {
+  padding: 20px;
+  font-size: 3rem;
+}
+.action-btns i:hover {
+  font-size: 4rem;
+  color: yellow;
+  transition: 1s;
+}
+
 .eventCardContainer:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: initial;
