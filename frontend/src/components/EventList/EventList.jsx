@@ -107,7 +107,7 @@ function EventList(props) {
                 selectedEvents.map((events) => (
                   <SwiperSlide>
                     {" "}
-                    <EventCard dayEvents={events} removeX />
+                    <EventCard dayEvents={events} removeX addBorder />
                   </SwiperSlide>
                 ))}
             </Swiper>
@@ -118,7 +118,7 @@ function EventList(props) {
           {/* <h2 className="ListTitle">Searched Results</h2> */}
           <div className="searchDisplay">
             {searchedEvents?.map((events) => (
-              <EventCard dayEvents={events} removeX />
+              <EventCard dayEvents={events} removeX addBorder />
             ))}
           </div>
         </div>
@@ -135,11 +135,15 @@ function EventList(props) {
           </div>
           <div className="cal-cards-wrap">
             {calendarEvents &&
-              calendarEvents.map((events) => <EventCard dayEvents={events} />)}
+              calendarEvents.map((events) => (
+                <EventCard dayEvents={events} addBorder />
+              ))}
           </div>
           <div className="list-items">
             {selectedEvents &&
-              selectedEvents.map((events) => <EventCard dayEvents={events} />)}
+              selectedEvents.map((events) => (
+                <EventCard dayEvents={events} addBorder />
+              ))}
           </div>
         </div>
       )}

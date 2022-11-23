@@ -20,7 +20,14 @@ import axios from "axios";
 import { useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
 
-function EventCard({ dayEvents, isRemovable, removeX, token, sender }) {
+function EventCard({
+  dayEvents,
+  isRemovable,
+  removeX,
+  token,
+  sender,
+  addBorder,
+}) {
   const [isSelected, setIsSelected] = useState(false);
   const [isShared, setIsShared] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -86,8 +93,7 @@ function EventCard({ dayEvents, isRemovable, removeX, token, sender }) {
 
   const sendToFriend = (e, object) => {
     if (userDetails === null) {
-      alert("Only signed users can use this feature")
-
+      alert("Only signed users can use this feature");
     } else {
       if (e.key === "Enter") {
         PostSharedEvent(object);
@@ -103,7 +109,7 @@ function EventCard({ dayEvents, isRemovable, removeX, token, sender }) {
         token === true ? setIsHovered(true) : setIsHovered(false)
       }
       onMouseLeave={() => setIsHovered(false)}
-      className="parent"
+      className={addBorder === true ? "parent" : null}
     >
       {removeX && (
         <i
@@ -158,7 +164,7 @@ function EventCard({ dayEvents, isRemovable, removeX, token, sender }) {
             <i className="pi pi-share-alt" onClick={() => shareHandler()} />
             {isShared && (
               <input
-              className="friend-mail-input"
+                className="friend-mail-input"
                 type="text"
                 placeholder="Friends Email"
                 onChange={(e) => updateShare(e)}

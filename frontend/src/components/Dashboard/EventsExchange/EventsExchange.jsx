@@ -38,6 +38,7 @@ function EventsExchange() {
                   removeX={false}
                   token
                   sender={event.sentFrom}
+                  addBorder
                 />
                 <h5 className="text">Suggested By {event.sentFrom}</h5>
               </div>

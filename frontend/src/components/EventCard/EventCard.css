@@ -20,6 +20,9 @@
 .action-btns i {
   padding: 20px;
   font-size: 3rem;
+  background-color: black;
+  border-radius: 50%;
+  margin: 5px;
 }
 .action-btns i:first-child:hover {
   font-size: 4rem;
@@ -65,7 +68,7 @@
   /* padding: 10px; */
 }
 .card-bottom-btns i {
-  font-size: small;
+  font-size: medium;
   padding: 13px;
   border-radius: 50%;
   background-color: white;
@@ -74,7 +77,6 @@
   opacity: 50%;
   transition: 1s;
 }
-
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .eventCardContainer {
