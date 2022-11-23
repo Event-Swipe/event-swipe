@@ -26,7 +26,7 @@ function Favourites() {
       <div className="fav-cards-con">
         {favEvents !== null &&
           favEvents.map((event) => {
-            return <EventCard dayEvents={event.event} isRemovable />;
+            return <EventCard dayEvents={event.event} isRemovable removeX />;
           })}
       </div>
     </div>
