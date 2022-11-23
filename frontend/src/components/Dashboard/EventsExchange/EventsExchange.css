@@ -14,3 +14,27 @@
 h2 {
   margin-left: 40px;
 }
+
+.card-wrap {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: dimgray;
+  margin: 5px;
+}
+.card-wrap:hover {
+  opacity: 50%;
+}
+
+.text {
+  text-align: center;
+  color: white;
+  font-size: small;
+}
+
+/* .action-btns {
+  position: relative;
+} */
+
+.pi {
+  color: white;
+}

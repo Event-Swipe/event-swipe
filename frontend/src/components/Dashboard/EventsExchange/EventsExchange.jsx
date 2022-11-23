@@ -28,13 +28,13 @@ function EventsExchange() {
         {sharedEvents !== null &&
           sharedEvents.map((event) => {
             return (
-              <div>
+              <div className="card-wrap">
                 <EventCard
                   dayEvents={event.event}
                   isRemovable
                   removeX={false}
                 />
-                <h5>Suggested By {event.sentFrom}</h5>
+                <h5 className="text">Suggested By {event.sentFrom}</h5>
               </div>
             );
           })}
