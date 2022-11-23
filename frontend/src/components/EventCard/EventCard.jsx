@@ -25,8 +25,13 @@ function EventCard({ dayEvents, isRemovable, removeX, token }) {
   const [isHovered, setIsHovered] = useState(false);
   const [dbObject, setDbObject] = useState(null);
   const [dbShareObject, setDbShareObject] = useState(null);
-  const { userDetails, DeleteFavEvent, PostFavEvent, PostSharedEvent } =
-    useContext(UserContext);
+  const {
+    userDetails,
+    DeleteFavEvent,
+    PostFavEvent,
+    PostSharedEvent,
+    deleteEventHandler,
+  } = useContext(UserContext);
 
   const title = dayEvents.short_title;
   const subTitle = dayEvents.venue.display_location;
@@ -100,8 +105,14 @@ function EventCard({ dayEvents, isRemovable, removeX, token }) {
       )}
       {isHovered && (
         <div className="action-btns">
-          <i className="pi pi-trash" />
-          <i className="pi pi-check-square" />
+          <i
+            className="pi pi-trash"
+            onClick={() => deleteEventHandler(dayEvents.id)}
+          />
+          <i
+            className="pi pi-check-square"
+            onClick={() => approveEventHandler()}
+          />
         </div>
       )}
       <NavLink to={`/events/${dayEvents.id}`} className="cardLink">

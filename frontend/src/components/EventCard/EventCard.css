@@ -14,9 +14,14 @@
   padding: 20px;
   font-size: 3rem;
 }
-.action-btns i:hover {
+.action-btns i:first-child:hover {
   font-size: 4rem;
-  color: yellow;
+  color: red;
+  transition: 1s;
+}
+.action-btns i:last-child:hover {
+  font-size: 4rem;
+  color: lightgreen;
   transition: 1s;
 }
 

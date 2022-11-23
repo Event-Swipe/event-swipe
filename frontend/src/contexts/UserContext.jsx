@@ -104,6 +104,21 @@ export function UserContextProvider({ children }) {
       FetchFavEvents(userDetails.id);
     }
   };
+  const deleteEventHandler = async (id) => {
+    const response = confirm("Remove this event from Suggestions?");
+    response;
+
+    {
+      response &&
+        (await axios
+          .delete(`http://localhost:5000/share/${id}`)
+          .then(() => {})
+          .catch(() => {
+            // errorLogin()
+          }));
+      FetchSharedEvents(userDetails.email);
+    }
+  };
 
   return (
     <UserContext.Provider
@@ -121,6 +136,7 @@ export function UserContextProvider({ children }) {
         favEvents,
         sharedEvents,
         setSharedEvents,
+        deleteEventHandler,
       }}
     >
       {children}

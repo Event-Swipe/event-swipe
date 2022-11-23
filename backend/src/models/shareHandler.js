@@ -41,7 +41,22 @@ const shareEvent = (req, res) => {
     });
 };
 
+const deleteShareEvent = (req, res) => {
+  const { id } = req.params;
+
+  connection
+    .query(`DELETE FROM shared Where eventId = '${id}'`, [id])
+    .then(([result]) => {
+      res.status(201).send(result);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   shareEvent,
   getShareEvents,
+  deleteShareEvent,
 };

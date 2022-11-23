@@ -19,5 +19,6 @@ router.post("/favourites", FavouritesHandler.postFavEvent);
 router.post("/share", shareHandler.shareEvent);
 router.delete("/:id", userHandler.deleteUser);
 router.delete("/favourites/:id", FavouritesHandler.deleteFavEvent);
+router.delete("/share/:id", shareHandler.deleteShareEvent);
 
 module.exports = router;
