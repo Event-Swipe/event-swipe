@@ -1,3 +1,4 @@
+/* eslint-disable no-lonely-if */
 /* eslint-disable prettier/prettier */
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable no-lone-blocks */
@@ -84,9 +85,14 @@ function EventCard({ dayEvents, isRemovable, removeX, token, sender }) {
   };
 
   const sendToFriend = (e, object) => {
-    if (e.key === "Enter") {
-      PostSharedEvent(object);
-      setIsShared(false);
+    if (userDetails === null) {
+      alert("Only signed users can use this feature")
+
+    } else {
+      if (e.key === "Enter") {
+        PostSharedEvent(object);
+        setIsShared(false);
+      }
     }
   };
 
@@ -97,6 +103,7 @@ function EventCard({ dayEvents, isRemovable, removeX, token, sender }) {
         token === true ? setIsHovered(true) : setIsHovered(false)
       }
       onMouseLeave={() => setIsHovered(false)}
+      className="parent"
     >
       {removeX && (
         <i
@@ -143,7 +150,7 @@ function EventCard({ dayEvents, isRemovable, removeX, token, sender }) {
       </NavLink>
       <div>
         {!isRemovable && (
-          <>
+          <div className="card-bottom-btns">
             <i
               onClick={() => likeHandler(dbObject)}
               className={isSelected ? "pi pi-heart-fill" : "pi pi-heart"}
@@ -151,13 +158,14 @@ function EventCard({ dayEvents, isRemovable, removeX, token, sender }) {
             <i className="pi pi-share-alt" onClick={() => shareHandler()} />
             {isShared && (
               <input
+              className="friend-mail-input"
                 type="text"
                 placeholder="Friends Email"
                 onChange={(e) => updateShare(e)}
                 onKeyDown={(e) => sendToFriend(e, dbShareObject)}
               />
             )}
-          </>
+          </div>
         )}
       </div>
     </div>
