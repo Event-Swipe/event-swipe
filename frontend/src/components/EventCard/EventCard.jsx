@@ -44,6 +44,18 @@ function EventCard({ dayEvents, isRemovable }) {
     });
   }, [isSelected]);
 
+  function updateShare(e) {
+    setDbObjectID({
+      userId: userDetails.id,
+      receiverEmail: e.target.value,
+      oneEvent: JSON.stringify(dayEvents),
+      eventId: dayEvents.id,
+      senderEmail: userDetails.email,
+    });
+  }
+
+  console.log(dbObjectID);
+
   const selectHandler = () => {
     setIsSelected(true);
     axios
@@ -78,6 +90,14 @@ function EventCard({ dayEvents, isRemovable }) {
   const sendToFriend = (e) => {
     if (e.key === "Enter") {
       alert("Sent Succesfully!");
+      axios
+        .post(`http://localhost:5000/share`, dbObjectID)
+        .then((res) => {
+          alert("OK");
+        })
+        .catch(() => {
+          // errorLogin()
+        });
       setIsShared(false);
     }
   };
@@ -122,6 +142,7 @@ function EventCard({ dayEvents, isRemovable }) {
               <input
                 type="text"
                 placeholder="Friends Email"
+                onChange={(e) => updateShare(e)}
                 onKeyDown={(e) => sendToFriend(e)}
               />
             )}
