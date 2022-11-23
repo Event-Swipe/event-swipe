@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-restricted-globals */
@@ -17,9 +19,10 @@ import axios from "axios";
 import { useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
 
-function EventCard({ dayEvents, isRemovable, removeX }) {
+function EventCard({ dayEvents, isRemovable, removeX}) {
   const [isSelected, setIsSelected] = useState(false);
   const [isShared, setIsShared] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [dbObject, setDbObject] = useState(null);
   const [dbShareObject, setDbShareObject] = useState(null);
   const { userDetails, DeleteFavEvent, PostFavEvent, PostSharedEvent } =
@@ -82,12 +85,23 @@ function EventCard({ dayEvents, isRemovable, removeX }) {
   };
 
   return (
-    <div key={dayEvents.id}>
+    <div
+      key={dayEvents.id}
+      onMouseOver={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {removeX && (
         <i
           className="pi pi-times"
           onClick={() => DeleteFavEvent(dayEvents.id)}
         />
+      )}
+      {isHovered && (
+        <div className="action-btns">
+          <i className="pi pi-eye" />
+          <i className="pi pi-trash" />
+          <i className="pi pi-check-square" />
+        </div>
       )}
       <NavLink to={`/events/${dayEvents.id}`} className="cardLink">
         <div className="eventCardContainer card">
