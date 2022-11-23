@@ -13,6 +13,9 @@ function AddUser() {
     email: "",
     password: "",
   });
+  const [firstPassword, setFirstPassword] = useState("");
+  const [secondPassword, setSecondPassword] = useState("");
+  const [passwordNotMatch, setPasswordNotMatch] = useState(null);
 
   const handleChange = (event) => {
     const newName = event.target.name;
@@ -23,17 +26,22 @@ function AddUser() {
   const navigate = useNavigate();
 
   const handleSubmit = (event, newUser) => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:5000/users", newUser)
-      .then(() => {
-        // eslint-disable-next-line no-use-before-define
-        sucessLogin();
-        setAddedUser(true);
-      })
-      .catch(() => {
-        // errorLogin()
-      });
+    if (firstPassword === secondPassword) {
+      event.preventDefault();
+      axios
+        .post("http://localhost:5000/users", newUser)
+        .then(() => {
+          // eslint-disable-next-line no-use-before-define
+          sucessLogin();
+          setAddedUser(true);
+        })
+        .catch(() => {
+          // errorLogin()
+        });
+    } else {
+      event.preventDefault();
+      setPasswordNotMatch(true);
+    }
   };
 
   const sucessLogin = () => {
@@ -52,67 +60,99 @@ function AddUser() {
   //   }
 
   return (
-    <div className="form-content-right">
-      {addedUser && (
-        <img
-          className="checkmark"
-          alt=""
-          src="https://media2.giphy.com/media/YlSR3n9yZrxfgVzagm/giphy.gif?cid=ecf05e47y3sxt91qum85ae9iqkx9zf9fk3netpi88xuk7gtl&rid=giphy.gif&ct=s"
-        />
-      )}
-      <h1>Create you account</h1>
-      <form
-        className="form"
-        id="form-signup"
-        onSubmit={(event) => handleSubmit(event, addUser)}
-      >
-        <div className="form-inputs">
-          <label htmlFor="username" className="form-label">
-            User Name
-          </label>
-          <input
-            id="username"
-            type="Text"
-            name="username"
-            className="form-input"
-            placeholder="Enter your username"
-            onChange={(e) => handleChange(e)}
+    <div className="signUp-page-container">
+      <div className="signUp-sideBar p-4">
+        <h2 className="signUp-sidebar-title">Start your journey with us</h2>
+        <p>Discover events near you</p>
+      </div>
+      <div className="form-content-right form-container p-4">
+        {addedUser && (
+          <img
+            className="checkmark"
+            alt=""
+            src="https://media2.giphy.com/media/YlSR3n9yZrxfgVzagm/giphy.gif?cid=ecf05e47y3sxt91qum85ae9iqkx9zf9fk3netpi88xuk7gtl&rid=giphy.gif&ct=s"
           />
-        </div>
-        <div className="form-inputs">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            className="form-input"
-            placeholder="Enter your email"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <div className="form-inputs">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            className="form-input"
-            placeholder="Enter your Password"
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        {/* {addedUser === false && <h4>You are already a member mate!</h4>} */}
-        <button type="submit" className="form-input-btn">
-          Sign Up
-        </button>
-        <span className="form-input-login">
-          Already have an account? Login <a href="/login"> here</a>
-        </span>
-      </form>
+        )}
+        <h3 className="mb-5">Create your account</h3>
+        <form
+          className="form"
+          id="form-signup"
+          onSubmit={(event) => handleSubmit(event, addUser)}
+        >
+          <div className="form-inputs mb-3">
+            <label htmlFor="username" className="form-label form-label">
+              User Name
+            </label>
+            <input
+              id="username"
+              type="Text"
+              name="username"
+              className="form-input form-control"
+              placeholder="Enter your username"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <div className="form-inputs mb-3">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              className="form-input form-control"
+              placeholder="Enter your email"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <div className="form-inputs mb-4">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              value={firstPassword}
+              id="password"
+              type="password"
+              name="password"
+              className="form-input form-control"
+              placeholder="Enter your Password"
+              onChange={(event) => {
+                setFirstPassword(event.target.value);
+                handleChange(event);
+              }}
+            />
+          </div>
+          <div className="form-inputs mb-5">
+            <label htmlFor="password2" className="form-label">
+              Confirm Password
+            </label>
+            <input
+              value={secondPassword}
+              id="password"
+              type="password"
+              name="password2"
+              className="form-input form-control"
+              placeholder="Repeat your Password"
+              onChange={(e) => setSecondPassword(e.target.value)}
+            />
+          </div>
+
+          {passwordNotMatch && <p className="wrong">Passwords Do not Match</p>}
+          <div>
+            <button
+              type="submit"
+              className="form-input-btn btn btn-dark btn-lg mb-3"
+            >
+              Sign Up
+            </button>
+          </div>
+          <div>
+            <span className="form-input-login">
+              Already have an account? Login <a href="/login"> here</a>
+            </span>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

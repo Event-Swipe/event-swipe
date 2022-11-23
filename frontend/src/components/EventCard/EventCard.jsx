@@ -37,11 +37,14 @@ function EventCard({ dayEvents, isRemovable }) {
   );
 
   useEffect(() => {
-    setDbObject({
-      userId: userDetails.id,
-      event: JSON.stringify(dayEvents),
-      eventId: dayEvents.id,
-    });
+    {
+      userDetails &&
+        setDbObject({
+          userId: userDetails.id,
+          event: JSON.stringify(dayEvents),
+          eventId: dayEvents.id,
+        });
+    }
   }, [isSelected]);
 
   function updateShare(e) {
@@ -57,15 +60,20 @@ function EventCard({ dayEvents, isRemovable }) {
   console.log(dbObjectID);
 
   const selectHandler = () => {
-    setIsSelected(true);
-    axios
-      .post(`http://localhost:5000/favourites`, dbObject)
-      .then((res) => {
-        setDbObjectID(res.data[1]);
-      })
-      .catch(() => {
-        // errorLogin()
-      });
+    {
+      userDetails !== null && setIsSelected(true);
+      axios
+        .post(`http://localhost:5000/favourites`, dbObject)
+        .then((res) => {
+          setDbObjectID(res.data[1]);
+        })
+        .catch(() => {
+          // errorLogin()
+        });
+    }
+    {
+      !userDetails && alert("Only signed users can use this feature");
+    }
   };
 
   const removeHandler = () => {

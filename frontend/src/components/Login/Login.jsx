@@ -32,30 +32,32 @@ const login = () => {
           alt="login-cover"
         />
       </div>
-      <div className={userNotFound ? "wrong-details" : "left-div"}>
+      <div className={userNotFound ? "wrong-details left-div" : "left-div"}>
         <div className="title-wrapper">
           <h1 className="text">Welcome Back!</h1>
         </div>
-        <div className="instructions-wrapper">
-          <strong className="text">Please Enter Your Details</strong>
+        <div className="instructions-wrapper mb-3">
+          <strong className="text">Please enter your details bellow</strong>
         </div>
-        <div className="field-wrapper">
-          <label htmlFor="email" className="form-label text">
+        <div className="field-wrapper mb-3">
+          <label htmlFor="email" className="form-label text ">
             Email Address
           </label>
           <input
+            className="form-control"
             type="text"
             name="email"
             placeholder="Enter your email"
             onChange={(e) => changeHandle(e)}
           />
         </div>
-        <div className="field-wrapper">
+        <div className="field-wrapper mb-3">
           <label htmlFor="email" className="form-label text">
             Password
           </label>
           <input
             type="password"
+            className="form-control"
             name="password"
             placeholder="Enter your password"
             onChange={(e) => changeHandle(e)}
@@ -64,15 +66,20 @@ const login = () => {
         {userNotFound === true && (
           <h4 className="wrong-details-msg text">Wrong login details</h4>
         )}
-        <div className="button-wrapper">
-          <button onClick={() => submitHandler()}>Login Now!</button>
+        <div className="button-wrapper mb-4">
+          <button className="btn btn-light" onClick={() => submitHandler()}>
+            Login Now!
+          </button>
         </div>
         <div className="signup-link-wrapper">
           <p className="text">
             Don't have an account?
-            <a href="/signup" className="text">
-              Sign Up!
-            </a>
+            <button className="btn btn-sm btn-outline-light ms-2 p-2">
+              {" "}
+              <a href="/signup" className="text">
+                Sign Up!
+              </a>
+            </button>
           </p>
         </div>
       </div>

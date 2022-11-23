@@ -14,7 +14,7 @@ function Footer() {
             src="https://i.postimg.cc/XYtHc1Cq/company-logo-no-Bg.png"
             alt="company-logo"
             /* className="w-25" */
-            width="130px"
+            height="80px"
           />
         </NavLink>
       </div>
@@ -23,25 +23,35 @@ function Footer() {
           bgColor="#fff"
           url="https://linkedin.com/"
           className="m-1"
+          target="_blank"
         />
-        <SocialIcon bgColor="#fff" url="https://github.com/" className="m-1" />
+        <SocialIcon
+          bgColor="#fff"
+          url="https://github.com/"
+          className="m-1"
+          target="_blank"
+        />
         <SocialIcon
           bgColor="#fff"
           url="https://facebook.com/"
           className="m-1"
+          target="_blank"
         />
       </div>
       <div className="links-wrapper d-flex align-items-center justify-content-evenly">
-        <NavLink className="footerLinks m-1 nav-link" to="/">
+        <NavLink className="footerLinks m-1 nav-link fs-5" to="/">
           Home
         </NavLink>
-        <NavLink className="footerLinks m-1 nav-link" to="/events/concerts">
+        <NavLink
+          className="footerLinks m-1 nav-link fs-5"
+          to="/events/concerts"
+        >
           Music
         </NavLink>
-        <NavLink className="footerLinks m-1 nav-link" to="/events/sport">
+        <NavLink className="footerLinks m-1 nav-link fs-5" to="/events/sport">
           Sports
         </NavLink>
-        <NavLink className="footerLinks m-1 nav-link" to="/events/theater">
+        <NavLink className="footerLinks m-1 nav-link fs-5" to="/events/theater">
           Theatre
         </NavLink>
       </div>

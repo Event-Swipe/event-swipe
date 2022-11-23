@@ -29,17 +29,29 @@ function Dashboard() {
     <div className="page-wrapper-dashboard">
       <Sidemenu counter={counter} />
       <div className="right-side">
-        <button className="logout-btn" onClick={() => handleLogout()}>
-          Log out
-        </button>
+        <div>
+          <button
+            className="logout-btn btn btn-outline-light m-2 mb-4"
+            onClick={() => handleLogout()}
+          >
+            Log out
+          </button>
+        </div>
         <div className="right-side-top">
-          <h3 className="text">
+          {/* <h3 className="text">
             {" "}
             {userDetails.username === null
               ? userDetails.email
               : userDetails.username}
-          </h3>
-          <h1 className="text">Good To have you Back!</h1>
+          </h3> */}
+          <h1 className="user-greeting">
+            Good to have you back{" "}
+            <span>
+              {userDetails.username === null
+                ? userDetails.email
+                : userDetails.username}
+            </span>
+          </h1>
         </div>
         <div className="right-side-bottom" />
       </div>
