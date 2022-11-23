@@ -23,21 +23,17 @@ const getShareEvents = (req, res) => {
     });
 };
 
-
 const shareEvent = (req, res) => {
   const { userId, oneEvent, eventId, receiverEmail, senderEmail } = req.body;
 
   connection
-    .query("INSERT INTO shared (senderUserId, event, eventId, receiverEmail, senderEmail) VALUES (?,?,?,?, ?)", [
-      userId,
-      oneEvent,
-      eventId,
-      receiverEmail,
-      senderEmail
-    ])
+    .query(
+      "INSERT INTO shared (senderUserId, event, eventId, receiverEmail, senderEmail) VALUES (?,?,?,?, ?)",
+      [userId, oneEvent, eventId, receiverEmail, senderEmail]
+    )
     .then(([result]) => {
-      const eventObj = [result, result.insertId]
-      res.status(201).send(eventObj)
+      const eventObj = [result, result.insertId];
+      res.status(201).send(eventObj);
     })
     .catch((err) => {
       console.error(err);
@@ -45,9 +41,7 @@ const shareEvent = (req, res) => {
     });
 };
 
-
-
 module.exports = {
   shareEvent,
-  getShareEvents
+  getShareEvents,
 };

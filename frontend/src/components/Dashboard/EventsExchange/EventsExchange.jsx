@@ -29,7 +29,11 @@ function EventsExchange() {
           sharedEvents.map((event) => {
             return (
               <div>
-                <EventCard dayEvents={event.event} isRemovable />
+                <EventCard
+                  dayEvents={event.event}
+                  isRemovable
+                  removeX={false}
+                />
                 <h5>Suggested By {event.sentFrom}</h5>
               </div>
             );

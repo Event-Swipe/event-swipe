@@ -17,7 +17,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
 
-function EventCard({ dayEvents, isRemovable }) {
+function EventCard({ dayEvents, isRemovable, removeX }) {
   const [isSelected, setIsSelected] = useState(false);
   const [isShared, setIsShared] = useState(false);
   const [dbObject, setDbObject] = useState(null);
@@ -83,7 +83,7 @@ function EventCard({ dayEvents, isRemovable }) {
 
   return (
     <div key={dayEvents.id}>
-      {isRemovable && (
+      {removeX && (
         <i
           className="pi pi-times"
           onClick={() => DeleteFavEvent(dayEvents.id)}
