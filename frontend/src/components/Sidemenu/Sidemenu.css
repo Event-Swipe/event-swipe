@@ -58,6 +58,14 @@
   width: 100%;
 }
 
+.counter {
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  padding: 5px;
+}
+
 .text {
   color: white;
 } */

@@ -1,10 +1,12 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-restricted-syntax */
 import React, { useState } from "react";
 import "primeicons/primeicons.css";
 import "./Sidemenu.css";
 import { NavLink } from "react-router-dom";
 
-function Sidemenu() {
+function Sidemenu(props) {
   const [sideMenuIsOpen, setSideMenuIsOpen] = useState(false);
 
   return (
@@ -24,7 +26,9 @@ function Sidemenu() {
           style={{ textDecoration: "none" }}
           to="/dashboard/events-exchange"
         >
-          <li>Events Exchange</li>
+          <li>
+            Events Exchange <span className="counter">{props.counter}</span>
+          </li>
         </NavLink>
       )}
       {sideMenuIsOpen && (
