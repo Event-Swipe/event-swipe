@@ -23,6 +23,7 @@ function Dashboard() {
   const handleLogout = () => {
     setUserDetails(null);
     navigate("/login");
+    localStorage.removeItem("key");
   };
 
   return (

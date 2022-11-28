@@ -9,7 +9,7 @@ const FavouritesHandler = require("./models/FavouritesHandler");
 const shareHandler = require("./models/shareHandler");
 
 router.get("/", userHandler.getAllUsers);
-router.get("/login/:email/:password", registrationHandler.getLoginCredentials);
+router.get("/login/:email/:password", registrationHandler.getLoginCredentials, registrationHandler.generateToken);
 router.get("/favourites/:id", FavouritesHandler.getFavEvents);
 router.get("/share/:email", shareHandler.getShareEvents);
 router.get("/:id", userHandler.getUserById);
