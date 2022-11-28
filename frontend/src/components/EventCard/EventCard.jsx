@@ -1,3 +1,6 @@
+/* eslint-disable no-lonely-if */
+/* eslint-disable prettier/prettier */
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-restricted-globals */
@@ -17,12 +20,27 @@ import axios from "axios";
 import { useEffect } from "react";
 import UserContext from "../../contexts/UserContext";
 
-function EventCard({ dayEvents, isRemovable }) {
+function EventCard({
+  dayEvents,
+  isRemovable,
+  removeX,
+  token,
+  sender,
+  addBorder,
+}) {
   const [isSelected, setIsSelected] = useState(false);
   const [isShared, setIsShared] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [dbObject, setDbObject] = useState(null);
-  const [dbObjectID, setDbObjectID] = useState(null);
-  const { userDetails } = useContext(UserContext);
+  const [dbShareObject, setDbShareObject] = useState(null);
+  const {
+    userDetails,
+    DeleteFavEvent,
+    PostFavEvent,
+    PostSharedEvent,
+    deleteEventHandler,
+    approveEventHandler,
+  } = useContext(UserContext);
 
   const title = dayEvents.short_title;
   const subTitle = dayEvents.venue.display_location;
@@ -48,7 +66,7 @@ function EventCard({ dayEvents, isRemovable }) {
   }, [isSelected]);
 
   function updateShare(e) {
-    setDbObjectID({
+    setDbShareObject({
       userId: userDetails.id,
       receiverEmail: e.target.value,
       oneEvent: JSON.stringify(dayEvents),
@@ -57,37 +75,15 @@ function EventCard({ dayEvents, isRemovable }) {
     });
   }
 
-  console.log(dbObjectID);
-
-  const selectHandler = () => {
+  const likeHandler = (object) => {
     {
       userDetails !== null && setIsSelected(true);
-      axios
-        .post(`http://localhost:5000/favourites`, dbObject)
-        .then((res) => {
-          setDbObjectID(res.data[1]);
-        })
-        .catch(() => {
-          // errorLogin()
-        });
+    }
+    {
+      userDetails !== null && PostFavEvent(object);
     }
     {
       !userDetails && alert("Only signed users can use this feature");
-    }
-  };
-
-  const removeHandler = () => {
-    const response = confirm("Remove this event from favourties?");
-    response;
-
-    {
-      response &&
-        axios
-          .delete(`http://localhost:5000/favourites/${dayEvents.id}`)
-          .then(() => {})
-          .catch(() => {
-            // errorLogin()
-          });
     }
   };
 
@@ -95,25 +91,45 @@ function EventCard({ dayEvents, isRemovable }) {
     setIsShared((prevState) => !prevState);
   };
 
-  const sendToFriend = (e) => {
-    if (e.key === "Enter") {
-      alert("Sent Succesfully!");
-      axios
-        .post(`http://localhost:5000/share`, dbObjectID)
-        .then((res) => {
-          alert("OK");
-        })
-        .catch(() => {
-          // errorLogin()
-        });
-      setIsShared(false);
+  const sendToFriend = (e, object) => {
+    if (userDetails === null) {
+      alert("Only signed users can use this feature");
+    } else {
+      if (e.key === "Enter") {
+        PostSharedEvent(object);
+        setIsShared(false);
+      }
     }
   };
 
   return (
-    <div key={dayEvents.id}>
-      {isRemovable && (
-        <i className="pi pi-times" onClick={() => removeHandler()} />
+    <div
+      key={dayEvents.id}
+      onMouseOver={() =>
+        token === true ? setIsHovered(true) : setIsHovered(false)
+      }
+      onMouseLeave={() => setIsHovered(false)}
+      className={addBorder === true ? "parent" : null}
+    >
+      {removeX && (
+        <i
+          className="pi pi-times"
+          onClick={() => DeleteFavEvent(dayEvents.id)}
+        />
+      )}
+      {isHovered && (
+        <div className="action-btns">
+          <i
+            className="pi pi-trash"
+            onClick={() => deleteEventHandler(dayEvents.id)}
+          />
+          <i
+            className="pi pi-check-square"
+            onClick={() =>
+              approveEventHandler(userDetails.email, dayEvents.id, sender)
+            }
+          />
+        </div>
       )}
       <NavLink to={`/events/${dayEvents.id}`} className="cardLink">
         <div className="eventCardContainer card">
@@ -140,21 +156,22 @@ function EventCard({ dayEvents, isRemovable }) {
       </NavLink>
       <div>
         {!isRemovable && (
-          <>
+          <div className="card-bottom-btns">
             <i
-              onClick={() => selectHandler()}
+              onClick={() => likeHandler(dbObject)}
               className={isSelected ? "pi pi-heart-fill" : "pi pi-heart"}
             />
             <i className="pi pi-share-alt" onClick={() => shareHandler()} />
             {isShared && (
               <input
+                className="friend-mail-input"
                 type="text"
                 placeholder="Friends Email"
                 onChange={(e) => updateShare(e)}
-                onKeyDown={(e) => sendToFriend(e)}
+                onKeyDown={(e) => sendToFriend(e, dbShareObject)}
               />
             )}
-          </>
+          </div>
         )}
       </div>
     </div>

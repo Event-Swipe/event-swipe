@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-lone-blocks */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-syntax */
@@ -9,38 +11,38 @@ import UserContext from "../../../contexts/UserContext";
 import EventCard from "../../EventCard/EventCard";
 
 function EventsExchange() {
-  const [favEvents, setFavEvents] = useState(null);
+  const { userDetails, sharedEvents, FetchSharedEvents } =
+    useContext(UserContext);
 
-  const { userDetails } = useContext(UserContext);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/share/${userDetails.email}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        const arr = [];
-        const processData = data.map((event) => {
-          const parsedEvent = JSON.parse(event.event);
-          const parsedObj = {
-            event: parsedEvent,
-          };
-          arr.push(parsedObj);
-        });
-
-        setFavEvents(arr);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, []);
+  {
+    userDetails !== null &&
+      useEffect(() => {
+        FetchSharedEvents(userDetails.email);
+      }, []);
+  }
 
   return (
     <div className="page-wrapper-dashboard">
       <Sidemenu />
       <div className="fav-cards-con">
-        {favEvents !== null &&
-          favEvents.map((event) => {
-            return <EventCard dayEvents={event.event} isRemovable />;
+        {sharedEvents !== null &&
+          sharedEvents.map((event) => {
+            return (
+              <div className="card-wrap">
+                {event.isApproved === 1 && (
+                  <h6 className="text-approved">I Wanna Go!</h6>
+                )}
+                <EventCard
+                  dayEvents={event.event}
+                  isRemovable
+                  removeX={false}
+                  token
+                  sender={event.sentFrom}
+                  addBorder
+                />
+                <h5 className="text">Suggested By {event.sentFrom}</h5>
+              </div>
+            );
           })}
       </div>
     </div>

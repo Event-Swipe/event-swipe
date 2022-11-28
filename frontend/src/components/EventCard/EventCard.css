@@ -1,3 +1,10 @@
+.parent {
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 5px;
+  max-width: 100%;
+}
+
 .cardLink {
   text-decoration: none;
   color: initial;
@@ -5,6 +12,38 @@
 .eventCardContainer {
   margin: 0 2rem;
   margin: 5px;
+}
+
+.action-btns {
+  z-index: 100;
+}
+.action-btns i {
+  padding: 20px;
+  font-size: 3rem;
+  background-color: black;
+  border-radius: 50%;
+  margin: 5px;
+}
+.action-btns i:first-child:hover {
+  font-size: 4rem;
+  color: red;
+  transition: 1s;
+}
+
+.action-btns i:last-child:hover {
+  font-size: 4rem;
+  color: lightgreen;
+  transition: 1s;
+}
+
+.text-approved {
+  position: absolute;
+  z-index: 100;
+  background-color: lightgreen;
+  padding: 6px;
+  border-radius: 6px;
+  margin: 12px;
+  color: black;
 }
 
 .eventCardContainer:hover {
@@ -22,6 +61,23 @@
   text-overflow: ellipsis;
   width: 150px;
 }
+
+.card-bottom-btns {
+  display: flex;
+  justify-content: space-evenly;
+  /* padding: 10px; */
+}
+.card-bottom-btns i {
+  font-size: medium;
+  padding: 13px;
+  border-radius: 50%;
+  background-color: white;
+}
+.card-bottom-btns i:hover {
+  opacity: 50%;
+  transition: 1s;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .eventCardContainer {
     margin: 5px;

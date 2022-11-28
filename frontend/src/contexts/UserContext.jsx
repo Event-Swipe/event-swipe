@@ -1,8 +1,7 @@
-/* eslint-disable camelcase */
-/* eslint-disable react/jsx-no-constructed-context-values */
-/* eslint-disable react/prop-types */
-import { useState, createContext } from "react";
+
 import jwt_decode from "jwt-decode";
+import { useState, createContext } from "react";
+import axios from "axios";
 
 const UserContext = createContext();
 export default UserContext;
@@ -13,6 +12,10 @@ export function UserContextProvider({ children }) {
       ? null
       : jwt_decode(localStorage.getItem("key"))
   );
+
+  const [userDetails, setUserDetails] = useState(null);
+  const [favEvents, setFavEvents] = useState(null);
+  const [sharedEvents, setSharedEvents] = useState(null);
   const [userNotFound, setUserNotFound] = useState(false);
   const LoginFunction = async (email, password) => {
     await fetch(`http://localhost:5000/login/${email}/${password}`)
@@ -26,10 +29,114 @@ export function UserContextProvider({ children }) {
         console.error("Error:", error);
       });
   };
-  // const cachedUserDetails = useMemo(
-  //   () => LoginFunction(email, password),
-  //   [userDetails]
-  // );
+  const FetchFavEvents = async (id) => {
+    fetch(`http://localhost:5000/favourites/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const arr = [];
+        data.map((event) => {
+          const parsedEvent = JSON.parse(event.oneevent);
+          const parsedObj = {
+            id: event.id,
+            event: parsedEvent,
+          };
+          arr.push(parsedObj);
+        });
+
+        setFavEvents(arr);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+  const FetchSharedEvents = (email) => {
+    fetch(`http://localhost:5000/share/${email}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const arr = [];
+        data.map((event) => {
+          const parsedEvent = JSON.parse(event.event);
+          const parsedObj = {
+            event: parsedEvent,
+            sentFrom: event.senderEmail,
+            isApproved: event.receiverApproved,
+          };
+          arr.push(parsedObj);
+        });
+
+        setSharedEvents(arr);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+  const PostSharedEvent = (object) => {
+    axios
+      .post(`http://localhost:5000/share`, object)
+      .then((res) => {
+        alert("Sent!");
+      })
+      .catch(() => {
+        // errorLogin()
+      });
+  };
+  const PostFavEvent = (object) => {
+    axios
+      .post(`http://localhost:5000/favourites`, object)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(() => {
+        // errorLogin()
+      });
+  };
+  const DeleteFavEvent = async (id) => {
+    const response = confirm("Remove this event from favourties?");
+    response;
+
+    {
+      response &&
+        (await axios
+          .delete(`http://localhost:5000/favourites/${id}`)
+          .then(() => {})
+          .catch(() => {
+            // errorLogin()
+          }));
+      FetchFavEvents(userDetails.id);
+    }
+  };
+  const deleteEventHandler = async (id) => {
+    const response = confirm("Remove this event from Suggestions?");
+    response;
+
+    {
+      response &&
+        (await axios
+          .delete(`http://localhost:5000/share/${id}`)
+          .then(() => {})
+          .catch(() => {
+            // errorLogin()
+          }));
+      FetchSharedEvents(userDetails.email);
+    }
+  };
+  const approveEventHandler = async (email, eventId, senderEmail) => {
+    const response = confirm("Confirm?");
+    response;
+
+    {
+      response &&
+        (await axios
+          .put(`http://localhost:5000/share/${email}/${eventId}/${senderEmail}`)
+          .then(() => {
+            console.log("OK");
+          })
+          .catch(() => {
+            // errorLogin()
+          }));
+      FetchSharedEvents(userDetails.email);
+    }
+  };
 
   return (
     <UserContext.Provider
@@ -39,6 +146,16 @@ export function UserContextProvider({ children }) {
         setUserDetails,
         userNotFound,
         setUserNotFound,
+        FetchSharedEvents,
+        FetchFavEvents,
+        PostSharedEvent,
+        PostFavEvent,
+        DeleteFavEvent,
+        favEvents,
+        sharedEvents,
+        setSharedEvents,
+        deleteEventHandler,
+        approveEventHandler,
       }}
     >
       {children}

@@ -10,7 +10,7 @@ const getShareEvents = (req, res) => {
 
   connection
     .query(
-      `SELECT  event, receiverEmail, senderEmail
+      `SELECT  event, receiverEmail, senderEmail, receiverApproved
       FROM shared where receiverEmail = '${email}'`
     )
     .then(([result]) => {
@@ -23,21 +23,17 @@ const getShareEvents = (req, res) => {
     });
 };
 
-
 const shareEvent = (req, res) => {
   const { userId, oneEvent, eventId, receiverEmail, senderEmail } = req.body;
 
   connection
-    .query("INSERT INTO shared (senderUserId, event, eventId, receiverEmail, senderEmail) VALUES (?,?,?,?, ?)", [
-      userId,
-      oneEvent,
-      eventId,
-      receiverEmail,
-      senderEmail
-    ])
+    .query(
+      "INSERT INTO shared (senderUserId, event, eventId, receiverEmail, senderEmail) VALUES (?,?,?,?, ?)",
+      [userId, oneEvent, eventId, receiverEmail, senderEmail]
+    )
     .then(([result]) => {
-      const eventObj = [result, result.insertId]
-      res.status(201).send(eventObj)
+      const eventObj = [result, result.insertId];
+      res.status(201).send(eventObj);
     })
     .catch((err) => {
       console.error(err);
@@ -45,9 +41,41 @@ const shareEvent = (req, res) => {
     });
 };
 
+const deleteShareEvent = (req, res) => {
+  const { id } = req.params;
 
+  connection
+    .query(`DELETE FROM shared Where eventId = '${id}'`, [id])
+    .then(([result]) => {
+      res.status(201).send(result);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+const approveShareEvent = (req, res) => {
+  const { email, eventId, senderEmail } = req.params;
+
+  connection
+    .query(
+      `UPDATE shared
+    SET receiverApproved = 1
+    WHERE eventId = '${eventId}' and receiverEmail = '${email}' and senderEmail = '${senderEmail}'`,
+      [email, eventId, senderEmail]
+    )
+    .then(([result]) => {
+      res.status(201).send(result);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 module.exports = {
   shareEvent,
-  getShareEvents
+  getShareEvents,
+  deleteShareEvent,
+  approveShareEvent,
 };

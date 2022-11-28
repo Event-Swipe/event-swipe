@@ -17,7 +17,12 @@ router.put("/:id", userHandler.createUser);
 router.post("/users", userHandler.createUser);
 router.post("/favourites", FavouritesHandler.postFavEvent);
 router.post("/share", shareHandler.shareEvent);
+router.put(
+  "/share/:email/:eventId/:senderEmail",
+  shareHandler.approveShareEvent
+);
 router.delete("/:id", userHandler.deleteUser);
 router.delete("/favourites/:id", FavouritesHandler.deleteFavEvent);
+router.delete("/share/:id", shareHandler.deleteShareEvent);
 
 module.exports = router;
