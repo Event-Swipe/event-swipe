@@ -1,4 +1,13 @@
-
+/* eslint-disable no-alert */
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-vars */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable react/prop-types */
+/* eslint-disable camelcase */
 import jwt_decode from "jwt-decode";
 import { useState, createContext } from "react";
 import axios from "axios";
@@ -13,14 +22,16 @@ export function UserContextProvider({ children }) {
       : jwt_decode(localStorage.getItem("key"))
   );
 
-  const [userDetails, setUserDetails] = useState(null);
   const [favEvents, setFavEvents] = useState(null);
   const [sharedEvents, setSharedEvents] = useState(null);
   const [userNotFound, setUserNotFound] = useState(false);
+
   const LoginFunction = async (email, password) => {
     await fetch(`http://localhost:5000/login/${email}/${password}`)
       .then((response) => response.json())
       .then((data) => {
+        console.log("received data");
+
         setUserDetails(data);
         localStorage.setItem("key", data.token);
       })

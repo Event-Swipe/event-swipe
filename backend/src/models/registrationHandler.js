@@ -8,7 +8,6 @@ const connection = require("../db");
 
 
 const getLoginCredentials = (req, res, next) => {
-
   const { email, password } = req.params;
 
   connection
@@ -25,10 +24,12 @@ const getLoginCredentials = (req, res, next) => {
     });
 };
 const generateToken = (req, res) => {
-  const token = jwt.sign({ password: req.user.password, email: req.user.email }, 'lalala')
+
+  const token = jwt.sign({ password: req.user.password, email: req.user.email }, 'lalgtgtala')
 
     // .then((res) => {
      res.status(200).send({user: req.user, token: token})
+
     // })
     // .catch((err) => {
     //   console.error(err + "Problem");
